@@ -1,2 +1,5 @@
-app state : alive
-crash scan: crashed
+app state  : alive
+crash scan : clean
+install rc : 0
+maestro rc : 0
+renderer   : 16 software-GL shader errors (emulator-only, not a game defect)
