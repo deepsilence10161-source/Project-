@@ -1,8 +1,23 @@
-# Reusable assertion: the game is still the foreground app.
-# A crash would kill the process, which Maestro reports as a
-# failure to resolve the app - so this is a real liveness check.
+# Reusable liveness check for the Neon Dash Maestro flow.
+#
+# IMPORTANT - what this can and cannot prove.
+#
+# Godot renders the whole game into ONE native canvas. It publishes no
+# accessibility nodes, so Maestro has nothing to look at inside the game:
+# no score text, no buttons, no "game over" dialog. Maestro is therefore
+# blind to everything that happens on that canvas. That is a property of
+# the engine, not a limitation of Maestro.
+#
+# What this check DOES prove: the Maestro driver is still attached to a
+# live Android device. If the app had died and taken the driver's view of
+# the device with it, `maestro.platform` would not resolve.
+#
+# What it does NOT prove: that the game did not crash. For that, the
+# workflow additionally runs
+#     adb shell pidof com.neondash.game
+# and greps logcat for "FATAL EXCEPTION" / "AndroidRuntime".
 appId: com.neondash.game
 ---
 - assertTrue:
-    condition: ${maestro.appId == "com.neondash.game"}
-    label: "Neon Dash is still the running foreground app"
+    condition: ${maestro.platform == 'android'}
+    label: "Maestro driver is still attached to a live Android device"
