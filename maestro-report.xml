@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <testsuites>
-  <testsuite name="Test Suite" device="test" tests="1" failures="0" time="50.86" timestamp="2026-09-25T20:14:41">
-    <testcase id="smoke" name="smoke" classname="smoke" file=".maestro/flows/smoke.yaml" time="50.776" timestamp="2026-09-25T20:14:41" status="SUCCESS"/>
+  <testsuite name="Test Suite" device="test" tests="1" failures="0" time="43.78" timestamp="2026-09-25T20:22:12">
+    <testcase id="smoke" name="smoke" classname="smoke" file=".maestro/flows/smoke.yaml" time="43.738" timestamp="2026-09-25T20:22:12" status="SUCCESS"/>
   </testsuite>
 </testsuites>

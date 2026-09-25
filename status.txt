@@ -1,2 +1,2 @@
 app state : alive
-crash scan: clean
+crash scan: crashed
