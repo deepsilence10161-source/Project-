@@ -183,8 +183,13 @@ public partial class Main : Node2D
     {
         var scene = GD.Load<PackedScene>("res://Scenes/Obstacle.tscn");
         var view = scene.Instantiate<ObstacleView>();
-        view.Configure(slot, _lanes.LaneToX(slot.Lane), PixelsPerMetre);
+        // AddChild BEFORE Configure. ObstacleView._Ready() is what resolves the
+        // Body/Edge nodes, and _Ready() only runs once the node enters the
+        // tree. Configuring first left those fields null and threw a
+        // NullReferenceException from ObstacleView.Configure on every single
+        // spawn (seen in the emulator logcat during the E2E run).
         _grid.AddChild(view);
+        view.Configure(slot, _lanes.LaneToX(slot.Lane), PixelsPerMetre);
         _obstacles.Add(view);
     }
 

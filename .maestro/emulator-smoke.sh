@@ -86,6 +86,10 @@ else
 fi
 
 banner "crash scan in logcat"
+# Godot logs unhandled C# exceptions as "ERROR: System.<ExceptionType>". Those
+# do NOT raise a Java FATAL EXCEPTION and do not always kill the process, so a
+# plain crash grep misses them. A real NullReferenceException in
+# ObstacleView.Configure shipped this way and only the logcat revealed it.
 if grep -qE 'FATAL EXCEPTION' logcat.txt 2>/dev/null; then
   echo "CRASH SIGNATURE FOUND:"
   grep -nE 'FATAL EXCEPTION' logcat.txt | head -20
@@ -93,6 +97,16 @@ if grep -qE 'FATAL EXCEPTION' logcat.txt 2>/dev/null; then
 elif grep -qE "Process: ${APP}, PID" logcat.txt 2>/dev/null; then
   echo "APP PROCESS DEATH FOUND:"
   grep -nE "Process: ${APP}, PID" logcat.txt | head -20
+  echo crashed > .crash-state
+elif grep -qE 'ERROR: System\.[A-Za-z]+Exception' logcat.txt 2>/dev/null; then
+  echo "UNHANDLED C# EXCEPTION FOUND:"
+  grep -nE 'ERROR: System\.[A-Za-z]+Exception' logcat.txt | head -10
+  echo "--- first stack frame ---"
+  grep -A3 -m1 'ERROR: System\.[A-Za-z]+Exception' logcat.txt | head -5
+  echo crashed > .crash-state
+elif grep -qE 'godot.*ERROR:' logcat.txt 2>/dev/null; then
+  echo "GODOT ERROR FOUND:"
+  grep -nE 'godot.*ERROR:' logcat.txt | head -10
   echo crashed > .crash-state
 else
   echo "no crash signatures in logcat"
