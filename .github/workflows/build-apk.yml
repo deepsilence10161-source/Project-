@@ -168,19 +168,70 @@ jobs:
           godot --headless --path . --export-debug "Android" build/NeonDash.apk
 
       - name: Verify APK
+        shell: bash
         run: |
+          set -euo pipefail
           APK=build/NeonDash.apk
-          test -f "$APK" || { echo "APK missing"; exit 1; }
+          test -f "$APK" || { echo "::error::APK missing"; exit 1; }
+          SDK="${SDK_DIR:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
+
+          # aapt/apksigner live under a versioned build-tools dir; resolve both.
+          AAPT=$(ls "$SDK"/build-tools/*/aapt 2>/dev/null | sort -V | tail -1)
+          SIGNER=$(ls "$SDK"/build-tools/*/apksigner 2>/dev/null | sort -V | tail -1)
+          test -n "$AAPT"   || { echo "::error::aapt not found under $SDK/build-tools"; exit 1; }
+          test -n "$SIGNER" || { echo "::error::apksigner not found under $SDK/build-tools"; exit 1; }
+          echo "aapt:     $AAPT"
+          echo "apksigner: $SIGNER"
+
+          fail=0
+          check() { # check <label> <regex>
+            if ! "$AAPT" dump badging "$APK" 2>/dev/null | grep -qE "$2"; then
+              echo "::error::APK check failed: $1"; fail=1
+            else
+              echo "OK  $1"
+            fi
+          }
+
           echo "--- identity ---"
-          aapt dump badging "$APK" 2>/dev/null | grep -E '^package:|^sdkVersion:|^targetSdkVersion:|application-label:' | head -5
-          echo "--- launcher alias ---"
-          aapt dump xmltree "$APK" AndroidManifest.xml 2>/dev/null | grep -A1 'GodotAppLauncher' | head -3
+          "$AAPT" dump badging "$APK" 2>/dev/null \
+            | grep -E '^package:|^sdkVersion:|^targetSdkVersion:|application-label:|native-code:' || true
+          check "package name is com.neondash.game"        "^package: name='com\.neondash\.game'"
+          check "app label is 'Neon Dash'"                 "application-label:'Neon Dash'"
+          check "minSdk is 24"                             "^sdkVersion:'24'"
+          check "arm64-v8a native code only"               "native-code: 'arm64-v8a'"
+
+          echo "--- launcher activity ---"
+          "$AAPT" dump xmltree "$APK" AndroidManifest.xml 2>/dev/null \
+            | grep -E 'GodotApp|intent.action.MAIN|category.LAUNCHER' || true
+          if ! "$AAPT" dump xmltree "$APK" AndroidManifest.xml 2>/dev/null \
+               | grep -q 'android.intent.category.LAUNCHER'; then
+            echo "::error::no LAUNCHER category in manifest"; fail=1
+          else
+            echo "OK  LAUNCHER category present"
+          fi
+
           echo "--- signature ---"
-          apksigner verify --print-certs "$APK" 2>&1 | head -3
-          echo "--- arm64 native libs ---"
-          unzip -l "$APK" | grep -E 'lib/arm64-v8a/(libgodot_android|libmonosgen)' | head -3
-          echo "--- game assembly ---"
-          unzip -l "$APK" | grep 'NeonDash.dll'
+          "$SIGNER" verify --print-certs "$APK" 2>&1 | head -3 || true
+          if ! "$SIGNER" verify "$APK" > /dev/null 2>&1; then
+            echo "::error::APK signature verification failed"; fail=1
+          else
+            echo "OK  APK signature verifies"
+          fi
+
+          echo "--- contents ---"
+          unzip -l "$APK" | grep -E 'lib/arm64-v8a/(libgodot_android|libmonosgen-2\.0\.so)' || true
+          for want in 'lib/arm64-v8a/libgodot_android.so' \
+                      'lib/arm64-v8a/libmonosgen-2.0.so' \
+                      'assets/.godot/mono/publish/arm64/NeonDash.dll'; do
+            if unzip -l "$APK" | grep -q " $want\$"; then
+              echo "OK  contains $want"
+            else
+              echo "::error::APK is missing $want"; fail=1
+            fi
+          done
+
+          [ "$fail" -eq 0 ] || { echo "::error::APK verification failed"; exit 1; }
+          echo "APK verification passed"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
