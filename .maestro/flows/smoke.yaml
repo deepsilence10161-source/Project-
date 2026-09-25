@@ -1,0 +1,88 @@
+appId: com.neondash.game
+---
+# ---------------------------------------------------------------
+# Smoke flow: launch the game, drive it with touch, prove it stays
+# alive. Screenshots are captured at every step so a human can
+# review the real rendered game.
+#
+# NOTE: this deliberately avoids asserting on in-game text. The
+# game renders into a single native canvas (Godot), which exposes
+# no accessibility tree - the same reason Maestro cannot automate
+# in-game UI. Screenshots + "app still running" are the honest
+# checks at this layer.
+# ---------------------------------------------------------------
+
+- launchApp:
+    clearState: true
+
+- runFlow: ../utils/assert-running.yaml
+
+- takeScreenshot: 01-title-screen
+
+# Tap to start the run.
+- tapOn:
+    point: 50%,60%
+
+- takeScreenshot: 02-game-started
+
+- runFlow: ../utils/assert-running.yaml
+
+# Swipe left (change lane).
+- swipe:
+    start: 50%,70%
+    end: 15%,70%
+    duration: 250
+
+- takeScreenshot: 03-swiped-left
+
+# Swipe right (change lane).
+- swipe:
+    start: 50%,70%
+    end: 85%,70%
+    duration: 250
+
+- takeScreenshot: 04-swiped-right
+
+# Swipe up (jump).
+- swipe:
+    start: 50%,80%
+    end: 50%,35%
+    duration: 250
+
+- takeScreenshot: 05-jumped
+
+- runFlow: ../utils/assert-running.yaml
+
+# Let the run progress so obstacles spawn and the score climbs.
+- waitForAnimationToEnd:
+    timeout: 12000
+
+- takeScreenshot: 06-running
+
+- runFlow: ../utils/assert-running.yaml
+
+# Rapid input burst - stress the input handling.
+- repeat:
+    times: 6
+    commands:
+      - swipe:
+          start: 50%,75%
+          end: 20%,75%
+          duration: 120
+      - swipe:
+          start: 20%,75%
+          end: 80%,75%
+          duration: 120
+
+- takeScreenshot: 07-after-input-burst
+
+- runFlow: ../utils/assert-running.yaml
+
+# Background and resume - state must survive.
+- pressKey: home
+- waitForAnimationToEnd:
+    timeout: 2000
+- launchApp
+- takeScreenshot: 08-resumed
+
+- runFlow: ../utils/assert-running.yaml

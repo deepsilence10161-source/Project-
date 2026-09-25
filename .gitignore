@@ -1,0 +1,43 @@
+# Godot / .NET
+.godot/
+/android/
+build/
+*.tmp
+*.user
+*.userprefs
+*.suo
+*.sln.docstates
+mono_crash.*.json
+
+# Build output
+bin/
+obj/
+[Bb]in/
+[Oo]bj/
+*.apk
+*.aab
+*.idsig
+
+# IDE
+.idea/
+.vs/
+.vscode/
+*.DotSettings
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets - NEVER commit these
+*.keystore
+*.jks
+debug.keystore
+release.keystore
+.env
+secrets.properties
+
+# Local toolchain (not part of the repo)
+/tools/
+
+# Maestro generates screenshots next to the flows
+.maestro/**/*.png

@@ -1,0 +1,8 @@
+# Reusable assertion: the game is still the foreground app.
+# A crash would kill the process, which Maestro reports as a
+# failure to resolve the app - so this is a real liveness check.
+appId: com.neondash.game
+---
+- assertTrue:
+    condition: ${maestro.appId == "com.neondash.game"}
+    label: "Neon Dash is still the running foreground app"

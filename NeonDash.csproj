@@ -1,0 +1,27 @@
+<Project Sdk="Godot.NET.Sdk/4.7.2">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateRuntimeConfigurationFiles>true</GenerateRuntimeConfigurationFiles>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>NeonDash</RootNamespace>
+    <AssemblyName>NeonDash</AssemblyName>
+    <GodotProjectDir Condition="'$(GodotProjectDir)' == ''">$(MSBuildThisFileDirectory)</GodotProjectDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Godot.SourceGenerators" Version="4.7.2" />
+    <PackageReference Include="GodotSharp" Version="4.7.2" />
+    <PackageReference Include="GodotSharpEditor" Version="4.7.2" />
+  </ItemGroup>
+
+  <!-- Only the game's own scripts. The xUnit suite under tests/ is excluded:
+       it is a plain .NET project with no engine dependency. -->
+  <ItemGroup>
+    <Compile Include="Scripts/**/*.cs" />
+  </ItemGroup>
+
+</Project>

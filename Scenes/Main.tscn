@@ -1,0 +1,98 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn30nd4shm41n"]
+
+[ext_resource type="Script" path="res://Scripts/Main.cs" id="1_main"]
+[ext_resource type="Script" path="res://Scripts/ScrollingGrid.cs" id="2_grid"]
+[ext_resource type="Script" path="res://Scripts/PlayerView.cs" id="3_player"]
+[ext_resource type="Script" path="res://Scripts/Hud.cs" id="4_hud"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="World" type="Node2D" parent="."]
+script = ExtResource("2_grid")
+
+[node name="Player" type="Node2D" parent="World"]
+position = Vector2(0, 1010)
+script = ExtResource("3_player")
+
+[node name="Shadow" type="ColorRect" parent="World/Player"]
+offset_left = -54.0
+offset_top = -9.0
+offset_right = 54.0
+offset_bottom = 9.0
+color = Color(1, 1, 1, 0.35)
+
+[node name="Glow" type="ColorRect" parent="World/Player"]
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 48.0
+offset_bottom = 48.0
+color = Color(0, 0.94, 1, 0.35)
+
+[node name="Body" type="ColorRect" parent="World/Player"]
+offset_left = -38.0
+offset_top = -46.0
+offset_right = 38.0
+offset_bottom = 46.0
+color = Color(1, 1, 1, 1)
+
+[node name="Hud" type="CanvasLayer" parent="."]
+script = ExtResource("4_hud")
+
+[node name="Top" type="VBoxContainer" parent="Hud"]
+anchors_preset = 1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 28.0
+offset_top = 30.0
+offset_right = 420.0
+offset_bottom = 200.0
+grow_horizontal = 1
+grow_vertical = 1
+theme_override_constants/separation = 6
+
+[node name="Score" type="Label" parent="Hud/Top"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 62
+text = "000000"
+
+[node name="High" type="Label" parent="Hud/Top"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.6)
+theme_override_font_sizes/font_size = 26
+text = "BEST 000000"
+
+[node name="SpeedBar" type="ProgressBar" parent="Hud/Top"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+max_value = 100.0
+show_percentage = false
+
+[node name="Centre" type="CenterContainer" parent="Hud"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Box" type="VBoxContainer" parent="Hud/Centre"]
+layout_mode = 2
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="CentreLabel" type="Label" parent="Hud/Centre/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 84
+text = "NEON DASH"
+horizontal_alignment = 1
+
+[node name="SubLabel" type="Label" parent="Hud/Centre/Box"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 0.75)
+theme_override_font_sizes/font_size = 34
+text = "TAP TO START"
+horizontal_alignment = 1

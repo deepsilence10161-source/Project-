@@ -1,0 +1,167 @@
+name: Emulator E2E
+
+# Boots a real Android emulator on GitHub's runner, installs the APK,
+# drives it with Maestro touch input and captures screenshots.
+# The screenshots are published to GitHub Pages so they can be
+# reviewed from a phone browser.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: emulator-e2e
+  cancel-in-progress: true
+
+jobs:
+  e2e:
+    name: Maestro on Android emulator
+    runs-on: ubuntu-latest
+    env:
+      GODOT_VERSION: '4.7.2'
+      ANDROID_API_LEVEL: '34'
+    steps:
+      - uses: actions/checkout@v4
+
+      # ---------- build the APK first ----------
+      - name: Set up .NET 9
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Install Android SDK components
+        run: |
+          yes | sdkmanager --licenses > /dev/null 2>&1 || true
+          sdkmanager "platform-tools" "build-tools;35.0.1" "platforms;android-35"
+
+      - name: Download Godot (mono) editor
+        run: |
+          mkdir -p godot-dir
+          curl -sSL -o godot.zip \
+            "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64.zip"
+          unzip -q godot.zip -d godot-dir
+          chmod +x godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux.x86_64
+          echo "$(pwd)/godot-dir" >> "$GITHUB_PATH"
+          rm godot.zip
+
+      - name: Cache Godot export templates
+        id: tpl-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/godot/export_templates
+          key: godot-templates-${{ env.GODOT_VERSION }}-mono
+
+      - name: Download export templates
+        if: steps.tpl-cache.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p "$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable.mono"
+          cd "$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable.mono"
+          curl -sSL -o t.tpz \
+            "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz"
+          unzip -o -q t.tpz 'templates/android_debug.apk' 'templates/android_release.apk' 'templates/version.txt'
+          mv templates/* . && rmdir templates && rm t.tpz
+
+      - name: Import and build
+        run: |
+          godot --headless --path . --import
+          dotnet build NeonDash.csproj -c Release --nologo
+          mkdir -p build
+          godot --headless --path . --export-debug "Android" build/NeonDash-debug.apk
+
+      # ---------- run on a real emulator ----------
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+
+      - name: Run Maestro smoke flow
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: ${{ env.ANDROID_API_LEVEL }}
+          target: google_apis
+          arch: x86_64
+          profile: pixel_7_pro
+          force-avd-creation: false
+          emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none
+          disable-animations: true
+          script: |
+            adb install -r build/NeonDash-debug.apk
+            curl -fsSL "https://get.maestro.mobile.dev" | bash
+            echo "$HOME/.maestro/bin" >> "$GITHUB_PATH"
+            export PATH="$HOME/.maestro/bin:$PATH"
+            maestro test .maestro/flows/smoke.yaml \
+              --format junit --output maestro-report.xml || true
+            mkdir -p screenshots
+            # Maestro writes screenshots next to the flow files
+            find .maestro -name '*.png' -exec cp {} screenshots/ \; || true
+            adb exec-out screencap -p > screenshots/09-final-device-screen.png || true
+            adb logcat -d > logcat.txt || true
+
+      - name: Collect results
+        if: always()
+        run: |
+          mkdir -p report/screenshots
+          cp -r screenshots/* report/screenshots/ 2>/dev/null || true
+          [ -f maestro-report.xml ] && cp maestro-report.xml report/ || true
+          [ -f logcat.txt ] && cp logcat.txt report/ || true
+
+      - name: Upload artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: emulator-e2e-results
+          path: report/
+          if-no-files-found: warn
+
+      # ---------- publish to GitHub Pages ----------
+      - name: Build report index
+        if: always()
+        run: |
+          cat > report/index.html <<'HTML'
+          <!doctype html><html><head><meta charset="utf-8">
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+          <title>Neon Dash - E2E report</title>
+          <style>
+            body{background:#0a0a1f;color:#e8e8ff;font-family:system-ui,sans-serif;margin:0;padding:20px}
+            h1{color:#00f0ff;font-size:22px}
+            .g{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+            figure{margin:0;background:#14142b;border-radius:10px;overflow:hidden}
+            img{width:100%;display:block}
+            figcaption{padding:8px 10px;font-size:13px;color:#9a9ac8}
+            a{color:#00f0ff}
+          </style></head><body>
+          <h1>Neon Dash - emulator E2E screenshots</h1>
+          <p>Run: ${{ github.run_number }} &middot; <a href="../">repo</a></p>
+          <div class="g">
+          HTML
+          for f in report/screenshots/*.png; do
+            [ -e "$f" ] || continue
+            n=$(basename "$f")
+            echo "<figure><img src=\"screenshots/$n\" loading=\"lazy\"><figcaption>$n</figcaption></figure>" >> report/index.html
+          done
+          echo '</div></body></html>' >> report/index.html
+
+      - name: Deploy to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./report
+          publish_branch: gh-pages
+          keep_files: true

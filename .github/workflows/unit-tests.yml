@@ -1,0 +1,49 @@
+name: Unit Tests
+
+# Runs the pure-logic suite. No Godot, no emulator, no device needed -
+# these tests exercise the exact same source files the game ships.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Pure logic tests (.NET)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET 9
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Restore
+        run: dotnet restore tests/NeonDash.Core.Tests/NeonDash.Core.Tests.csproj
+
+      - name: Run tests
+        run: |
+          dotnet test tests/NeonDash.Core.Tests/NeonDash.Core.Tests.csproj \
+            -c Release --nologo \
+            --logger "trx;LogFileName=results.trx" \
+            --logger "console;verbosity=normal"
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unit-test-results
+          path: tests/NeonDash.Core.Tests/TestResults/*.trx
+          if-no-files-found: warn
+
+      - name: Test summary
+        if: always()
+        uses: dorny/test-reporter@v1
+        with:
+          name: Neon Dash unit tests
+          path: tests/NeonDash.Core.Tests/TestResults/*.trx
+          reporter: dotnet-trx
+          fail-on-error: true
