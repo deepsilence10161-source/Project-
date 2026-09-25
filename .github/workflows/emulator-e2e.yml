@@ -76,19 +76,55 @@ jobs:
           {
             echo "ANDROID_HOME=$SDK"
             echo "ANDROID_SDK_ROOT=$SDK"
+            echo "SDK_DIR=$SDK"
             echo "$(dirname "$SM")" >> "$GITHUB_PATH"
           } >> "$GITHUB_ENV"
           echo "SDK ready at $SDK"
 
+      # Same two defects as build-apk.yml had: the release zip unpacks into a
+      # nested Godot_v<version>-stable_mono_linux_x86_64/ directory, and the
+      # binary is not named `godot`. Both are fixed here.
       - name: Download Godot (mono) editor
         run: |
+          set -euo pipefail
           mkdir -p godot-dir
           curl -sSL -o godot.zip \
             "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64.zip"
           unzip -q godot.zip -d godot-dir
-          chmod +x godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux.x86_64
-          echo "$(pwd)/godot-dir" >> "$GITHUB_PATH"
+          BIN="godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64/Godot_v${GODOT_VERSION}-stable_mono_linux.x86_64"
+          test -x "$BIN" || { echo "Godot binary not found at $BIN"; ls -la godot-dir; exit 1; }
+          chmod +x "$BIN"
+          ln -sf "$(basename "$BIN")" "godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64/godot"
+          echo "$(pwd)/godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64" >> "$GITHUB_PATH"
           rm godot.zip
+          echo "Godot binary ready: $BIN"
+          # $GITHUB_PATH only applies to later steps, so verify via the
+          # symlink's own path rather than `command -v godot`.
+          "godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64/godot" --headless --version
+
+      # The Android exporter refuses to export unless Editor Settings point at
+      # a valid JDK and Android SDK, even on this project's legacy template
+      # export path (use_gradle_build=false). A headless run has no GUI.
+      - name: Configure Godot editor settings
+        shell: bash
+        env:
+          SDK_DIR: ${{ env.SDK_DIR }}
+          JAVA_HOME_DIR: ${{ env.JAVA_HOME }}
+        run: |
+          set -euo pipefail
+          SDK="${SDK_DIR:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
+          JAVA="${JAVA_HOME_DIR:-${JAVA_HOME:-}}"
+          [ -n "$JAVA" ] || { echo "::error::JAVA_HOME empty"; exit 1; }
+          test -x "$JAVA/bin/java" || { echo "::error::$JAVA/bin/java missing"; exit 1; }
+          mkdir -p "$HOME/.config/godot"
+          cat > "$HOME/.config/godot/editor_settings-4.tres" <<EOF
+          [gd_resource type="EditorSettings" format=3]
+
+          [resource]
+          export/android/android_sdk_path = "$SDK"
+          export/android/java_sdk_path = "$JAVA"
+          EOF
+          cat "$HOME/.config/godot/editor_settings-4.tres"
 
       - name: Cache Godot export templates
         id: tpl-cache
