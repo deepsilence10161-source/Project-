@@ -1,2 +1,2 @@
-app state : unknown
-crash scan: unknown
+app state : alive
+crash scan: clean
