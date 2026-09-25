@@ -17,6 +17,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # The Android preset uses gradle_build/use_gradle_build=false, i.e. the
+      # legacy "template APK" export path. Godot hard-requires the C# project to
+      # target net9.0 on that path (export_plugin.cpp:
+      # has_valid_export_configuration -> _validate_dotnet_tfm("net9.0")),
+      # so .NET 9 is not optional here.
       - name: Set up .NET 9
         uses: actions/setup-dotnet@v4
         with:
@@ -34,6 +39,7 @@ jobs:
       # So we locate the pre-installed SDK (and install cmdline-tools ourselves
       # as a fallback) instead of using that action.
       - name: Prepare Android SDK
+        id: android-sdk
         shell: bash
         run: |
           set -euo pipefail
@@ -58,22 +64,67 @@ jobs:
           {
             echo "ANDROID_HOME=$SDK"
             echo "ANDROID_SDK_ROOT=$SDK"
+            echo "SDK_DIR=$SDK"
             echo "$(dirname "$SM")" >> "$GITHUB_PATH"
           } >> "$GITHUB_ENV"
           echo "SDK ready at $SDK"
 
+      # Godot's Android exporter validates BOTH of these in Editor Settings even
+      # on the legacy template path (export_plugin.cpp:
+      # has_valid_export_configuration): java_sdk_path must contain bin/java,
+      # android_sdk_path must contain platform-tools/adb and build-tools/ with a
+      # working apksigner. A headless run has no GUI to set them, so the file is
+      # written directly.
+      - name: Configure Godot editor settings
+        shell: bash
+        env:
+          SDK_DIR: ${{ env.SDK_DIR }}
+          JAVA_HOME_DIR: ${{ env.JAVA_HOME }}
+        run: |
+          set -euo pipefail
+          SDK="${SDK_DIR:-${ANDROID_HOME:-/usr/local/lib/android/sdk}}"
+          JAVA="${JAVA_HOME_DIR:-${JAVA_HOME:-}}"
+          if [ -z "$JAVA" ]; then
+            echo "::error::JAVA_HOME is empty; setup-java did not export it"
+            exit 1
+          fi
+          test -x "$JAVA/bin/java" || { echo "::error::$JAVA/bin/java not executable"; exit 1; }
+          test -x "$SDK/platform-tools/adb" || { echo "::error::$SDK/platform-tools/adb missing"; exit 1; }
+          ls "$SDK"/build-tools/*/apksigner > /dev/null || { echo "::error::no apksigner under $SDK/build-tools"; exit 1; }
+          mkdir -p "$HOME/.config/godot"
+          cat > "$HOME/.config/godot/editor_settings-4.tres" <<EOF
+          [gd_resource type="EditorSettings" format=3]
+
+          [resource]
+          export/android/android_sdk_path = "$SDK"
+          export/android/java_sdk_path = "$JAVA"
+          EOF
+          echo "--- editor_settings-4.tres ---"
+          cat "$HOME/.config/godot/editor_settings-4.tres"
+
       # ---- Godot mono editor ------------------------------------------------
+      # The release zip does NOT unpack into the output directory root: it
+      # creates Godot_v<version>-stable_mono_linux_x86_64/ and only that nested
+      # directory holds the executable. The old step assumed the flat layout,
+      # so `chmod +x godot-dir/Godot_v...x86_64` failed with
+      # "No such file or directory" and killed the whole build.
       - name: Download Godot (mono) editor
         run: |
+          set -euo pipefail
           mkdir -p godot-dir
           curl -sSL -o godot.zip \
             "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64.zip"
           unzip -q godot.zip -d godot-dir
-          chmod +x godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux.x86_64
-          echo "$(pwd)/godot-dir" >> "$GITHUB_PATH"
+          BIN="godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64/Godot_v${GODOT_VERSION}-stable_mono_linux.x86_64"
+          test -x "$BIN" || { echo "Godot binary not found at $BIN"; ls -la godot-dir; exit 1; }
+          chmod +x "$BIN"
+          echo "$(pwd)/godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64" >> "$GITHUB_PATH"
           rm godot.zip
+          echo "Godot binary ready: $BIN"
 
       # ---- Export templates (cached: they are ~1.1 GB) ----------------------
+      # use_gradle_build=false means the legacy template path, which only needs
+      # the prebuilt android_debug.apk - no android_source.zip, no gradle.
       - name: Cache Godot export templates
         id: tpl-cache
         uses: actions/cache@v4
@@ -93,6 +144,7 @@ jobs:
             'templates/android_release.apk' \
             'templates/version.txt'
           mv templates/* . && rmdir templates && rm t.tpz
+          test -f android_debug.apk || { echo "android_debug.apk missing"; exit 1; }
 
       # ---- Build -------------------------------------------------------------
       - name: Import project
@@ -104,11 +156,11 @@ jobs:
       - name: Export APK
         run: |
           mkdir -p build
-          godot --headless --path . --export-debug "Android" build/NeonDash-debug.apk
+          godot --headless --path . --export-debug "Android" build/NeonDash.apk
 
       - name: Verify APK
         run: |
-          APK=build/NeonDash-debug.apk
+          APK=build/NeonDash.apk
           test -f "$APK" || { echo "APK missing"; exit 1; }
           echo "--- identity ---"
           aapt dump badging "$APK" 2>/dev/null | grep -E '^package:|^sdkVersion:|^targetSdkVersion:|application-label:' | head -5
