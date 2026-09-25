@@ -127,7 +127,9 @@ jobs:
           echo "$(pwd)/godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64" >> "$GITHUB_PATH"
           rm godot.zip
           echo "Godot binary ready: $BIN"
-          command -v godot && godot --headless --version
+          # NOTE: $GITHUB_PATH only takes effect in *later* steps, so verify
+          # through the symlink's own path rather than `command -v godot`.
+          "godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64/godot" --headless --version
 
       # ---- Export templates (cached: they are ~1.1 GB) ----------------------
       # use_gradle_build=false means the legacy template path, which only needs
