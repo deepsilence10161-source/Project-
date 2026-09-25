@@ -108,6 +108,11 @@ jobs:
       # directory holds the executable. The old step assumed the flat layout,
       # so `chmod +x godot-dir/Godot_v...x86_64` failed with
       # "No such file or directory" and killed the whole build.
+      #
+      # The binary is NOT called `godot` either - it ships as
+      # Godot_v<version>-stable_mono_linux.x86_64 - so a `godot` symlink is
+      # created, otherwise every later `godot ...` step dies with
+      # "command not found" (exit 127).
       - name: Download Godot (mono) editor
         run: |
           set -euo pipefail
@@ -118,9 +123,11 @@ jobs:
           BIN="godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64/Godot_v${GODOT_VERSION}-stable_mono_linux.x86_64"
           test -x "$BIN" || { echo "Godot binary not found at $BIN"; ls -la godot-dir; exit 1; }
           chmod +x "$BIN"
+          ln -sf "$(basename "$BIN")" "godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64/godot"
           echo "$(pwd)/godot-dir/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64" >> "$GITHUB_PATH"
           rm godot.zip
           echo "Godot binary ready: $BIN"
+          command -v godot && godot --headless --version
 
       # ---- Export templates (cached: they are ~1.1 GB) ----------------------
       # use_gradle_build=false means the legacy template path, which only needs
