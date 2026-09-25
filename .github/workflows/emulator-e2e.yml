@@ -167,54 +167,12 @@ jobs:
           force-avd-creation: false
           emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none
           disable-animations: true
+          # One script FILE, not an inline block. android-emulator-runner feeds
+          # an inline `script:` to the shell one line at a time, so variables
+          # set on one line are empty on the next - the old inline version
+          # literally ran `adb install -r ""`.
           script: |
-            set +e
-            APP=com.neondash.game
-            APK=build/NeonDash-debug.apk
-
-            echo "=== installing APK ==="
-            adb install -r "$APK"
-            echo "install rc=$?"
-
-            curl -fsSL "https://get.maestro.mobile.dev" | bash
-            export PATH="$HOME/.maestro/bin:$PATH"
-            maestro --version
-
-            echo "=== running Maestro smoke flow ==="
-            maestro test .maestro/flows/smoke.yaml \
-              --format junit --output maestro-report.xml
-            MAESTRO_RC=$?
-            echo "maestro exit code: $MAESTRO_RC"
-
-            mkdir -p screenshots
-            find .maestro -name '*.png' -exec cp {} screenshots/ \; 2>/dev/null
-            adb exec-out screencap -p > screenshots/09-final-device-screen.png 2>/dev/null
-            adb logcat -d > logcat.txt 2>/dev/null
-
-            echo "=== liveness: is the game process alive right now? ==="
-            PID=$(adb shell pidof $APP | tr -d '\r\n')
-            if [ -n "$PID" ]; then
-              echo "ALIVE: $APP pid=$PID"
-              echo "alive" > .app-state
-            else
-              echo "DEAD: $APP is not running"
-              echo "dead" > .app-state
-            fi
-
-            echo "=== crash scan in logcat ==="
-            if grep -qE 'FATAL EXCEPTION|Process: '"$APP"', PID' logcat.txt 2>/dev/null; then
-              echo "CRASH SIGNATURE FOUND:"
-              grep -nE 'FATAL EXCEPTION|Process: '"$APP"', PID' logcat.txt | head -20
-              echo "crashed" > .crash-state
-            else
-              echo "no crash signatures in logcat"
-              echo "clean" > .crash-state
-            fi
-
-            echo "=== summary ==="
-            cat .app-state .crash-state
-            # Never fail this step: the report must always be published.
-            exit 0
+            bash .maestro/emulator-smoke.sh
 
       - name: Collect results
         if: always()
@@ -228,6 +186,34 @@ jobs:
             echo "crash scan: $(cat .crash-state 2>/dev/null || echo unknown)"
           } > report/status.txt
           cat report/status.txt
+
+      # Honest gate: the report is always published above, but a crashed or
+      # dead app must still turn the workflow red. Maestro cannot see inside
+      # Godot's single native canvas, so liveness (pidof) + a logcat crash
+      # scan are the real assertions at this layer.
+      - name: Assert the game survived
+        if: always()
+        shell: bash
+        run: |
+          set -uo pipefail
+          APP_STATE=$(cat .app-state 2>/dev/null || echo unknown)
+          CRASH_STATE=$(cat .crash-state 2>/dev/null || echo unknown)
+          MAESTRO_RC=$(cat .maestro-rc 2>/dev/null || echo unknown)
+          INSTALL_RC=$(cat .install-rc 2>/dev/null || echo unknown)
+          echo "install rc : $INSTALL_RC"
+          echo "maestro rc : $MAESTRO_RC"
+          echo "app state  : $APP_STATE"
+          echo "crash scan : $CRASH_STATE"
+          bad=0
+          [ "$INSTALL_RC" = "0" ]    || { echo "::error::APK did not install"; bad=1; }
+          [ "$APP_STATE" = "alive" ] || { echo "::error::game process is not alive ($APP_STATE)"; bad=1; }
+          [ "$CRASH_STATE" = "clean" ] || { echo "::error::crash signature in logcat ($CRASH_STATE)"; bad=1; }
+          [ "$MAESTRO_RC" = "0" ]   || { echo "::error::Maestro flow failed (rc=$MAESTRO_RC)"; bad=1; }
+          if [ "$bad" -ne 0 ]; then
+            echo "::error::emulator smoke test FAILED"
+            exit 1
+          fi
+          echo "emulator smoke test PASSED"
 
       - name: Upload artifacts
         if: always()
