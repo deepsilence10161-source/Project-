@@ -182,8 +182,11 @@ jobs:
           [ -f maestro-report.xml ] && cp maestro-report.xml report/ || true
           [ -f logcat.txt ] && cp logcat.txt report/ || true
           {
-            echo "app state : $(cat .app-state 2>/dev/null || echo unknown)"
-            echo "crash scan: $(cat .crash-state 2>/dev/null || echo unknown)"
+            echo "app state  : $(cat .app-state 2>/dev/null || echo unknown)"
+            echo "crash scan : $(cat .crash-state 2>/dev/null || echo unknown)"
+            echo "install rc : $(cat .install-rc 2>/dev/null || echo unknown)"
+            echo "maestro rc : $(cat .maestro-rc 2>/dev/null || echo unknown)"
+            echo "renderer   : $(cat .renderer-errors 2>/dev/null || echo 0) software-GL shader errors (emulator-only, not a game defect)"
           } > report/status.txt
           cat report/status.txt
 
@@ -200,7 +203,9 @@ jobs:
           CRASH_STATE=$(cat .crash-state 2>/dev/null || echo unknown)
           MAESTRO_RC=$(cat .maestro-rc 2>/dev/null || echo unknown)
           INSTALL_RC=$(cat .install-rc 2>/dev/null || echo unknown)
+          RENDERER_ERRORS=$(cat .renderer-errors 2>/dev/null || echo 0)
           echo "install rc : $INSTALL_RC"
+          echo "renderer   : $RENDERER_ERRORS software-GL shader errors (emulator-only)"
           echo "maestro rc : $MAESTRO_RC"
           echo "app state  : $APP_STATE"
           echo "crash scan : $CRASH_STATE"
