@@ -15,8 +15,8 @@ Extended renderer info (GLX_MESA_query_renderer):
     Max GLES[23] profile version: 3.2
 Memory info (GL_ATI_meminfo):
     VBO free memory - total: 0 MB, largest block: 0 MB
-    VBO free aux. memory - total: 14654 MB, largest block: 14654 MB
+    VBO free aux. memory - total: 14745 MB, largest block: 14745 MB
     Texture free memory - total: 0 MB, largest block: 0 MB
-    Texture free aux. memory - total: 14654 MB, largest block: 14654 MB
+    Texture free aux. memory - total: 14745 MB, largest block: 14745 MB
 	apiVersion         = 1.4.318
 	deviceName         = llvmpipe (LLVM 20.1.2, 256 bits)
