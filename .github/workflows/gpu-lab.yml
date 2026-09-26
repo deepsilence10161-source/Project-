@@ -1,0 +1,98 @@
+name: GPU Lab (macOS real GPU)
+
+# Question: can a FREE GitHub runner give the game a REAL GPU?
+# GitHub's NVIDIA T4 runners need an org on Team/Enterprise + a card, so they
+# are not tested here. macOS arm64 runners (Apple silicon) are free for public
+# repos. The Android emulator cannot run there (no nested virtualization), so
+# the game itself runs natively on macOS and we record which GPU it got.
+
+on:
+  push:
+    branches: ['exp/render-lab']
+    paths: ['.github/workflows/gpu-lab.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  GODOT_VERSION: '4.7.2'
+
+jobs:
+  mac:
+    name: ${{ matrix.os }} / ${{ matrix.mode }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-26]
+        mode: [metal-forward_plus, metal-mobile, vulkan-moltenvk-mobile, opengl3-compat]
+        include:
+          - mode: metal-forward_plus
+            args: --rendering-method forward_plus --rendering-driver metal
+          - mode: metal-mobile
+            args: --rendering-method mobile --rendering-driver metal
+          - mode: vulkan-moltenvk-mobile
+            args: --rendering-method mobile --rendering-driver vulkan
+          - mode: opengl3-compat
+            args: --rendering-method gl_compatibility --rendering-driver opengl3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with: { dotnet-version: '9.0.x' }
+      - name: Hardware facts
+        run: |
+          mkdir -p out
+          { uname -a; sysctl -n machdep.cpu.brand_string; system_profiler SPDisplaysDataType; } 2>&1 | tee out/props.txt
+      - name: Download Godot (mono, macOS universal)
+        run: |
+          curl -sSL -o godot.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_macos.universal.zip"
+          unzip -q godot.zip -d "$HOME/godot" && rm godot.zip
+          ls "$HOME/godot"
+          APP=$(ls -d "$HOME"/godot/*.app | head -1)
+          xattr -cr "$APP" || true
+          echo "GODOT=$APP/Contents/MacOS/Godot" >> "$GITHUB_ENV"
+      - name: Run probe on the real GPU
+        shell: bash
+        run: |
+          set -uo pipefail
+          W="$RUNNER_TEMP/p"; cp -r probe "$W"; cp "$W/variants/compat.godot" "$W/project.godot"
+          "$GODOT" --headless --path "$W" --import > /dev/null 2>&1
+          dotnet build "$W/Probe.csproj" -c Debug --nologo -v q
+          OUT="$GITHUB_WORKSPACE/out"
+          timeout 150 "$GODOT" --path "$W" ${{ matrix.args }} --resolution 720x1280 -- --shots="$OUT" --quit-at=6 > "$OUT/logcat.txt" 2>&1
+          echo "godot rc=$?"
+          timeout 150 "$GODOT" --path "$W" ${{ matrix.args }} --resolution 720x1280 --write-movie "$OUT/movie.avi" --fixed-fps 30 --quit-after 150 > "$OUT/movie.log" 2>&1 || true
+          [ -f "$OUT/desktop-4s.png" ] && cp "$OUT/desktop-4s.png" "$OUT/shot-4s.png"
+          [ -f "$OUT/desktop-2s.png" ] && cp "$OUT/desktop-2s.png" "$OUT/shot-2s.png"
+          echo 0 > "$OUT/install-rc.txt"
+          grep -q PROBE_TICK "$OUT/logcat.txt" && echo alive > "$OUT/app-state.txt" || echo dead > "$OUT/app-state.txt"
+          echo "${{ matrix.os }}" > "$OUT/emulator-version.txt"
+          grep -E 'PROBE_|API|ERROR|Metal|Vulkan|OpenGL' "$OUT/logcat.txt" | head -30
+          ls -la "$OUT"
+          python3 -m pip install -q pillow --break-system-packages 2>/dev/null || python3 -m pip install -q pillow
+          python3 probe/ci/analyze.py "$OUT" "${{ matrix.os }}" "${{ matrix.mode }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: 'res-mac-${{ matrix.os }}-${{ matrix.mode }}', path: out/ }
+
+  report:
+    needs: mac
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { pattern: 'res-mac-*', path: results }
+      - run: python3 -m pip install -q pillow; python3 probe/ci/report.py results site
+      - uses: actions/upload-artifact@v4
+        with: { name: gpu-lab-report, path: site/ }
+      - uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          destination_dir: gpu-lab
+          keep_files: false
