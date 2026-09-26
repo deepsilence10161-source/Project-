@@ -1,0 +1,14 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+WARNING: Virtual Machine detected, switching to ANGLE.
+     at: DisplayServerMacOS (platform/macos/display_server_macos.mm:3837)
+OpenGL API OpenGL ES 3.0 (ANGLE 2.1.1 git hash: aaebda1c5a40) - Compatibility - Using Device: Google Inc. (Apple) - ANGLE (Apple, ANGLE Metal Renderer: Apple Paravirtual device, Version 15.7.9 (Build 24G830))
+
+PROBE_READY method=gl_compatibility driver=opengl3 adapter=ANGLE (Apple, ANGLE Metal Renderer: Apple Paravirtual device, Version 15.7.9 (Build 24G830)) vendor=Google Inc. (Apple) api=OpenGL ES 3.0 (ANGLE 2.1.1 git hash: aaebda1c5a40) os=macOS
+PROBE_TICK sec=1 fps=29
+PROBE_TICK sec=2 fps=53
+PROBE_SHOT path=/Users/runner/work/Project-/Project-/out/desktop-2s.png err=Ok
+PROBE_TICK sec=3 fps=56
+PROBE_TICK sec=4 fps=57
+PROBE_SHOT path=/Users/runner/work/Project-/Project-/out/desktop-4s.png err=Ok
+PROBE_TICK sec=5 fps=57
+PROBE_TICK sec=6 fps=59

@@ -1,0 +1,5 @@
+Darwin iad20-gt1022-e68755b7-8925-4bd9-bb5f-370996d6c135-068406EF885C.local 25.6.0 Darwin Kernel Version 25.6.0: Fri Jul 31 19:16:43 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_VMAPPLE arm64
+Apple M1 (Virtual)
+--- SPDisplaysDataType
+METAL_DEVICE name=Apple Paravirtual device lowPower=false unifiedMemory=true maxThreadsPerGroup=1024
+METAL_ALL_DEVICES count=1

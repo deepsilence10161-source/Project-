@@ -1,0 +1,12 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+Metal 4.0 - Forward+ - Using Device #0: Apple - Apple Paravirtual device (Apple5)
+
+PROBE_READY method=forward_plus driver=metal adapter=Apple Paravirtual device (Apple5) vendor=Apple api=4.0 os=macOS
+PROBE_TICK sec=1 fps=21
+PROBE_TICK sec=2 fps=60
+PROBE_SHOT path=/Users/runner/work/Project-/Project-/out/desktop-2s.png err=Ok
+PROBE_TICK sec=3 fps=60
+PROBE_TICK sec=4 fps=60
+PROBE_SHOT path=/Users/runner/work/Project-/Project-/out/desktop-4s.png err=Ok
+PROBE_TICK sec=5 fps=59
+PROBE_TICK sec=6 fps=60

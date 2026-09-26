@@ -1,0 +1,39 @@
+{
+  "variant": "macos-15",
+  "gpu": "opengl3-compat",
+  "emulator_version": "macos-15",
+  "install_rc": "0",
+  "app_state": "alive",
+  "recoveries": [],
+  "screen": "",
+  "immersive_setting": "",
+  "props": "Darwin sjc22-bt150-d983f870-d096-4de3-b423-b19fb9b5ed5d-AEE4EEA47450.local 24.6.0 Darwin Kernel Version 24.6.0: Tue Jul 21 20:51:34 PDT 2026; root:xnu-11417.140.69.711.44~1/RELEASE_ARM64_VMAPPLE arm64\nApple M1 (Virtual)\n--- SPDisplaysDataType\nMETAL_DEVICE name=Apple Paravirtual device lowPower=false unifiedMemory=true maxThreadsPerGroup=1024\nMETAL_ALL_DEVICES count=1",
+  "probe_ready": "method=gl_compatibility driver=opengl3 adapter=ANGLE (Apple, ANGLE Metal Renderer: Apple Paravirtual device, Version 15.7.9 (Build 24G830)) vendor=Google Inc. (Apple) api=OpenGL ES 3.0 (ANGLE 2.1.1 git hash: aaebda1c5a40) os=macOS",
+  "probe_ticks": 6,
+  "fps_last": 59,
+  "touch_events": 0,
+  "drag_events": 0,
+  "video_bytes": 0,
+  "engine_api_line": "OpenGL API OpenGL ES 3.0 (ANGLE 2.1.1 git hash: aaebda1c5a40) - Compatibility - Using Device: Google Inc. (Apple) - ANGLE (Apple, ANGLE Metal Renderer: Apple Paravirtual device, Version 15.7.9 (Build 24G830))",
+  "shader_link_errors": 0,
+  "uniform_limit_errors": 0,
+  "crash": false,
+  "screenshots": [
+    "shot-2s.png",
+    "shot-4s.png"
+  ],
+  "pixels": {
+    "black_pct": 0.0,
+    "red_pct": 2.68,
+    "blue_pct": 1.11,
+    "green_pct": 59.65,
+    "yellow_pct": 10.98,
+    "size": [
+      720,
+      656
+    ]
+  },
+  "render_3d": true,
+  "render_2d": true,
+  "verdict": "PASS_3D_AND_2D"
+}

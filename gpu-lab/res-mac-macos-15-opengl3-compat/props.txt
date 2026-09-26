@@ -1,0 +1,5 @@
+Darwin sjc22-bt150-d983f870-d096-4de3-b423-b19fb9b5ed5d-AEE4EEA47450.local 24.6.0 Darwin Kernel Version 24.6.0: Tue Jul 21 20:51:34 PDT 2026; root:xnu-11417.140.69.711.44~1/RELEASE_ARM64_VMAPPLE arm64
+Apple M1 (Virtual)
+--- SPDisplaysDataType
+METAL_DEVICE name=Apple Paravirtual device lowPower=false unifiedMemory=true maxThreadsPerGroup=1024
+METAL_ALL_DEVICES count=1

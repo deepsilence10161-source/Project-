@@ -1,0 +1,39 @@
+{
+  "variant": "macos-15",
+  "gpu": "metal-mobile",
+  "emulator_version": "macos-15",
+  "install_rc": "0",
+  "app_state": "alive",
+  "recoveries": [],
+  "screen": "",
+  "immersive_setting": "",
+  "props": "Darwin iad20-fj917-99a1cb73-1c8a-4783-8148-cfe775138d52-164EF9F08882.local 24.6.0 Darwin Kernel Version 24.6.0: Tue Jul 21 20:51:34 PDT 2026; root:xnu-11417.140.69.711.44~1/RELEASE_ARM64_VMAPPLE arm64\nApple M1 (Virtual)\n--- SPDisplaysDataType\nMETAL_DEVICE name=Apple Paravirtual device lowPower=false unifiedMemory=true maxThreadsPerGroup=1024\nMETAL_ALL_DEVICES count=1",
+  "probe_ready": "method=mobile driver=metal adapter=Apple Paravirtual device (Apple5) vendor=Apple api=3.2 os=macOS",
+  "probe_ticks": 6,
+  "fps_last": 61,
+  "touch_events": 0,
+  "drag_events": 0,
+  "video_bytes": 0,
+  "engine_api_line": "",
+  "shader_link_errors": 0,
+  "uniform_limit_errors": 0,
+  "crash": false,
+  "screenshots": [
+    "shot-2s.png",
+    "shot-4s.png"
+  ],
+  "pixels": {
+    "black_pct": 0.0,
+    "red_pct": 2.67,
+    "blue_pct": 1.1,
+    "green_pct": 59.85,
+    "yellow_pct": 10.7,
+    "size": [
+      720,
+      653
+    ]
+  },
+  "render_3d": true,
+  "render_2d": true,
+  "verdict": "PASS_3D_AND_2D"
+}
