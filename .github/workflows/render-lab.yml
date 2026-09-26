@@ -158,7 +158,7 @@ jobs:
         with: { name: 'res-desktop-${{ matrix.mode }}', path: out/ }
 
   emulator:
-    name: Emu ${{ matrix.variant }} / ${{ matrix.gpu }} / r${{ matrix.rep }}
+    name: Emu ${{ matrix.target }} / ${{ matrix.gpu }} / r${{ matrix.rep }}
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -168,7 +168,11 @@ jobs:
       matrix:
         # v2: only the modes that rendered in v1, each repeated 3x to prove
         # the result is reproducible and not a lucky run.
-        variant: [compat, lowlim]
+        # v3: both v2 failure modes were emulator-side (launcher ANR dialog,
+        # home screen stealing focus). Test a lighter setup: small screen,
+        # 4 cores, AOSP 'default' image vs 'google_apis'.
+        variant: [compat]
+        target: [default, google_apis]
         gpu: [lavapipe, host]
         rep: [1, 2, 3]
     steps:
@@ -190,9 +194,11 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 34
-          target: google_apis
+          target: ${{ matrix.target }}
           arch: x86_64
-          profile: pixel_6
+          profile: Nexus 4
+          cores: 4
+          ram-size: 4096M
           force-avd-creation: false
           emulator-options: -no-snapshot -no-window -gpu ${{ matrix.gpu }} -noaudio -no-boot-anim -camera-back none -camera-front none
           disable-animations: true
@@ -202,14 +208,14 @@ jobs:
         run: |
           mkdir -p out
           if [ ! -f out/install-rc.txt ]; then
-            printf '{"variant":"%s","gpu":"%s","verdict":"EMULATOR_DID_NOT_RUN","screenshots":[]}\n' "${{ matrix.variant }}" "${{ matrix.gpu }}" > out/result.json
+            printf '{"variant":"%s","gpu":"%s","verdict":"EMULATOR_DID_NOT_RUN","screenshots":[]}\n' "${{ matrix.target }}" "${{ matrix.gpu }}" > out/result.json
             cat out/result.json
           else
-            python3 probe/ci/analyze.py out "${{ matrix.variant }}" "${{ matrix.gpu }}"
+            python3 probe/ci/analyze.py out "${{ matrix.target }}" "${{ matrix.gpu }}"
           fi
       - uses: actions/upload-artifact@v4
         if: always()
-        with: { name: 'res-emu-${{ matrix.variant }}-${{ matrix.gpu }}-r${{ matrix.rep }}', path: out/ }
+        with: { name: 'res-emu-${{ matrix.target }}-${{ matrix.gpu }}-r${{ matrix.rep }}', path: out/ }
 
   report:
     name: Render Lab report

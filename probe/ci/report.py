@@ -29,6 +29,7 @@ for r in results:
                 f'<td>{r.get("fps_last","")}</td></tr>')
     cards.append(f'<div class="card"><h3>{html.escape(name)} — <span style="color:{c}">{html.escape(r.get("verdict",""))}</span></h3>'
                  f'<pre>{html.escape(r.get("probe_ready",""))}\n{html.escape(r.get("engine_api_line",""))}\n'
+                 f'recoveries: {html.escape(json.dumps(r.get("recoveries", [])))}\n'
                  f'pixels: {html.escape(json.dumps(p))}\nemulator: {html.escape(str(r.get("emulator_version","")))}</pre>'
                  f'<div class="g">{imgs}</div><a href="{name}/logcat.txt">logcat</a> · <a href="{name}/result.json">result.json</a></div>')
 open(os.path.join(dst, "index.html"), "w").write(f"""<!doctype html><html><head><meta charset="utf-8">
