@@ -45,7 +45,18 @@ jobs:
       - name: Hardware facts
         run: |
           mkdir -p out
-          { uname -a; sysctl -n machdep.cpu.brand_string; system_profiler SPDisplaysDataType; } 2>&1 | tee out/props.txt
+          { uname -a; sysctl -n machdep.cpu.brand_string; echo "--- SPDisplaysDataType"; system_profiler SPDisplaysDataType -detailLevel full; } 2>&1 | tee out/props.txt
+          # Ask Metal directly: is there a GPU device in this VM at all?
+          cat > metal_check.swift <<'SW'
+          import Metal
+          if let d = MTLCreateSystemDefaultDevice() {
+              print("METAL_DEVICE name=\(d.name) lowPower=\(d.isLowPower) unifiedMemory=\(d.hasUnifiedMemory) maxThreadsPerGroup=\(d.maxThreadsPerThreadgroup.width)")
+          } else {
+              print("METAL_DEVICE none")
+          }
+          print("METAL_ALL_DEVICES count=\(MTLCopyAllDevices().count)")
+          SW
+          swift metal_check.swift 2>&1 | tee -a out/props.txt || echo "swift check failed" | tee -a out/props.txt
       - name: Download Godot (mono, macOS universal)
         run: |
           curl -sSL -o godot.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_macos.universal.zip"
@@ -62,9 +73,9 @@ jobs:
           "$GODOT" --headless --path "$W" --import > /dev/null 2>&1
           dotnet build "$W/Probe.csproj" -c Debug --nologo -v q
           OUT="$GITHUB_WORKSPACE/out"
-          timeout 150 "$GODOT" --path "$W" ${{ matrix.args }} --resolution 720x1280 -- --shots="$OUT" --quit-at=6 > "$OUT/logcat.txt" 2>&1
+          perl -e 'alarm shift; exec @ARGV' 150 "$GODOT" --path "$W" ${{ matrix.args }} --resolution 720x1280 -- --shots="$OUT" --quit-at=6 > "$OUT/logcat.txt" 2>&1
           echo "godot rc=$?"
-          timeout 150 "$GODOT" --path "$W" ${{ matrix.args }} --resolution 720x1280 --write-movie "$OUT/movie.avi" --fixed-fps 30 --quit-after 150 > "$OUT/movie.log" 2>&1 || true
+          perl -e 'alarm shift; exec @ARGV' 150 "$GODOT" --path "$W" ${{ matrix.args }} --resolution 720x1280 --write-movie "$OUT/movie.avi" --fixed-fps 30 --quit-after 150 > "$OUT/movie.log" 2>&1 || true
           [ -f "$OUT/desktop-4s.png" ] && cp "$OUT/desktop-4s.png" "$OUT/shot-4s.png"
           [ -f "$OUT/desktop-2s.png" ] && cp "$OUT/desktop-2s.png" "$OUT/shot-2s.png"
           echo 0 > "$OUT/install-rc.txt"
