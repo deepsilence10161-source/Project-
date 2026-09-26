@@ -1,0 +1,234 @@
+name: Render Lab
+
+# Experiment: find a CI setup where a Godot 4.7 C# game is actually VISIBLE.
+# Matrix = 3 APK variants x 6 emulator GPU modes, plus desktop Xvfb+Mesa runs.
+# Every run is judged from its own screenshot pixels + logcat (probe/ci/analyze.py).
+
+on:
+  push:
+    branches: ['exp/render-lab']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: render-lab
+  cancel-in-progress: true
+
+env:
+  GODOT_VERSION: '4.7.2'
+
+jobs:
+  build:
+    name: Build probe APKs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with: { dotnet-version: '9.0.x' }
+      - uses: actions/setup-java@v4
+        with: { distribution: temurin, java-version: '17' }
+
+      - name: Prepare Android SDK
+        shell: bash
+        run: |
+          set -euo pipefail
+          SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
+          SM=$(ls "$SDK"/cmdline-tools/*/bin/sdkmanager | head -1)
+          yes | "$SM" --licenses > /dev/null 2>&1 || true
+          "$SM" "platform-tools" "build-tools;35.0.1" "platforms;android-35" > /dev/null
+          echo "SDK_DIR=$SDK" >> "$GITHUB_ENV"
+
+      - name: Download Godot (mono)
+        run: |
+          set -euo pipefail
+          curl -sSL -o godot.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64.zip"
+          unzip -q godot.zip -d "$HOME/godot" && rm godot.zip
+          D="$HOME/godot/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64"
+          ln -sf "$D/Godot_v${GODOT_VERSION}-stable_mono_linux.x86_64" "$D/godot"
+          echo "$D" >> "$GITHUB_PATH"
+          "$D/godot" --headless --version
+
+      - name: Editor settings (SDK + JDK paths)
+        run: |
+          mkdir -p "$HOME/.config/godot"
+          printf '[gd_resource type="EditorSettings" format=3]\n\n[resource]\nexport/android/android_sdk_path = "%s"\nexport/android/java_sdk_path = "%s"\n' "$SDK_DIR" "$JAVA_HOME" > "$HOME/.config/godot/editor_settings-4.tres"
+          cat "$HOME/.config/godot/editor_settings-4.tres"
+
+      - name: Cache export templates
+        id: tpl
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/godot/export_templates
+          key: godot-templates-${{ env.GODOT_VERSION }}-mono
+
+      - name: Download export templates
+        if: steps.tpl.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p "$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable.mono"
+          cd "$HOME/.local/share/godot/export_templates/${GODOT_VERSION}.stable.mono"
+          curl -sSL -o t.tpz "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_export_templates.tpz"
+          unzip -o -q t.tpz 'templates/android_debug.apk' 'templates/android_release.apk' 'templates/version.txt'
+          mv templates/* . && rmdir templates && rm t.tpz
+
+      - name: Build 3 variants
+        shell: bash
+        run: |
+          set -euo pipefail
+          for v in compat mobile lowlim; do
+            echo "::group::variant $v"
+            W="$RUNNER_TEMP/p-$v"; rm -rf "$W"; cp -r probe "$W"
+            cp "$W/variants/$v.godot" "$W/project.godot"
+            godot --headless --path "$W" --import
+            dotnet build "$W/Probe.csproj" -c Debug --nologo
+            mkdir -p "apk-$v"
+            godot --headless --path "$W" --export-debug "Android" "$GITHUB_WORKSPACE/apk-$v/Probe-$v.apk"
+            ls -la "apk-$v"
+            unzip -l "apk-$v/Probe-$v.apk" | grep -E 'lib/(arm64-v8a|x86_64)/libgodot_android.so|Probe.dll' || true
+            echo "::endgroup::"
+          done
+
+      - uses: actions/upload-artifact@v4
+        with: { name: apk-compat, path: apk-compat/*.apk, if-no-files-found: error }
+      - uses: actions/upload-artifact@v4
+        with: { name: apk-mobile, path: apk-mobile/*.apk, if-no-files-found: error }
+      - uses: actions/upload-artifact@v4
+        with: { name: apk-lowlim, path: apk-lowlim/*.apk, if-no-files-found: error }
+
+  desktop:
+    name: Desktop Xvfb + Mesa (${{ matrix.mode }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - mode: opengl3-llvmpipe
+            variant: compat
+            args: --rendering-driver opengl3
+          - mode: vulkan-lavapipe
+            variant: mobile
+            args: --rendering-method mobile --rendering-driver vulkan
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with: { dotnet-version: '9.0.x' }
+      - name: Install Xvfb + Mesa (llvmpipe GL, lavapipe Vulkan) + ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq xvfb mesa-vulkan-drivers libgl1-mesa-dri libglx-mesa0 libegl1 mesa-utils vulkan-tools ffmpeg > /dev/null
+      - name: Download Godot (mono)
+        run: |
+          curl -sSL -o godot.zip "https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-stable/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64.zip"
+          unzip -q godot.zip -d "$HOME/godot" && rm godot.zip
+          D="$HOME/godot/Godot_v${GODOT_VERSION}-stable_mono_linux_x86_64"
+          ln -sf "$D/Godot_v${GODOT_VERSION}-stable_mono_linux.x86_64" "$D/godot"
+          echo "$D" >> "$GITHUB_PATH"
+      - name: Run probe, screenshot + movie
+        shell: bash
+        run: |
+          set -uo pipefail
+          W="$RUNNER_TEMP/p"; cp -r probe "$W"; cp "$W/variants/${{ matrix.variant }}.godot" "$W/project.godot"
+          godot --headless --path "$W" --import > /dev/null 2>&1
+          dotnet build "$W/Probe.csproj" -c Debug --nologo -v q
+          OUT="$GITHUB_WORKSPACE/out"; mkdir -p "$OUT"
+          xvfb-run -a -s "-screen 0 1280x1400x24" glxinfo -B 2>&1 | head -20 | tee "$OUT/props.txt" || true
+          xvfb-run -a -s "-screen 0 1280x1400x24" vulkaninfo --summary 2>&1 | grep -E 'deviceName|apiVersion' | tee -a "$OUT/props.txt" || true
+          # 1) real-time run with in-engine screenshots
+          timeout 120 xvfb-run -a -s "-screen 0 1280x1400x24" \
+            godot --path "$W" ${{ matrix.args }} --resolution 720x1280 -- --shots="$OUT" --quit-at=6 \
+            > "$OUT/logcat.txt" 2>&1
+          echo $? > "$OUT/godot-rc.txt"
+          # 2) deterministic Movie Maker capture (what a gameplay video would use)
+          timeout 180 xvfb-run -a -s "-screen 0 1280x1400x24" \
+            godot --path "$W" ${{ matrix.args }} --resolution 720x1280 --write-movie "$OUT/movie.avi" --fixed-fps 30 --quit-after 150 \
+            > "$OUT/movie.log" 2>&1 || true
+          [ -f "$OUT/movie.avi" ] && ffmpeg -loglevel error -y -i "$OUT/movie.avi" -vf scale=360:-2 -pix_fmt yuv420p "$OUT/movie.mp4" && rm "$OUT/movie.avi"
+          [ -f "$OUT/desktop-4s.png" ] && cp "$OUT/desktop-4s.png" "$OUT/shot-4s.png"
+          [ -f "$OUT/desktop-2s.png" ] && cp "$OUT/desktop-2s.png" "$OUT/shot-2s.png"
+          echo 0 > "$OUT/install-rc.txt"
+          grep -q PROBE_TICK "$OUT/logcat.txt" && echo alive > "$OUT/app-state.txt" || echo dead > "$OUT/app-state.txt"
+          echo "desktop-xvfb" > "$OUT/emulator-version.txt"
+          grep -E 'PROBE_|API|ERROR' "$OUT/logcat.txt" | head -30
+          ls -la "$OUT"
+          pip install -q pillow
+          python3 probe/ci/analyze.py "$OUT" "${{ matrix.variant }}" "desktop-${{ matrix.mode }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: 'res-desktop-${{ matrix.mode }}', path: out/ }
+
+  emulator:
+    name: Emu ${{ matrix.variant }} / ${{ matrix.gpu }}
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: [compat, mobile, lowlim]
+        gpu: [swiftshader_indirect, swiftshader, swangle, lavapipe, software, host]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { name: 'apk-${{ matrix.variant }}', path: apk }
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules && sudo udevadm trigger --name-match=kvm
+      - name: Host GL for -gpu host (Xvfb + Mesa)
+        if: matrix.gpu == 'host'
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq xvfb libgl1-mesa-dri libglx-mesa0 libegl1 mesa-vulkan-drivers > /dev/null
+          Xvfb :99 -screen 0 1280x1400x24 > /dev/null 2>&1 &
+          echo "DISPLAY=:99" >> "$GITHUB_ENV"
+      - run: pip install -q pillow
+      - name: Emulator run
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 34
+          target: google_apis
+          arch: x86_64
+          profile: pixel_6
+          force-avd-creation: false
+          emulator-options: -no-snapshot -no-window -gpu ${{ matrix.gpu }} -noaudio -no-boot-anim -camera-back none -camera-front none
+          disable-animations: true
+          script: bash probe/ci/emu-probe.sh ${{ matrix.variant }} ${{ matrix.gpu }}
+      - name: Analyze
+        if: always()
+        run: |
+          mkdir -p out
+          if [ ! -f out/install-rc.txt ]; then
+            printf '{"variant":"%s","gpu":"%s","verdict":"EMULATOR_DID_NOT_RUN","screenshots":[]}\n' "${{ matrix.variant }}" "${{ matrix.gpu }}" > out/result.json
+            cat out/result.json
+          else
+            python3 probe/ci/analyze.py out "${{ matrix.variant }}" "${{ matrix.gpu }}"
+          fi
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: { name: 'res-emu-${{ matrix.variant }}-${{ matrix.gpu }}', path: out/ }
+
+  report:
+    name: Render Lab report
+    needs: [desktop, emulator]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with: { pattern: 'res-*', path: results }
+      - name: Build report
+        run: |
+          python3 probe/ci/report.py results site
+          for d in results/res-desktop-*; do cp "$d"/movie.mp4 "site/$(basename $d)/" 2>/dev/null || true; done
+          ls site
+      - uses: actions/upload-artifact@v4
+        with: { name: render-lab-report, path: site/ }
+      - name: Publish to gh-pages/render-lab
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./site
+          publish_branch: gh-pages
+          destination_dir: render-lab
+          keep_files: true
