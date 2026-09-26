@@ -1,0 +1,34 @@
+{
+  "variant": "compat",
+  "gpu": "desktop-opengl3-llvmpipe",
+  "emulator_version": "desktop-xvfb",
+  "install_rc": "0",
+  "app_state": "alive",
+  "immersive_setting": "",
+  "props": "name of display: :99\ndisplay: :99  screen: 0\ndirect rendering: Yes\nExtended renderer info (GLX_MESA_query_renderer):\n    Vendor: Mesa (0xffffffff)\n    Device: llvmpipe (LLVM 20.1.2, 256 bits) (0xffffffff)\n    Version: 25.2.8\n    Accelerated: no\n    Video memory: 15989MB\n    Unified memory: yes\n    Preferred profile: core (0x1)\n    Max core profile version: 4.5\n    Max compat profile version: 4.5\n    Max GLES1 profile version: 1.1\n    Max GLES[23] profile version: 3.2\nMemory info (GL_ATI_meminfo):\n    VBO free memory - total: 0 MB, largest block: 0 MB\n    VBO free aux. memory - total: 14740 MB, largest block: 14740 MB\n    Texture free memory - total: 0 MB, largest block: 0 MB\n    Texture free aux. memory - total: 14740 MB, largest block: 14740 MB\n\tapiVersion         = 1.4.318\n\tdeviceName         = llvmpipe (LLVM 20.1.2, 256 bits)",
+  "probe_ready": "method=gl_compatibility driver=opengl3 adapter=llvmpipe (LLVM 20.1.2, 256 bits) vendor=Mesa api=4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2 os=Linux",
+  "probe_ticks": 6,
+  "fps_last": 38,
+  "engine_api_line": "OpenGL API 4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2 - Compatibility - Using Device: Mesa - llvmpipe (LLVM 20.1.2, 256 bits)",
+  "shader_link_errors": 0,
+  "uniform_limit_errors": 0,
+  "crash": false,
+  "screenshots": [
+    "shot-2s.png",
+    "shot-4s.png"
+  ],
+  "pixels": {
+    "black_pct": 0.0,
+    "red_pct": 5.25,
+    "blue_pct": 2.18,
+    "green_pct": 56.2,
+    "yellow_pct": 10.94,
+    "size": [
+      720,
+      1280
+    ]
+  },
+  "render_3d": true,
+  "render_2d": true,
+  "verdict": "PASS_3D_AND_2D"
+}
