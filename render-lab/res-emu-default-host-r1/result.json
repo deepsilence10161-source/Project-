@@ -13,7 +13,7 @@
   "fps_last": 16,
   "touch_events": 2,
   "drag_events": 5,
-  "video_bytes": 1774877,
+  "video_bytes": 1766112,
   "engine_api_line": "OpenGL API OpenGL ES 3.1 (4.5 (Core Profile) Mesa 25.2.8-0ubuntu0.24.04.2) - Compatibility - Using Device: Google (Mesa) - Android Emulator OpenGL ES Translator (llvmpipe (LLVM 20.1.2, 256 bits))",
   "shader_link_errors": 0,
   "uniform_limit_errors": 0,
@@ -26,9 +26,9 @@
   ],
   "pixels": {
     "black_pct": 0.0,
-    "red_pct": 4.95,
+    "red_pct": 4.93,
     "blue_pct": 2.04,
-    "green_pct": 56.73,
+    "green_pct": 56.75,
     "yellow_pct": 10.83,
     "size": [
       768,
