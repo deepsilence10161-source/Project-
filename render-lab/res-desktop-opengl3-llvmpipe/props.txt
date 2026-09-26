@@ -6,7 +6,7 @@ Extended renderer info (GLX_MESA_query_renderer):
     Device: llvmpipe (LLVM 20.1.2, 256 bits) (0xffffffff)
     Version: 25.2.8
     Accelerated: no
-    Video memory: 15993MB
+    Video memory: 15989MB
     Unified memory: yes
     Preferred profile: core (0x1)
     Max core profile version: 4.5
@@ -15,8 +15,8 @@ Extended renderer info (GLX_MESA_query_renderer):
     Max GLES[23] profile version: 3.2
 Memory info (GL_ATI_meminfo):
     VBO free memory - total: 31 MB, largest block: 31 MB
-    VBO free aux. memory - total: 14672 MB, largest block: 14672 MB
+    VBO free aux. memory - total: 14704 MB, largest block: 14704 MB
     Texture free memory - total: 31 MB, largest block: 31 MB
-    Texture free aux. memory - total: 14672 MB, largest block: 14672 MB
+    Texture free aux. memory - total: 14704 MB, largest block: 14704 MB
 	apiVersion         = 1.4.318
 	deviceName         = llvmpipe (LLVM 20.1.2, 256 bits)

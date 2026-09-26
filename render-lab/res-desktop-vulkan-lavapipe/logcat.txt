@@ -14,11 +14,11 @@ WARNING: All audio drivers failed, falling back to the dummy driver.
      at: initialize (servers/audio/audio_server.cpp:258)
 
 PROBE_READY method=mobile driver=vulkan adapter=llvmpipe (LLVM 20.1.2, 256 bits) vendor=Unknown api=1.4.318 os=Linux
-PROBE_TICK sec=1 fps=8
-PROBE_TICK sec=2 fps=18
+PROBE_TICK sec=1 fps=1
+PROBE_TICK sec=2 fps=27
 PROBE_SHOT path=/home/runner/work/Project-/Project-/out/desktop-2s.png err=Ok
-PROBE_TICK sec=3 fps=17
-PROBE_TICK sec=4 fps=19
+PROBE_TICK sec=3 fps=28
+PROBE_TICK sec=4 fps=30
 PROBE_SHOT path=/home/runner/work/Project-/Project-/out/desktop-4s.png err=Ok
-PROBE_TICK sec=5 fps=17
-PROBE_TICK sec=6 fps=17
+PROBE_TICK sec=5 fps=23
+PROBE_TICK sec=6 fps=24

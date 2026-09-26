@@ -1,0 +1,778 @@
+--------- beginning of main
+09-26 05:29:14.968   532   619 I RoleService: Granting default roles...
+09-26 05:29:14.970   872   953 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+09-26 05:29:14.970   872   953 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+09-26 05:29:14.970   872   953 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+09-26 05:29:14.971   872   953 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+09-26 05:29:14.971   872   953 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+09-26 05:29:14.971   872   953 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+09-26 05:29:14.971  1095  1095 D CarrierSvcBindHelper: No carrier app for: 0
+09-26 05:29:14.974   877   877 I SafetyLabelChangedBroadcastReceiver: received broadcast packageName: com.probe.render, current user: UserHandle{0}, packageChangeEvent: NEW_INSTALL, intent user: UserHandle{0}
+--------- beginning of system
+09-26 05:29:14.976   532   610 D CompatibilityChangeReporter: Compat change id reported: 265195908; UID 10066; state: ENABLED
+09-26 05:29:14.976   532   561 W PackageManager: Failed registering loading progress callback. Package is fully loaded.
+09-26 05:29:14.976  1067  1067 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_ADDED
+09-26 05:29:14.976   532   561 W VoiceInteractionManager: no available voice recognition services found for user 0
+09-26 05:29:14.982   872   953 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+09-26 05:29:14.983   872   953 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+09-26 05:29:14.983   872   953 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+09-26 05:29:14.984   872   953 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+09-26 05:29:14.984   872   953 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+09-26 05:29:14.986   532   631 I InputReader: Reconfiguring input devices, changes=KEYBOARD_LAYOUTS
+09-26 05:29:14.986  1095  1379 D ImsResolver: maybeAddedImsService, packageName: com.probe.render
+09-26 05:29:14.989  1095  1095 D CarrierSvcBindHelper: onPackageModified: com.probe.render
+09-26 05:29:14.989  1095  1095 D CarrierSvcBindHelper: No carrier app for: 0
+09-26 05:29:14.990  1067  1067 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+09-26 05:29:14.991   872   953 D StylusManager: Stylus InputDevice changed: 14 virtio_input_multi_touch_11
+09-26 05:29:14.991  1067  1067 V MediaPlayerList: mPackageChangedBroadcastReceiver: action: android.intent.action.PACKAGE_CHANGED
+09-26 05:29:14.991   872   953 D StylusManager: Stylus InputDevice changed: 13 virtio_input_multi_touch_10
+09-26 05:29:14.991   872   953 D StylusManager: Stylus InputDevice changed: 12 virtio_input_multi_touch_9
+09-26 05:29:14.991   872   953 D StylusManager: Stylus InputDevice changed: 8 virtio_input_multi_touch_5
+09-26 05:29:14.991   872   953 D StylusManager: Stylus InputDevice changed: 11 virtio_input_multi_touch_8
+09-26 05:29:14.992   872   953 D StylusManager: Stylus InputDevice changed: 10 virtio_input_multi_touch_7
+09-26 05:29:14.992   872   953 D StylusManager: Stylus InputDevice changed: 4 virtio_input_multi_touch_1
+09-26 05:29:14.992   872   953 D StylusManager: Stylus InputDevice changed: 6 virtio_input_multi_touch_3
+09-26 05:29:14.992   872   953 D StylusManager: Stylus InputDevice changed: 9 virtio_input_multi_touch_6
+09-26 05:29:14.992   872   953 D StylusManager: Stylus InputDevice changed: 7 virtio_input_multi_touch_4
+09-26 05:29:14.993   872   953 D StylusManager: Stylus InputDevice changed: 5 virtio_input_multi_touch_2
+09-26 05:29:14.993   877   902 I PermissionControllerServiceImpl: Updating user sensitive for uid 10141
+09-26 05:29:14.995  1095  1379 D ImsResolver: maybeAddedImsService, packageName: com.probe.render
+09-26 05:29:15.014   532   561 W WindowMagnificationMgr: requestConnection duplicated request: connect=false, mConnectionState=DISCONNECTED
+09-26 05:29:15.019   532   561 W VoiceInteractionManager: no available voice recognition services found for user 0
+09-26 05:29:15.031   532   553 I DropBoxManagerService: add tag=system_server_strictmode isTagEnabled=true flags=0x2
+09-26 05:29:15.037   532   947 D CompatibilityChangeReporter: Compat change id reported: 161252188; UID 10141; state: DISABLED
+09-26 05:29:15.037   532   947 W ActivityTaskManager: callingPackage for (uid=2000, pid=2507) has no WPC
+09-26 05:29:15.038   532   947 D CompatibilityChangeReporter: Compat change id reported: 244637991; UID 2000; state: ENABLED
+09-26 05:29:15.038   532   947 D CompatibilityChangeReporter: Compat change id reported: 265464455; UID 10141; state: DISABLED
+09-26 05:29:15.038   532   947 D CompatibilityChangeReporter: Compat change id reported: 265452344; UID 10141; state: DISABLED
+09-26 05:29:15.039   532   947 D CompatibilityChangeReporter: Compat change id reported: 266124927; UID 10141; state: DISABLED
+09-26 05:29:15.039   532   947 D CompatibilityChangeReporter: Compat change id reported: 265451093; UID 10141; state: DISABLED
+09-26 05:29:15.039   532   947 D CompatibilityChangeReporter: Compat change id reported: 265456536; UID 10141; state: DISABLED
+09-26 05:29:15.039   532   947 D CompatibilityChangeReporter: Compat change id reported: 255940284; UID 10141; state: DISABLED
+09-26 05:29:15.039   532   947 D CompatibilityChangeReporter: Compat change id reported: 236283604; UID 10141; state: DISABLED
+09-26 05:29:15.040   532   947 D CompatibilityChangeReporter: Compat change id reported: 263959004; UID 10141; state: DISABLED
+09-26 05:29:15.040   532   947 D CompatibilityChangeReporter: Compat change id reported: 264304459; UID 10141; state: DISABLED
+09-26 05:29:15.040   532   947 D CompatibilityChangeReporter: Compat change id reported: 264301586; UID 10141; state: DISABLED
+09-26 05:29:15.040   532   947 D CompatibilityChangeReporter: Compat change id reported: 254631730; UID 10141; state: DISABLED
+09-26 05:29:15.040   532   947 D CompatibilityChangeReporter: Compat change id reported: 273509367; UID 10141; state: DISABLED
+09-26 05:29:15.040   532   947 D CompatibilityChangeReporter: Compat change id reported: 263259275; UID 10141; state: DISABLED
+09-26 05:29:15.040   532   947 D CompatibilityChangeReporter: Compat change id reported: 174042980; UID 10141; state: DISABLED
+09-26 05:29:15.041   532   947 D CompatibilityChangeReporter: Compat change id reported: 174042936; UID 10141; state: DISABLED
+09-26 05:29:15.041   532   947 D CompatibilityChangeReporter: Compat change id reported: 181136395; UID 10141; state: DISABLED
+09-26 05:29:15.041   532   947 D CompatibilityChangeReporter: Compat change id reported: 194480991; UID 10141; state: ENABLED
+09-26 05:29:15.048   532   947 D CompatibilityChangeReporter: Compat change id reported: 184838306; UID 10141; state: DISABLED
+09-26 05:29:15.048   532   947 D CompatibilityChangeReporter: Compat change id reported: 185004937; UID 10141; state: DISABLED
+09-26 05:29:15.048   532   947 D CompatibilityChangeReporter: Compat change id reported: 197654537; UID 10141; state: ENABLED
+09-26 05:29:15.049   532   947 D CompatibilityChangeReporter: Compat change id reported: 205907456; UID 10141; state: ENABLED
+09-26 05:29:15.050   532   947 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.probe.render/com.godot.game.GodotAppLauncher} with LAUNCH_SINGLE_INSTANCE_PER_TASK from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+09-26 05:29:15.051   532   554 D CompatibilityChangeReporter: Compat change id reported: 135634846; UID 10141; state: DISABLED
+09-26 05:29:15.051   532   563 D CompatibilityChangeReporter: Compat change id reported: 143937733; UID 10141; state: ENABLED
+09-26 05:29:15.051   872   923 W ShellStartingWindow: Get attribute fail, return default: File res/mipmap-xhdpi-v4/icon_background.webp from drawable resource ID #0x7f0a0001: .xml extension required
+09-26 05:29:15.054   872   913 V WindowManagerShell: Transition requested: android.os.BinderProxy@9066464 TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=8 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=com.probe.render/com.godot.game.GodotAppLauncher } baseActivity=ComponentInfo{com.probe.render/com.godot.game.GodotApp} topActivity=ComponentInfo{com.probe.render/com.godot.game.GodotApp} origActivity=ComponentInfo{com.probe.render/com.godot.game.GodotAppLauncher} realActivity=ComponentInfo{com.probe.render/com.godot.game.GodotApp} numActivities=1 lastActiveTime=43711 supportsMultiWindow=true resizeMode=2 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@3a766cd} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=null topActivityInfo=ActivityInfo{f276b82 com.godot.game.GodotAppLauncher} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+09-26 05:29:15.057   532   610 D CompatibilityChangeReporter: Compat change id reported: 265195908; UID 10141; state: ENABLED
+09-26 05:29:15.058   872   923 D SplashScreenView: Build android.window.SplashScreenView{f50a2c9 V.E...... ......ID 0,0-0,0}
+09-26 05:29:15.058   872   923 D SplashScreenView: Icon: view: android.widget.ImageView{764bdce V.ED..... ......I. 0,0-0,0 #10204f0 android:id/splashscreen_icon_view} drawable: com.android.wm.shell.startingsurface.SplashscreenIconDrawableFactory$ImmobileIconDrawable@30dc4ef size: 384
+09-26 05:29:15.058   872   923 D SplashScreenView: Branding: view: android.view.View{eb7dbfc V.ED..... ......I. 0,0-0,0 #10204ef android:id/splashscreen_branding_view} drawable: android.graphics.drawable.BitmapDrawable@a37a285 size w: 400 h: 160
+09-26 05:29:15.058   350   350 D Zygote  : Forked child process 2510
+09-26 05:29:15.060   532   563 I ActivityManager: Start proc 2510:com.probe.render/u0a141 for next-top-activity {com.probe.render/com.godot.game.GodotAppLauncher}
+09-26 05:29:15.061   532  1811 D CoreBackPreview: Window{e2d7dbb u0 Splash Screen com.probe.render}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@9d26116, mPriority=0, mIsAnimationCallback=false}
+09-26 05:29:15.081   872   954 E OpenGLRenderer: Unable to match the desired swap behavior.
+09-26 05:29:15.090   532   551 V WindowManager: Sent Transition #6 createdAt=09-26 05:29:15.042 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=8 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=com.probe.render/com.godot.game.GodotAppLauncher } baseActivity=ComponentInfo{com.probe.render/com.godot.game.GodotApp} topActivity=ComponentInfo{com.probe.render/com.godot.game.GodotApp} origActivity=ComponentInfo{com.probe.render/com.godot.game.GodotAppLauncher} realActivity=ComponentInfo{com.probe.render/com.godot.game.GodotApp} numActivities=1 lastActiveTime=43711 supportsMultiWindow=true resizeMode=2 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{772fda1 Task{e477389 #8 type=standard A=10141:com.probe.render}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=null topActivityInfo=ActivityInfo{c33bc6 com.godot.game.GodotAppLauncher} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+09-26 05:29:15.090   872   913 V WindowManagerShell: onTransitionReady android.os.BinderProxy@9066464: {id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@7512000} m=OPEN f=NONE leash=Surface(name=Task=8)/@0xcac9d3d sb=Rect(0, 0 - 768, 1280) eb=Rect(0, 0 - 768, 1280) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@54ad039} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x795b932 sb=Rect(0, 0 - 768, 1280) eb=Rect(0, 0 - 768, 1280) d=0}]}
+09-26 05:29:15.091   872   913 V WindowManagerShell: Playing animation for (#6)android.os.BinderProxy@9066464@0
+09-26 05:29:15.091   872   913 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultMixedHandler@162367e
+09-26 05:29:15.092   872   913 V WindowManagerShell:  try handler com.android.wm.shell.keyguard.KeyguardTransitionHandler@cff36f5
+09-26 05:29:15.092   872   913 V WindowManagerShell:  try handler com.android.wm.shell.activityembedding.ActivityEmbeddingController@1e73c8a
+09-26 05:29:15.092   872   913 V WindowManagerShell:  try handler com.android.wm.shell.recents.RecentsTransitionHandler@a302fb
+09-26 05:29:15.092   872   913 V ShellRecents: RecentsTransitionHandler.startAnimation: no controller found
+09-26 05:29:15.092   872   913 V WindowManagerShell:  try handler com.android.wm.shell.pip.PipTransition@972ef18
+09-26 05:29:15.092   872   913 V WindowManagerShell:  try handler com.android.wm.shell.splitscreen.StageCoordinator@f594d71
+09-26 05:29:15.092   872   913 V WindowManagerShell:  try handler com.android.wm.shell.transition.RemoteTransitionHandler@5049756
+09-26 05:29:15.094   532   551 V WindowManager:     startWCT=WindowContainerTransaction { changes = {} hops = [] errorCallbackToken=null taskFragmentOrganizer=null }
+09-26 05:29:15.094   532   551 V WindowManager:     info={id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{772fda1 Task{e477389 #8 type=standard A=10141:com.probe.render}}} m=OPEN f=NONE leash=Surface(name=Task=8)/@0xc35e58f sb=Rect(0, 0 - 768, 1280) eb=Rect(0, 0 - 768, 1280) d=0},{WCT{RemoteToken{7af787 Task{641c620 #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x3d626a6 sb=Rect(0, 0 - 768, 1280) eb=Rect(0, 0 - 768, 1280) d=0}]}
+09-26 05:29:15.106   872   913 V WindowManagerShell: Transition doesn't have explicit remote, search filters for match for {id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@7512000} m=OPEN f=NONE leash=Surface(name=Task=8)/@0xcac9d3d sb=Rect(0, 0 - 768, 1280) eb=Rect(0, 0 - 768, 1280) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@54ad039} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x795b932 sb=Rect(0, 0 - 768, 1280) eb=Rect(0, 0 - 768, 1280) d=0}]}
+09-26 05:29:15.106   872   913 V WindowManagerShell:  Checking filter Pair{{types=[] flags=0x0] notFlags=0x100 checks=[{atype=home independent=true modes=[OPEN,TO_FRONT] flags=NONE mustBeTask=false order=TOP topActivity=ComponentInfo{com.android.launcher3/com.android.launcher3.uioverrides.QuickstepLauncher}},{atype=standard independent=true modes=[CLOSE,TO_BACK] flags=NONE mustBeTask=false order=ANY topActivity=null}]} RemoteTransition { remoteTransition = android.window.IRemoteTransition$Stub$Proxy@633e4c4, appThread = android.app.IApplicationThread$Stub$Proxy@7644fad, debugName = QuickstepLaunchHome }}
+09-26 05:29:15.106   872   913 V WindowManagerShell:  Delegate animation for #6 to null
+09-26 05:29:15.106   872   913 V WindowManagerShell:  try handler com.android.wm.shell.transition.DefaultTransitionHandler@2cad2e2
+09-26 05:29:15.107   872   913 V WindowManagerShell: start default transition animation, info = {id=6 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{android.window.IWindowContainerToken$Stub$Proxy@7512000} m=OPEN f=NONE leash=Surface(name=Task=8)/@0xcac9d3d sb=Rect(0, 0 - 768, 1280) eb=Rect(0, 0 - 768, 1280) d=0},{WCT{android.window.IWindowContainerToken$Stub$Proxy@54ad039} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x795b932 sb=Rect(0, 0 - 768, 1280) eb=Rect(0, 0 - 768, 1280) d=0}]}
+09-26 05:29:15.107   872   913 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@ba339a9 animAttr=0x13 type=OPEN isEntrance=false
+09-26 05:29:15.107   872   913 V WindowManagerShell: loadAnimation: anim=android.view.animation.AnimationSet@dccc765 animAttr=0x12 type=OPEN isEntrance=true
+09-26 05:29:15.108   872   913 V WindowManagerShell:  animated by com.android.wm.shell.transition.DefaultTransitionHandler@2cad2e2
+09-26 05:29:15.117  2510  2510 I om.probe.render: Late-enabling -Xcheck:jni
+09-26 05:29:15.138   872   913 V WindowManagerShell: Transition animation finished (aborted=false), notifying core (#6)android.os.BinderProxy@9066464@0
+09-26 05:29:15.142   532   551 V WindowManager: Finish Transition #6: created at 09-26 05:29:15.042 collect-started=0.045ms request-sent=8.304ms started=13.188ms ready=45.993ms sent=47.025ms finished=99.753ms
+09-26 05:29:15.143   872   913 V WindowManagerShell: Track 0 became idle
+09-26 05:29:15.143  2510  2510 I om.probe.render: Using CollectorTypeCC GC.
+09-26 05:29:15.143   872   913 V WindowManagerShell: All active transition animations finished
+09-26 05:29:15.144  2510  2510 W om.probe.render: Unexpected CPU variant for x86: x86_64.
+09-26 05:29:15.144  2510  2510 W om.probe.render: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+09-26 05:29:15.156   425   440 I adbd    : jdwp connection from 2510
+09-26 05:29:15.177   532   552 V GameManagerService: Game power mode ON (process state was changed to foreground)
+09-26 05:29:15.177   390   390 I android.hardware.power-service.example: Power isModeSupported: 15
+09-26 05:29:15.192  2510  2510 D CompatibilityChangeReporter: Compat change id reported: 171979766; UID 10141; state: ENABLED
+09-26 05:29:15.193  2510  2510 D CompatibilityChangeReporter: Compat change id reported: 242716250; UID 10141; state: ENABLED
+09-26 05:29:15.193   872   954 D EGL_emulation: app_time_stats: avg=6602.76ms min=24.52ms max=13180.99ms count=2
+09-26 05:29:15.196   532   968 D CompatibilityChangeReporter: Compat change id reported: 170503758; UID 10141; state: ENABLED
+09-26 05:29:15.198  2510  2510 W ziparchive: Unable to open '/data/app/~~vmYs42Gp5TSdAhtKIc5nDQ==/com.probe.render-aZMaB5RdVBdsWWGY2oy0mA==/base.dm': No such file or directory
+09-26 05:29:15.198  2510  2510 W ziparchive: Unable to open '/data/app/~~vmYs42Gp5TSdAhtKIc5nDQ==/com.probe.render-aZMaB5RdVBdsWWGY2oy0mA==/base.dm': No such file or directory
+09-26 05:29:15.231   872   954 D EGL_emulation: app_time_stats: avg=5223.15ms min=241.56ms max=19638.72ms count=4
+09-26 05:29:15.244  2510  2510 D nativeloader: Configuring clns-6 for other apk /data/app/~~vmYs42Gp5TSdAhtKIc5nDQ==/com.probe.render-aZMaB5RdVBdsWWGY2oy0mA==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~vmYs42Gp5TSdAhtKIc5nDQ==/com.probe.render-aZMaB5RdVBdsWWGY2oy0mA==/lib/x86_64:/data/app/~~vmYs42Gp5TSdAhtKIc5nDQ==/com.probe.render-aZMaB5RdVBdsWWGY2oy0mA==/base.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.probe.render
+09-26 05:29:15.251  2510  2510 V GraphicsEnvironment: Currently set values for:
+09-26 05:29:15.251  2510  2510 V GraphicsEnvironment:   angle_gl_driver_selection_pkgs=[]
+09-26 05:29:15.251  2510  2510 V GraphicsEnvironment:   angle_gl_driver_selection_values=[]
+09-26 05:29:15.252  2510  2510 V GraphicsEnvironment: ANGLE GameManagerService for com.probe.render: false
+09-26 05:29:15.252  2510  2510 V GraphicsEnvironment: com.probe.render is not listed in per-application setting
+09-26 05:29:15.252  2510  2510 V GraphicsEnvironment: Neither updatable production driver nor prerelease driver is supported.
+09-26 05:29:15.255   532   968 D WifiNl80211Manager: Scan result ready event
+09-26 05:29:15.255   532   968 D WifiNative: Scan result ready event
+09-26 05:29:15.264   532   968 I ActivityManager: Flag disabled. Ignoring finishAttachApplication from uid: 10141. pid: 2510
+09-26 05:29:15.269  2510  2531 D libEGL  : loaded /vendor/lib64/egl/libEGL_emulation.so
+09-26 05:29:15.270  2510  2531 D libEGL  : loaded /vendor/lib64/egl/libGLESv1_CM_emulation.so
+09-26 05:29:15.272  2510  2531 D libEGL  : loaded /vendor/lib64/egl/libGLESv2_emulation.so
+09-26 05:29:15.273  2510  2510 V GODOT   : Loading System.Security.Cryptography.Native.Android library
+09-26 05:29:15.274  2510  2510 D DOTNET  : AndroidCryptoNative_InitLibraryOnLoad: jint AndroidCryptoNative_InitLibraryOnLoad(JavaVM *, void *) in /__w/1/s/src/native/libs/System.Security.Cryptography.Native.Android/pal_jni.c
+09-26 05:29:15.274  2510  2510 D DOTNET  : GetOptionalClassGRef: optional class com/android/org/conscrypt/OpenSSLEngineImpl was not found
+09-26 05:29:15.303  2510  2510 D GodotActivity: Project command line parameters: [--xr_mode_regular, --xr-mode, off, --fullscreen, --background_color, #000000]
+09-26 05:29:15.304  2510  2510 D GodotActivity: Launch intent Intent { flg=0x10000000 cmp=com.probe.render/com.godot.game.GodotAppLauncher } with parameters []
+09-26 05:29:15.312  2510  2510 V GodotActivity: Creating new Godot fragment instance.
+09-26 05:29:15.325   872   872 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+09-26 05:29:15.332  2510  2510 V Godot   : Initializing Godot plugin registry
+09-26 05:29:15.345  2510  2510 I GodotPluginRegistry: Registering runtime plugin AndroidRuntime
+09-26 05:29:15.345  2510  2510 V Godot   : InitEngine with params: [--xr_mode_regular, --xr-mode, off, --fullscreen, --background_color, #000000]
+09-26 05:29:15.354  2510  2510 V Godot   : Godot native layer initialization completed: true
+09-26 05:29:15.354  2510  2510 V Godot   : Setting up native layer with params: [--xr-mode, off, --fullscreen]
+09-26 05:29:15.369  2510  2510 V Godot   : Godot native layer setup completed
+09-26 05:29:15.369  2510  2510 V Godot   : OnInitRenderView: GodotFragment{4543501} (2ffc2c7c-d32c-44fa-81ea-64d9bbceac5c id=0x7f07002c)
+09-26 05:29:15.374  2510  2510 D CompatibilityChangeReporter: Compat change id reported: 210923482; UID 10141; state: ENABLED
+09-26 05:29:15.380  2510  2510 D Godot   : Render view should be transparent: false
+09-26 05:29:15.380  2510  2510 D Godot   : renderingDevice: opengl3 (ProjectSettings)
+09-26 05:29:15.380  2510  2510 D Godot   : 			renderer: gl_compatibility (ProjectSettings)
+09-26 05:29:15.389  2510  2510 W WindowOnBackDispatcher: OnBackInvokedCallback is not enabled for the application.
+09-26 05:29:15.389  2510  2510 W WindowOnBackDispatcher: Set 'android:enableOnBackInvokedCallback="true"' in the application manifest.
+09-26 05:29:15.396  2510  2510 V Godot   : OnStart: GodotFragment{4543501} (2ffc2c7c-d32c-44fa-81ea-64d9bbceac5c id=0x7f07002c)
+09-26 05:29:15.398  2510  2510 V Godot   : OnResume: GodotFragment{4543501} (2ffc2c7c-d32c-44fa-81ea-64d9bbceac5c id=0x7f07002c)
+09-26 05:29:15.400  2510  2510 D CompatibilityChangeReporter: Compat change id reported: 237531167; UID 10141; state: DISABLED
+09-26 05:29:15.401  2510  2510 W OpenGLRenderer: Unknown dataspace 0
+09-26 05:29:15.403   532   968 W WindowManager: Failed looking up window session=Session{edbe081 2510:u0a10141} callers=com.android.server.wm.WindowManagerService.windowForClientLocked:6034 com.android.server.wm.Session.updateRequestedVisibleTypes:690 android.view.IWindowSession$Stub.onTransact:1034 
+09-26 05:29:15.419   532   968 D CoreBackPreview: Window{559f14 u0 com.probe.render/com.godot.game.GodotAppLauncher}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@fa6a2fe, mPriority=0, mIsAnimationCallback=false}
+09-26 05:29:15.421   415   434 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10141 pid=0
+09-26 05:29:15.421   415   434 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10141 => denied (193 us)
+09-26 05:29:15.421   415   434 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10141 pid=0
+09-26 05:29:15.421   415   434 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10141 => denied (152 us)
+09-26 05:29:15.421   415   434 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10141 pid=0
+09-26 05:29:15.421   415   434 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10141 => denied (85 us)
+09-26 05:29:15.421   415   627 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10141 pid=2510
+09-26 05:29:15.421   415   627 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10141 => denied (456 us)
+09-26 05:29:15.430  2510  2529 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...
+09-26 05:29:15.433  2510  2529 W OpenGLRenderer: Failed to initialize 101010-2 format, error = EGL_SUCCESS
+09-26 05:29:15.442  2510  2537 W RegularContextFactory: creating OpenGL ES 3.0 context :
+09-26 05:29:15.448   872   872 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+09-26 05:29:15.448   872   872 D ControlsListingControllerImpl: ServiceConfig reloaded, count: 0
+09-26 05:29:15.455   155   155 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+09-26 05:29:15.455  2510  2537 I Gralloc4: mapper 4.x is not supported
+--------- beginning of kernel
+09-26 05:29:15.653     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+09-26 05:29:15.477  2510  2529 E OpenGLRenderer: Unable to match the desired swap behavior.
+09-26 05:29:15.479  2510  2537 I godot   : Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+09-26 05:29:15.547   532   968 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=10141 pid=0
+09-26 05:29:15.547   532   968 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=10141 => denied (99 us)
+09-26 05:29:15.547   532   968 W ServiceManagerCppClient: Permission failure: android.permission.INTERNAL_SYSTEM_WINDOW from uid=10141 pid=0
+09-26 05:29:15.547   532   968 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=10141 => denied (19 us)
+09-26 05:29:15.547   532   968 W ServiceManagerCppClient: Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10141 pid=0
+09-26 05:29:15.547   532   968 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=10141 => denied (11 us)
+09-26 05:29:15.548   532   551 W ziparchive: Unable to open '/data/app/~~vmYs42Gp5TSdAhtKIc5nDQ==/com.probe.render-aZMaB5RdVBdsWWGY2oy0mA==/base.dm': No such file or directory
+09-26 05:29:15.549   532   551 I ActivityTaskManager: Displayed com.probe.render/com.godot.game.GodotAppLauncher for user 0: +510ms
+09-26 05:29:15.559  1137  1182 I ImeTracker: com.android.launcher3:eeef2edf: onRequestHide at ORIGIN_CLIENT_HIDE_SOFT_INPUT reason HIDE_SOFT_INPUT
+09-26 05:29:15.559   532  1811 I ImeTracker: com.android.launcher3:eeef2edf: onCancelled at PHASE_SERVER_SHOULD_HIDE
+09-26 05:29:15.564   532   968 D CompatibilityChangeReporter: Compat change id reported: 214016041; UID 10141; state: ENABLED
+09-26 05:29:15.564   532   968 I ImeTracker: com.probe.render:2997e849: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+09-26 05:29:15.565   532   968 I ImeTracker: com.probe.render:2997e849: onCancelled at PHASE_SERVER_SHOULD_HIDE
+09-26 05:29:15.566   872   922 W WindowOnBackDispatcher: sendCancelIfRunning: isInProgress=falsecallback=android.view.ViewRootImpl$$ExternalSyntheticLambda17@6a4bbe8
+09-26 05:29:15.567   532  1877 W InputManager-JNI: Input channel object 'e2d7dbb Splash Screen com.probe.render (client)' was disposed without first being removed with the input manager!
+09-26 05:29:15.568   532  1811 D CoreBackPreview: Window{e2d7dbb u0 Splash Screen com.probe.render EXITING}: Setting back callback null
+09-26 05:29:15.584   532   842 I SdkSandboxManager: Reconciling sdk data package directories for 0
+09-26 05:29:16.152  2510  2537 I godot   : OpenGL API OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.17841 git hash: 5fa2e61da947)) - Compatibility - Using Device: Google (Google Inc. (Mesa)) - Android Emulator OpenGL ES Translator (ANGLE (Mesa, Vulkan 1.4.318 (llvmpipe (LLVM 21.0.0 256 bits) (0x00000000)), llvmpipe-25.2.4))
+09-26 05:29:16.153  2510  2537 D om.probe.render: PlayerBase::PlayerBase()
+09-26 05:29:16.154  2510  2537 D om.probe.render: TrackPlayerBase::TrackPlayerBase()
+09-26 05:29:16.154  2510  2537 I libOpenSLES: Emulating old channel mask behavior (ignoring positional mask 0x3, using default mask 0x3 based on channel count of 2)
+09-26 05:29:16.156   402  1913 W AudioFlinger: createTrack_l(): mismatch between requested flags (00000104) and output flags (00000002)
+09-26 05:29:16.156   402  1913 D AudioFlinger: Client defaulted notificationFrames to 882 for frameCount 4012
+09-26 05:29:16.157   402  1913 D AF::TrackHandle: OpPlayAudio: track:55 usage:1 not muted
+09-26 05:29:16.160   532   812 D CompatibilityChangeReporter: Compat change id reported: 218533173; UID 1000; state: ENABLED
+09-26 05:29:16.161   402  1913 D audioserver: FGS Logger Transaction failed
+09-26 05:29:16.161   402  1913 D audioserver: -129
+09-26 05:29:16.161  2510  2537 I godot   : 
+09-26 05:29:16.234   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(33)
+09-26 05:29:16.560   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(59)
+09-26 05:29:17.199  2510  2537 V Godot   : OnGodotSetupCompleted
+09-26 05:29:17.267  2510  2537 I godot   : PROBE_READY method=gl_compatibility driver=opengl3 adapter=Android Emulator OpenGL ES Translator (ANGLE (Mesa, Vulkan 1.4.318 (llvmpipe (LLVM 21.0.0 256 bits) (0x00000000)), llvmpipe-25.2.4)) vendor=Google (Google Inc. (Mesa)) api=OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.17841 git hash: 5fa2e61da947)) os=Android
+09-26 05:29:17.268  2510  2537 V Godot   : OnGodotMainLoopStarted
+09-26 05:29:17.449   872   872 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+09-26 05:29:17.766  1769  1791 D StrictMode: StrictMode policy violation: android.os.strictmode.SqliteObjectLeakedViolation: Finalizing a Cursor that has not been deactivated or closed. database = /data/user/0/com.android.providers.contacts/databases/contacts2.db, table = raw_contacts, query = SELECT contacts_view._id AS _id, contacts_view.display_name AS display_name, contacts_view.photo_thumb_uri AS photo_thumb_uri, data1 AS number, data2 AS type, data3 AS label, contacts_view.lookup AS lookup FROM raw_contacts JOIN view_contacts as contacts_view ON (contacts_view._id = raw_contacts.contact_id) JOIN (SELECT data_id,normalized_number FROM phone_lookup WHERE (phone_lookup.min_match = '7654321')) AS lookup ON lookup.data_id=data._id JOIN data ON data.raw_contact_id=raw_contacts._id WHERE (PHONE_NUMBERS_EQUAL(data.data1, '+15551234567', 0, 7)) ORDER BY  length(lookup.normalized_number) DESC
+09-26 05:29:17.766  1769  1791 D StrictMode: 	at android.os.StrictMode.onSqliteObjectLeaked(StrictMode.java:2222)
+09-26 05:29:17.766  1769  1791 D StrictMode: 	at android.database.sqlite.SQLiteCursor.finalize(SQLiteCursor.java:282)
+09-26 05:29:17.766  1769  1791 D StrictMode: 	at java.lang.Daemons$FinalizerDaemon.doFinalize(Daemons.java:339)
+09-26 05:29:17.766  1769  1791 D StrictMode: 	at java.lang.Daemons$FinalizerDaemon.processReference(Daemons.java:324)
+09-26 05:29:17.766  1769  1791 D StrictMode: 	at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:300)
+09-26 05:29:17.766  1769  1791 D StrictMode: 	at java.lang.Daemons$Daemon.run(Daemons.java:145)
+09-26 05:29:17.766  1769  1791 D StrictMode: 	at java.lang.Thread.run(Thread.java:1012)
+09-26 05:29:17.768  1769  1791 D StrictMode: StrictMode policy violation: android.os.strictmode.LeakedClosableViolation: A resource was acquired at attached stack trace but never released. See java.io.Closeable for information on avoiding resource leaks.
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.os.StrictMode$AndroidCloseGuardReporter.report(StrictMode.java:1994)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at dalvik.system.CloseGuard.warnIfOpen(CloseGuard.java:336)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.database.AbstractCursor.finalize(AbstractCursor.java:531)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.database.sqlite.SQLiteCursor.finalize(SQLiteCursor.java:291)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at java.lang.Daemons$FinalizerDaemon.doFinalize(Daemons.java:339)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at java.lang.Daemons$FinalizerDaemon.processReference(Daemons.java:324)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:300)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at java.lang.Daemons$Daemon.run(Daemons.java:145)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at java.lang.Thread.run(Thread.java:1012)
+09-26 05:29:17.768  1769  1791 D StrictMode: Caused by: java.lang.Throwable: Explicit termination method 'AbstractCursor.close' not called
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at dalvik.system.CloseGuard.openWithCallSite(CloseGuard.java:288)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at dalvik.system.CloseGuard.open(CloseGuard.java:257)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.database.AbstractCursor.<init>(AbstractCursor.java:227)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.database.AbstractWindowedCursor.<init>(AbstractWindowedCursor.java:39)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.database.sqlite.SQLiteCursor.<init>(SQLiteCursor.java:98)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.database.sqlite.SQLiteDirectCursorDriver.query(SQLiteDirectCursorDriver.java:52)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.database.sqlite.SQLiteDatabase.rawQueryWithFactory(SQLiteDatabase.java:1714)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.database.sqlite.SQLiteQueryBuilder.query(SQLiteQueryBuilder.java:592)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.doQuery(ContactsProvider2.java:7543)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryLocal(ContactsProvider2.java:7249)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryCorpLookupIfNecessary(ContactsProvider2.java:7728)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryLookupEnterprise(ContactsProvider2.java:7867)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryPhoneLookupEnterprise(ContactsProvider2.java:7838)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryLocal(ContactsProvider2.java:7172)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryDirectoryIfNecessary(ContactsProvider2.java:5883)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.queryInternal(ContactsProvider2.java:5728)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at com.android.providers.contacts.ContactsProvider2.query(ContactsProvider2.java:5673)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.content.ContentProvider.query(ContentProvider.java:1692)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.content.ContentProvider$Transport.query(ContentProvider.java:292)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.content.ContentProviderNative.onTransact(ContentProviderNative.java:107)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.os.Binder.execTransactInternal(Binder.java:1344)
+09-26 05:29:17.768  1769  1791 D StrictMode: 	at android.os.Binder.execTransact(Binder.java:1275)
+09-26 05:29:17.883   532   553 D OomAdjuster: Not killing cached processes
+09-26 05:29:18.053   532  2006 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+09-26 05:29:18.329   872   872 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+09-26 05:29:19.766  1554  1883 D CompatibilityChangeReporter: Compat change id reported: 183155436; UID 10140; state: ENABLED
+09-26 05:29:19.767   532  2563 D CompatibilityChangeReporter: Compat change id reported: 149924527; UID 2000; state: ENABLED
+09-26 05:29:19.768   532  2563 D CompatibilityChangeReporter: Compat change id reported: 132649864; UID 2000; state: DISABLED
+09-26 05:29:19.771  1554  1883 W MediaProvider: isAppCloneUserPair for user 0: false
+09-26 05:29:19.775   415  1196 D PermissionCache: checking android.permission.ACCESS_SURFACE_FLINGER for uid=2000 => granted (124 us)
+09-26 05:29:19.778  2575  2575 D MediaCodecList: codecHandlesFormat: no format, so no extra checks
+09-26 05:29:19.780  2575  2580 D CCodec  : allocate(c2.android.avc.encoder)
+09-26 05:29:19.782  2575  2580 I Codec2Client: Available Codec2 services: "default" "software"
+09-26 05:29:19.783  2575  2580 I CCodec  : setting up 'default' as default (vendor) store
+09-26 05:29:19.786   465   933 I mediaswcodec: missing struct descriptor #Param::CoreIndex(--004) for field values of struct #Param::CoreIndex(F-12004)
+09-26 05:29:19.786   465   933 I mediaswcodec: missing struct descriptor #Param::CoreIndex(--1812) for field values of struct #Param::CoreIndex(F-11812)
+09-26 05:29:19.786   465   933 I mediaswcodec: missing struct descriptor #Param::CoreIndex(--004) for field values of struct #Param::CoreIndex(F-12004)
+09-26 05:29:19.786   465   933 I mediaswcodec: missing struct descriptor #Param::CoreIndex(--1812) for field values of struct #Param::CoreIndex(F-11812)
+09-26 05:29:19.787  2575  2580 I CCodec  : Created component [c2.android.avc.encoder]
+09-26 05:29:19.787  2575  2580 D CCodecConfig: read media type: video/avc
+09-26 05:29:19.787  2575  2580 D ReflectedParamUpdater: extent() != 1 for single value type: algo.buffers.max-count.values
+09-26 05:29:19.788  2575  2580 D ReflectedParamUpdater: extent() != 1 for single value type: output.subscribed-indices.values
+09-26 05:29:19.788  2575  2580 D ReflectedParamUpdater: extent() != 1 for single value type: input.buffers.allocator-ids.values
+09-26 05:29:19.788  2575  2580 D ReflectedParamUpdater: extent() != 1 for single value type: output.buffers.allocator-ids.values
+09-26 05:29:19.788  2575  2580 D ReflectedParamUpdater: extent() != 1 for single value type: algo.buffers.allocator-ids.values
+09-26 05:29:19.788  2575  2580 D ReflectedParamUpdater: extent() != 1 for single value type: output.buffers.pool-ids.values
+09-26 05:29:19.788  2575  2580 D ReflectedParamUpdater: extent() != 1 for single value type: algo.buffers.pool-ids.values
+09-26 05:29:19.789  2575  2580 D ReflectedParamUpdater: ignored struct field coding.gop.values
+09-26 05:29:19.789  2575  2580 D ReflectedParamUpdater: ignored struct field coding.qp.values
+09-26 05:29:19.789  2575  2580 D CCodecConfig: ignoring local param raw.color (0xc2001809) as it is already supported
+09-26 05:29:19.789  2575  2580 I CCodecConfig: query failed after returning 12 values (BAD_INDEX)
+09-26 05:29:19.790  2575  2580 D CCodecConfig: c2 config diff is Dict {
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::i32 coded.average-qp.value = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 coded.bitrate.value = 64000
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::float coded.frame-rate.value = 1
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 coded.picture-type.value = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 coded.pl.level = 20492
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 coded.pl.profile = 20481
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 coded.vui.color.matrix = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 coded.vui.color.primaries = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 coded.vui.color.range = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 coded.vui.color.transfer = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 coding.intra-refresh.mode = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::float coding.intra-refresh.period = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 coding.request-sync-frame.value = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::i64 coding.sync-frame-interval.value = 1000000
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 input.delay.value = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   string input.media-type.value = "video/raw"
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   string output.media-type.value = "video/avc"
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 raw.color.matrix = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 raw.color.primaries = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 raw.color.range = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 raw.color.transfer = 0
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 raw.size.height = 16
+09-26 05:29:19.790  2575  2580 D CCodecConfig:   c2::u32 raw.size.width = 16
+09-26 05:29:19.790  2575  2580 D CCodecConfig: }
+09-26 05:29:19.790  2575  2580 W ColorUtils: expected specified color aspects (0:0:0:0)
+09-26 05:29:19.800  2575  2575 D CodecSeeding: Seed: codec c2.android.avc.encoder, mediatype video/avc, overrideable 1
+09-26 05:29:19.800  2575  2575 D CodecProperties: setTuningValue(vq-target-bpp,0)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setTuningValue(vq-target-bpp-1080p,1.90)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setTuningValue(vq-target-bpp-720p,2.25)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setTuningValue(vq-target-bpp-540p,2.65)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setTuningValue(vq-target-bpp-480p,3.00)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setTuningValue(vq-target-bpp-320x240,0)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setTuningValue(vq-target-qpmax,-1)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setTuningValue(vq-target-qpmax-1080p,45)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setTuningValue(vq-target-qpmax-720p,43)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setTuningValue(vq-target-qpmax-540p,42)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setTuningValue(vq-target-qpmax-480p,38)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setTuningValue(vq-bitrate-phaseout,1.75)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setTuningValue(vq-boost-missing-qp,0.20)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setFeatureValue(intra-refresh,0)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setFeatureValue(qp-bounds,0)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setFeatureValue(_vq_eligible.device,1)
+09-26 05:29:19.800  2575  2575 D CodecProperties: setFeatureValue(_quality.target,1)
+09-26 05:29:19.800  2575  2575 D CodecSeeding: Seed: codec c2.android.avc.encoder, mediatype video/avc, overrideable 0
+09-26 05:29:19.800  2575  2575 D MediaCodec: shapeMediaFormat: deltas(1): AMessage(what = 0x00000000) = {
+09-26 05:29:19.800  2575  2575 D MediaCodec:     int32_t android._encoding-quality-level = 0
+09-26 05:29:19.800  2575  2575 D MediaCodec:   }
+09-26 05:29:19.801  2575  2579 D MediaCodec: flushMediametrics
+09-26 05:29:19.801  2575  2580 D CCodec  : [c2.android.avc.encoder] buffers are bound to CCodec for this session
+09-26 05:29:19.801  2575  2580 D CCodecConfig: no c2 equivalents for color-format
+09-26 05:29:19.801  2575  2580 D CCodecConfig: no c2 equivalents for max-bframes
+09-26 05:29:19.801  2575  2580 D CCodecConfig: no c2 equivalents for flags
+09-26 05:29:19.801  2575  2580 D CCodecConfig: no c2 equivalents for encoder
+09-26 05:29:19.801  2575  2580 D CCodecConfig: c2 config diff is   c2::u32 coded.bitrate.value = 20000000
+09-26 05:29:19.801  2575  2580 D CCodecConfig:   c2::float coded.frame-rate.value = 60
+09-26 05:29:19.801  2575  2580 D CCodecConfig:   c2::i64 coding.sync-frame-interval.value = 10000000
+09-26 05:29:19.801  2575  2580 D CCodecConfig:   c2::u32 raw.size.height = 1200
+09-26 05:29:19.801  2575  2580 D CCodecConfig:   c2::u32 raw.size.width = 540
+09-26 05:29:19.801  2575  2580 W ColorUtils: expected specified color aspects (0:0:0:0)
+09-26 05:29:19.802  2575  2580 D CCodec  : encoding statistics level = 0
+09-26 05:29:19.802  2575  2580 D CCodec  : setup formats input: AMessage(what = 0x00000000) = {
+09-26 05:29:19.802  2575  2580 D CCodec  :   Rect crop(0, 0, 539, 1199)
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t color-standard = 0
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t color-range = 0
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t color-transfer = 0
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t frame-rate = 60
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t height = 1200
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t intra-refresh-period = 0
+09-26 05:29:19.802  2575  2580 D CCodec  :   string mime = "video/raw"
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t video-qp-average = 0
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t width = 540
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t android._dataspace = 0
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t using-sw-read-often = 1
+09-26 05:29:19.802  2575  2580 D CCodec  :   int64_t android._C2MemoryUsage = 1
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t color-format = 2130708361
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t android._color-format = 2130708361
+09-26 05:29:19.802  2575  2580 D CCodec  : }
+09-26 05:29:19.802  2575  2580 D CCodec  : setup formats output: AMessage(what = 0x00000000) = {
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t bitrate = 20000000
+09-26 05:29:19.802  2575  2580 D CCodec  :   Rect crop(0, 0, 539, 1199)
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t color-standard = 0
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t color-range = 0
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t color-transfer = 0
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t frame-rate = 60
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t height = 1200
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t intra-refresh-period = 0
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t level = 4096
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t max-bitrate = 20000000
+09-26 05:29:19.802  2575  2580 D CCodec  :   string mime = "video/avc"
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t profile = 65536
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t video-qp-average = 0
+09-26 05:29:19.802  2575  2580 D CCodec  :   int32_t width = 540
+09-26 05:29:19.802  2575  2580 D CCodec  : }
+09-26 05:29:19.802  2575  2580 I CCodecConfig: query failed after returning 13 values (BAD_INDEX)
+09-26 05:29:19.803  2575  2580 D CCodec  : input format changed to AMessage(what = 0x00000000) = {
+09-26 05:29:19.803  2575  2580 D CCodec  :   Rect crop(0, 0, 539, 1199)
+09-26 05:29:19.803  2575  2580 D CCodec  :   int32_t color-standard = 1
+09-26 05:29:19.803  2575  2580 D CCodec  :   int32_t color-range = 2
+09-26 05:29:19.803  2575  2580 D CCodec  :   int32_t color-transfer = 3
+09-26 05:29:19.803  2575  2580 D CCodec  :   int32_t frame-rate = 60
+09-26 05:29:19.803  2575  2580 D CCodec  :   int32_t height = 1200
+09-26 05:29:19.803  2575  2580 D CCodec  :   int32_t intra-refresh-period = 0
+09-26 05:29:19.803  2575  2580 D CCodec  :   string mime = "video/raw"
+09-26 05:29:19.803  2575  2580 D CCodec  :   int32_t video-qp-average = 0
+09-26 05:29:19.803  2575  2580 D CCodec  :   int32_t width = 540
+09-26 05:29:19.803  2575  2580 D CCodec  :   int32_t android._dataspace = 260
+09-26 05:29:19.803  2575  2580 D CCodec  :   int32_t using-sw-read-often = 1
+09-26 05:29:19.803  2575  2580 D CCodec  :   int64_t android._C2MemoryUsage = 1
+09-26 05:29:19.803  2575  2580 D CCodec  :   int32_t color-format = 2130708361
+09-26 05:29:19.803  2575  2580 D CCodec  :   int32_t android._color-format = 2130708361
+09-26 05:29:19.803  2575  2580 D CCodec  : }
+09-26 05:29:19.803  2575  2580 D GraphicBufferSource: setting dataspace: 0x104, acquired=0
+09-26 05:29:19.803  2575  2580 D CCodec  : ISConfig not changed
+09-26 05:29:19.803  2575  2580 W Codec2Client: query -- param skipped: index = 1342179345.
+09-26 05:29:19.804  2575  2580 W Codec2Client: query -- param skipped: index = 2415921170.
+09-26 05:29:19.804  2575  2580 D CCodecBufferChannel: [c2.android.avc.encoder#89] Using basic input block pool with poolID 1 => got 1 - OK (0)
+09-26 05:29:19.804  2575  2580 D C2Store : Using DMABUF Heaps
+09-26 05:29:19.805  2575  2580 I CCodecBufferChannel: [c2.android.avc.encoder#89] Created output block pool with allocatorID 16 => poolID 26 - OK
+09-26 05:29:19.805  2575  2580 D CCodecBufferChannel: [c2.android.avc.encoder#89] Configured output block pool ids 26 => OK
+09-26 05:29:19.806   458  2339 W ResourceManagerService: Ignoring request to add new resource entry with value <= 0
+09-26 05:29:19.806   532   950 D BufferPoolAccessor2.0: bufferpool2 0x76e2ad904e58 : 0(0 size) total buffers - 0(0 size) used buffers - 2/7 (recycle/alloc) - 5/24 (fetch/transfer)
+09-26 05:29:19.806   532   950 D BufferPoolAccessor2.0: Destruction - bufferpool2 0x76e2ad904e58 cached: 0/0M, 0/0% in use; allocs: 7, 29% recycled; transfers: 24, 79% unfetched
+09-26 05:29:19.806   532   950 D BufferPoolAccessor2.0: bufferpool2 0x76e2ad905798 : 0(0 size) total buffers - 0(0 size) used buffers - 2/7 (recycle/alloc) - 5/18 (fetch/transfer)
+09-26 05:29:19.806   532   950 D BufferPoolAccessor2.0: Destruction - bufferpool2 0x76e2ad905798 cached: 0/0M, 0/0% in use; allocs: 7, 29% recycled; transfers: 18, 72% unfetched
+09-26 05:29:19.807   532   967 D BufferPoolAccessor2.0: bufferpool2 0x76e2ad905e88 : 0(0 size) total buffers - 0(0 size) used buffers - 2/7 (recycle/alloc) - 5/34 (fetch/transfer)
+09-26 05:29:19.807   532   967 D BufferPoolAccessor2.0: Destruction - bufferpool2 0x76e2ad905e88 cached: 0/0M, 0/0% in use; allocs: 7, 29% recycled; transfers: 34, 85% unfetched
+09-26 05:29:19.807   532   634 D BufferPoolAccessor2.0: bufferpool2 0x76e2ad9059e8 : 0(0 size) total buffers - 0(0 size) used buffers - 2/7 (recycle/alloc) - 5/24 (fetch/transfer)
+09-26 05:29:19.807   532   634 D BufferPoolAccessor2.0: Destruction - bufferpool2 0x76e2ad9059e8 cached: 0/0M, 0/0% in use; allocs: 7, 29% recycled; transfers: 24, 79% unfetched
+09-26 05:29:19.807   872  1232 D BufferPoolAccessor2.0: bufferpool2 0x76e2ad8eae18 : 0(0 size) total buffers - 0(0 size) used buffers - 1/7 (recycle/alloc) - 6/38 (fetch/transfer)
+09-26 05:29:19.807   872  1232 D BufferPoolAccessor2.0: Destruction - bufferpool2 0x76e2ad8eae18 cached: 0/0M, 0/0% in use; allocs: 7, 14% recycled; transfers: 38, 84% unfetched
+09-26 05:29:19.807   872  1232 D BufferPoolAccessor2.0: bufferpool2 0x76e2ad8f13d8 : 0(0 size) total buffers - 0(0 size) used buffers - 1/7 (recycle/alloc) - 6/36 (fetch/transfer)
+09-26 05:29:19.807   872  1232 D BufferPoolAccessor2.0: Destruction - bufferpool2 0x76e2ad8f13d8 cached: 0/0M, 0/0% in use; allocs: 7, 14% recycled; transfers: 36, 83% unfetched
+09-26 05:29:19.807   532   634 D BufferPoolAccessor2.0: bufferpool2 0x76e2ad906eb8 : 0(0 size) total buffers - 0(0 size) used buffers - 2/7 (recycle/alloc) - 5/34 (fetch/transfer)
+09-26 05:29:19.807   532   634 D BufferPoolAccessor2.0: Destruction - bufferpool2 0x76e2ad906eb8 cached: 0/0M, 0/0% in use; allocs: 7, 29% recycled; transfers: 34, 85% unfetched
+09-26 05:29:19.807   872  1232 D BufferPoolAccessor2.0: bufferpool2 0x76e2ad8eda08 : 0(0 size) total buffers - 0(0 size) used buffers - 1/7 (recycle/alloc) - 6/18 (fetch/transfer)
+09-26 05:29:19.807   872  1232 D BufferPoolAccessor2.0: Destruction - bufferpool2 0x76e2ad8eda08 cached: 0/0M, 0/0% in use; allocs: 7, 14% recycled; transfers: 18, 67% unfetched
+09-26 05:29:19.808   532   950 D BufferPoolAccessor2.0: bufferpool2 0x76e2ad9137e8 : 0(0 size) total buffers - 0(0 size) used buffers - 2/7 (recycle/alloc) - 7/26 (fetch/transfer)
+09-26 05:29:19.808   532   950 D BufferPoolAccessor2.0: Destruction - bufferpool2 0x76e2ad9137e8 cached: 0/0M, 0/0% in use; allocs: 7, 29% recycled; transfers: 26, 73% unfetched
+09-26 05:29:19.808   415   434 W ServiceManagerCppClient: Permission failure: android.permission.ROTATE_SURFACE_FLINGER from uid=2000 pid=2575
+09-26 05:29:19.808   415   434 D PermissionCache: checking android.permission.ROTATE_SURFACE_FLINGER for uid=2000 => denied (156 us)
+09-26 05:29:19.808   415   434 D PermissionCache: checking android.permission.INTERNAL_SYSTEM_WINDOW for uid=2000 => granted (84 us)
+09-26 05:29:19.811  1554  1883 I MediaProvider: Deleted 0 0 0 1 0 0 0 items on external_primary due to com.android.shell
+09-26 05:29:19.811   415   415 W SurfaceFlinger: Invalid layer stack -1
+09-26 05:29:19.818  1554  1883 W MediaProvider: isAppCloneUserPair for user 0: false
+09-26 05:29:19.827  2575  2575 D MPEG4Writer: PreAllocation enabled
+09-26 05:29:19.854  2510  2537 D EGL_emulation: app_time_stats: avg=1698.46ms min=11.34ms max=3385.58ms count=2
+09-26 05:29:19.897   155   155 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+09-26 05:29:19.897  2575  2578 I Gralloc4: mapper 4.x is not supported
+09-26 05:29:20.095     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+09-26 05:29:19.961  2575  2592 D GraphicBufferSource: got buffer with new dataSpace #104
+09-26 05:29:19.961  2575  2592 D C2OMXNode: dataspace changed to 0x104 pixel format: 0x1
+09-26 05:29:19.961   155   155 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+09-26 05:29:19.963   465  2585 D SimpleC2Component: Using output block pool with poolID 26 => got 26 - 0
+09-26 05:29:19.963   465  2585 D SimpleC2Component: applied 2 configUpdates => BAD_INDEX (6)
+09-26 05:29:19.963   465  2585 D C2SoftAvcEnc: Params width 540 height 1200 level 41 colorFormat 0 bframes 0
+09-26 05:29:19.972   465  2585 E C2SoftAvcEnc: Unable to set air params = 0x1ad
+09-26 05:29:19.975   155   155 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+09-26 05:29:19.975   465  2585 I Gralloc4: mapper 4.x is not supported
+09-26 05:29:20.174     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+09-26 05:29:20.091  2575  2580 D CCodecConfig: c2 config diff is   Buffer coded.init-data.value = {
+09-26 05:29:20.091  2575  2580 D CCodecConfig:     00000000:  00 00 00 01 67 42 c0 29  8d 68 08 80 97 ef 90 80  ....gB.).h......
+09-26 05:29:20.091  2575  2580 D CCodecConfig:     00000010:  80 80 83 c2 21 1a 80 00  00 00 01 68 ce 01 a8 35  ....!......h...5
+09-26 05:29:20.091  2575  2580 D CCodecConfig:     00000020:  c8                                                .
+09-26 05:29:20.091  2575  2580 D CCodecConfig:   }
+09-26 05:29:20.098  2575  2575 D MPEG4Writer: fpathconf _PC_FILESIZEBITS:64
+09-26 05:29:20.098  2575  2575 D MPEG4Writer: File size limit set to 4503599627370495 bytes implicitly
+09-26 05:29:20.098  2575  2575 D MPEG4Writer: MP4WtrCtrlHlpLooper Started
+09-26 05:29:20.098  2575  2575 I MPEG4Writer: limits: 4503599627370495/0 bytes/us, bit rate: -1 bps and the estimated moov size 3192 bytes
+09-26 05:29:20.122  2575  2598 I MPEG4Writer: setStartTimestampUs: 48622176
+09-26 05:29:20.122  2575  2598 I MPEG4Writer: Earliest track starting time: 48622176
+09-26 05:29:20.286   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(21)
+09-26 05:29:20.323   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(21)
+09-26 05:29:20.738  2510  2537 I godot   : PROBE_TICK sec=1 fps=5
+09-26 05:29:20.782  1459  1467 W putmethod.latin: Cleared Reference was only reachable from finalizer (only reported once)
+09-26 05:29:20.817   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(67)
+09-26 05:29:20.896  2510  2537 D EGL_emulation: app_time_stats: avg=77.09ms min=42.27ms max=128.26ms count=11
+09-26 05:29:20.973   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(11)
+09-26 05:29:21.136   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(22)
+09-26 05:29:21.336   872   872 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+09-26 05:29:21.398   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(36)
+09-26 05:29:21.489   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(8)
+09-26 05:29:21.632  2510  2537 I godot   : PROBE_TICK sec=2 fps=13
+09-26 05:29:21.761   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(10)
+09-26 05:29:21.996  2510  2537 D EGL_emulation: app_time_stats: avg=67.19ms min=49.78ms max=90.50ms count=14
+09-26 05:29:22.238   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(22)
+09-26 05:29:22.507   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(26)
+09-26 05:29:22.675  2510  2537 I godot   : PROBE_TICK sec=3 fps=12
+09-26 05:29:22.715   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(29)
+09-26 05:29:22.920   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(51)
+09-26 05:29:23.005  2510  2537 D EGL_emulation: app_time_stats: avg=72.38ms min=27.02ms max=100.58ms count=12
+09-26 05:29:23.187   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(21)
+09-26 05:29:23.304   860   860 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+09-26 05:29:23.652  2510  2537 I godot   : PROBE_TICK sec=4 fps=12
+09-26 05:29:24.021  2757  2757 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+09-26 05:29:24.022  2510  2537 D EGL_emulation: app_time_stats: avg=63.81ms min=49.93ms max=90.41ms count=14
+09-26 05:29:24.054  2757  2757 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+09-26 05:29:24.055   415  1196 W ServiceManagerCppClient: Permission failure: android.permission.CAPTURE_BLACKOUT_CONTENT from uid=2000 pid=2757
+09-26 05:29:24.056   415  1196 D PermissionCache: checking android.permission.CAPTURE_BLACKOUT_CONTENT for uid=2000 => denied (303 us)
+09-26 05:29:24.274   155   155 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+09-26 05:29:24.469     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+09-26 05:29:24.274  2757  2761 I Gralloc4: mapper 4.x is not supported
+09-26 05:29:24.340   872   872 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+09-26 05:29:24.434   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(3)
+09-26 05:29:24.615   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(36)
+09-26 05:29:24.661  2510  2537 I godot   : PROBE_TICK sec=5 fps=12
+09-26 05:29:24.773   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(24)
+09-26 05:29:24.823   532   929 D BufferPoolAccessor2.0: evictor expired: 6, evicted: 0
+09-26 05:29:24.823   872  1231 D BufferPoolAccessor2.0: evictor expired: 3, evicted: 0
+09-26 05:29:24.854  1554  1804 D PickerSyncController: syncAllMedia
+09-26 05:29:24.854  1554  1804 D PickerSyncController: syncAllMediaFromProvider() LOCAL, auth=com.android.providers.media.photopicker, retry=true
+09-26 05:29:24.854  1554  1804 D PickerSyncController: getSyncRequestParams() LOCAL, auth=com.android.providers.media.photopicker
+09-26 05:29:24.857  1554  1804 D PickerSyncController:    Latest ID/Gen=1407:6abc8dac-9eb9-4834-8553-05c4e892382b:external_primary/12
+09-26 05:29:24.857  1554  1804 D PickerSyncController:    Cached ID/Gen=null/-1
+09-26 05:29:24.858  1554  1804 D PickerSyncController:    RESULT=SyncRequestParams{type=MEDIA_FULL, gen=0, latest=Bundle[{last_media_sync_generation=12, media_collection_id=1407:6abc8dac-9eb9-4834-8553-05c4e892382b:external_primary}]}
+09-26 05:29:24.858  1554  1804 I PickerSyncController: Executing SyncReset. isLocal: true. authority: com.android.providers.media.photopicker
+09-26 05:29:24.859  1554  1804 I PickerSyncController: SyncReset. isLocal:true. authority: com.android.providers.media.photopicker. result count: 0
+09-26 05:29:24.861  1554  1804 I PickerSyncController: Executing SyncAdd. isLocal: true. authority: com.android.providers.media.photopicker
+09-26 05:29:24.863  1554  1804 I PickerSyncController: Paged sync successful. QueryArgs: Bundle[{}]. Result count: 0. Cursor count: 0
+09-26 05:29:24.863  1554  1804 D PickerSyncController: syncAllMediaFromProvider() CLOUD, auth=null, retry=true
+09-26 05:29:24.863  1554  1804 D PickerSyncController: getSyncRequestParams() CLOUD, auth=null
+09-26 05:29:24.863  1554  1804 D PickerSyncController:    RESULT=SyncRequestParams{type=MEDIA_RESET, gen=0, latest=null}
+09-26 05:29:24.863  1554  1804 I PickerSyncController: Executing SyncReset. isLocal: false. authority: null
+09-26 05:29:24.863  1554  1804 I PickerSyncController: SyncReset. isLocal:false. authority: null. result count: 0
+09-26 05:29:24.863  1554  1804 D PickerSyncController: Ignoring cache media info for null authority with bundle: null
+09-26 05:29:24.863  1554  1804 I PickerSyncController: Executing SyncAlbumReset. isLocal: true. authority: com.android.providers.media.photopicker. albumId: null
+09-26 05:29:24.863  1554  1804 I PickerSyncController: Successfully executed SyncResetAlbum. authority: com.android.providers.media.photopicker. albumId: null. Result count: 0
+09-26 05:29:24.863  1554  1804 I PickerSyncController: Executing SyncAlbumReset. isLocal: false. authority: null. albumId: null
+09-26 05:29:24.863  1554  1804 I PickerSyncController: Successfully executed SyncResetAlbum. authority: null. albumId: null. Result count: 0
+09-26 05:29:24.956   176  2502 I keystore2: system/security/keystore2/src/watchdog.rs:319 - Watchdog thread idle -> terminating. Have a great day.
+09-26 05:29:25.008   532   857 D OomAdjuster: Not killing cached processes
+09-26 05:29:25.122  2510  2537 D EGL_emulation: app_time_stats: avg=72.68ms min=6.24ms max=119.73ms count=11
+09-26 05:29:25.182   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(5)
+09-26 05:29:25.306   465  2585 D BufferPoolAccessor2.0: bufferpool2 0x796b8fba3318 : 2(1944000 size) total buffers - 1(972000 size) used buffers - 59/61 (recycle/alloc) - 2/61 (fetch/transfer)
+09-26 05:29:25.340   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(16)
+09-26 05:29:25.478   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(1)
+09-26 05:29:25.618  2510  2537 I godot   : PROBE_TICK sec=6 fps=11
+09-26 05:29:25.820   532   618 D ActivityManager: freezing 1592 com.android.documentsui
+09-26 05:29:26.021   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(21)
+09-26 05:29:26.153  2510  2537 D EGL_emulation: app_time_stats: avg=67.83ms min=44.21ms max=86.94ms count=13
+09-26 05:29:26.293   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(24)
+09-26 05:29:26.542   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(12)
+09-26 05:29:26.593  2510  2537 I godot   : PROBE_TICK sec=7 fps=13
+09-26 05:29:26.881   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(4)
+09-26 05:29:27.156   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(14)
+09-26 05:29:27.200  2510  2537 D EGL_emulation: app_time_stats: avg=66.27ms min=47.76ms max=89.54ms count=14
+09-26 05:29:27.346   872   872 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+09-26 05:29:27.455   872   872 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+09-26 05:29:27.594  2510  2537 I godot   : PROBE_TICK sec=8 fps=13
+09-26 05:29:27.607   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(4)
+09-26 05:29:27.946   532   618 D ActivityManager: freezing 2011 com.android.traceur
+09-26 05:29:28.015   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(52)
+09-26 05:29:28.108   532   618 D ActivityManager: freezing 1312 com.android.cellbroadcastreceiver.module
+09-26 05:29:28.112   532   618 D ActivityManager: freezing 1774 com.android.imsserviceentitlement
+09-26 05:29:28.149   532   618 D ActivityManager: freezing 1818 com.android.messaging
+09-26 05:29:28.149   532   618 D ActivityManager: freezing 1885 com.android.providers.calendar
+09-26 05:29:28.202  2510  2537 D EGL_emulation: app_time_stats: avg=61.90ms min=47.41ms max=84.44ms count=14
+09-26 05:29:28.270   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(22)
+09-26 05:29:28.334   532   618 D ActivityManager: freezing 2085 com.android.calendar
+09-26 05:29:28.386   532   618 D ActivityManager: freezing 2113 com.android.camera2
+09-26 05:29:28.511   532   618 D ActivityManager: freezing 2132 com.android.contacts
+09-26 05:29:28.563   532   618 D ActivityManager: freezing 2190 com.android.dynsystem:dynsystem
+09-26 05:29:28.563   532   618 D ActivityManager: freezing 2188 com.android.localtransport
+09-26 05:29:28.563   532   618 D ActivityManager: freezing 2151 com.android.dynsystem
+09-26 05:29:28.563   532   618 D ActivityManager: freezing 1101 com.android.settings
+09-26 05:29:28.564   532   618 D ActivityManager: freezing 1715 com.android.keychain
+09-26 05:29:28.641  2510  2537 I godot   : PROBE_TICK sec=9 fps=14
+09-26 05:29:28.947   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(22)
+09-26 05:29:29.017   532   618 D ActivityManager: freezing 2256 com.android.rkpdapp
+09-26 05:29:29.107   532   618 D ActivityManager: freezing 2293 com.android.statementservice
+09-26 05:29:29.216   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(5)
+09-26 05:29:29.225  2510  2537 D EGL_emulation: app_time_stats: avg=62.67ms min=46.60ms max=75.13ms count=14
+09-26 05:29:29.592  2510  2537 I godot   : PROBE_TICK sec=10 fps=14
+09-26 05:29:29.783   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(1)
+09-26 05:29:30.129   532   619 D OomAdjuster: Not killing cached processes
+09-26 05:29:30.191   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(32)
+09-26 05:29:30.274  2510  2537 D EGL_emulation: app_time_stats: avg=61.42ms min=44.46ms max=78.95ms count=15
+09-26 05:29:30.327   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(28)
+09-26 05:29:30.559   465  2585 D BufferPoolAccessor2.0: bufferpool2 0x796b8fba3318 : 2(1944000 size) total buffers - 1(972000 size) used buffers - 134/136 (recycle/alloc) - 2/136 (fetch/transfer)
+09-26 05:29:30.643  2510  2537 I godot   : PROBE_TICK sec=11 fps=14
+09-26 05:29:30.702   532  2999 D CompatibilityChangeReporter: Compat change id reported: 168419799; UID 10141; state: DISABLED
+09-26 05:29:30.703   532  2999 D CompatibilityChangeReporter: Compat change id reported: 273564678; UID 10141; state: DISABLED
+09-26 05:29:30.703   532  2999 D CompatibilityChangeReporter: Compat change id reported: 184838306; UID 10141; state: DISABLED
+09-26 05:29:30.703   532  2999 D CompatibilityChangeReporter: Compat change id reported: 185004937; UID 10141; state: DISABLED
+09-26 05:29:30.841  3029  3029 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+09-26 05:29:30.841  3029  3029 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+09-26 05:29:30.951   155   155 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+09-26 05:29:31.148     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+09-26 05:29:30.952  3029  3033 I Gralloc4: mapper 4.x is not supported
+09-26 05:29:31.120   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(2)
+09-26 05:29:31.239   860   860 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+09-26 05:29:31.270  2510  2510 D AutofillManager: Fill dialog is enabled:false, hints=[]
+09-26 05:29:31.343   532   562 D ActivityManager: sync unfroze 1101 com.android.settings for 3
+09-26 05:29:31.345  1101  1101 D BatteryUsageBroadcastReceiver: onReceive:android.intent.action.BATTERY_LEVEL_CHANGED
+09-26 05:29:31.348  1101  1101 D BatteryUsageBroadcastReceiver: fetch data because of event: ACTION_BATTERY_LEVEL_CHANGED
+09-26 05:29:31.350   532   785 D CompatibilityChangeReporter: Compat change id reported: 161145287; UID 1000; state: ENABLED
+09-26 05:29:31.352  1101  1101 D BatteryUsageBroadcastReceiver: cancel sendBroadcastToFetchUsageData when broadcastDelay is 2339988ms.
+09-26 05:29:31.387  2510  2537 D EGL_emulation: app_time_stats: avg=72.53ms min=22.15ms max=116.58ms count=13
+09-26 05:29:31.414  2510  2537 I godot   : PROBE_TOUCH x=384 y=768
+09-26 05:29:31.601   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(11)
+09-26 05:29:31.622  2510  2537 I godot   : PROBE_TICK sec=12 fps=12
+09-26 05:29:31.710   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(14)
+09-26 05:29:31.951   532   800 D ConnectivityService: handleLingerComplete for [100 CELLULAR]
+09-26 05:29:31.951   532   800 I ConnectivityService: Update capabilities for net 100 : -FOREGROUND
+09-26 05:29:31.952   349   399 I Netd    : Destroyed 1 sockets for netId 100 permission=1 in 1082us
+09-26 05:29:31.954   349   399 I netd    : networkSetPermissionForNetwork(100, 1) <3.17ms>
+09-26 05:29:32.144   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(35)
+09-26 05:29:32.325   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(22)
+09-26 05:29:32.453  2510  2537 D EGL_emulation: app_time_stats: avg=67.59ms min=51.95ms max=95.95ms count=14
+09-26 05:29:32.594  2510  2537 I godot   : PROBE_TICK sec=13 fps=13
+09-26 05:29:32.714   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(32)
+09-26 05:29:33.003   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(26)
+09-26 05:29:33.187   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(33)
+09-26 05:29:33.347  2510  2537 I godot   : PROBE_TOUCH x=230 y=960
+09-26 05:29:33.364   872   872 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+09-26 05:29:33.419  2510  2537 I godot   : PROBE_DRAG x=265 y=960
+09-26 05:29:33.479  2510  2537 D EGL_emulation: app_time_stats: avg=65.28ms min=49.75ms max=77.56ms count=14
+09-26 05:29:33.487  2510  2537 I godot   : PROBE_DRAG x=359 y=960
+09-26 05:29:33.527   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(33)
+09-26 05:29:33.554  2510  2537 I godot   : PROBE_DRAG x=428 y=960
+09-26 05:29:33.648  2510  2537 I godot   : PROBE_DRAG x=528 y=960
+09-26 05:29:33.648  2510  2537 I godot   : PROBE_TICK sec=14 fps=14
+09-26 05:29:33.976   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(4)
+09-26 05:29:34.180   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(35)
+09-26 05:29:34.490   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(40)
+09-26 05:29:34.493  2510  2537 D EGL_emulation: app_time_stats: avg=62.99ms min=46.41ms max=76.41ms count=14
+09-26 05:29:34.522   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(2)
+09-26 05:29:34.629  2510  2537 I godot   : PROBE_TICK sec=15 fps=14
+09-26 05:29:34.953   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(2)
+09-26 05:29:35.178   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(8)
+09-26 05:29:35.263   532   785 D WifiNl80211Manager: Scan result ready event
+09-26 05:29:35.263   532   785 D WifiNative: Scan result ready event
+09-26 05:29:35.337   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(1)
+09-26 05:29:35.517  2510  2537 D EGL_emulation: app_time_stats: avg=71.78ms min=56.22ms max=91.42ms count=12
+09-26 05:29:35.588  2510  2537 I godot   : PROBE_TICK sec=16 fps=12
+09-26 05:29:35.721   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(6)
+09-26 05:29:35.836   465  2585 D BufferPoolAccessor2.0: bufferpool2 0x796b8fba3318 : 2(1944000 size) total buffers - 1(972000 size) used buffers - 202/204 (recycle/alloc) - 4/204 (fetch/transfer)
+09-26 05:29:36.179   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(32)
+09-26 05:29:36.358   872   872 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+09-26 05:29:36.382   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(29)
+09-26 05:29:36.540  2510  2537 D EGL_emulation: app_time_stats: avg=57.38ms min=42.11ms max=74.26ms count=15
+09-26 05:29:36.624  2510  2537 I godot   : PROBE_TICK sec=17 fps=14
+09-26 05:29:36.719   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(24)
+09-26 05:29:36.793  3282  3282 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+09-26 05:29:36.794  3282  3282 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+09-26 05:29:37.099     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+09-26 05:29:36.936   155   155 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+09-26 05:29:36.937  3282  3286 I Gralloc4: mapper 4.x is not supported
+09-26 05:29:37.125   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(18)
+09-26 05:29:37.154   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(6)
+09-26 05:29:37.463   872   872 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+09-26 05:29:37.467   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(19)
+09-26 05:29:37.556  2510  2537 D EGL_emulation: app_time_stats: avg=66.67ms min=49.40ms max=102.67ms count=13
+09-26 05:29:37.636  2510  2537 I godot   : PROBE_TICK sec=18 fps=12
+09-26 05:29:37.762   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(1)
+09-26 05:29:38.389   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(31)
+09-26 05:29:38.421   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(5)
+09-26 05:29:38.578  2510  2537 D EGL_emulation: app_time_stats: avg=67.14ms min=55.54ms max=82.67ms count=13
+09-26 05:29:38.660  2510  2537 I godot   : PROBE_TICK sec=19 fps=14
+09-26 05:29:38.807   532   792 E WifiHealthMonitor:  Hit PackageManager exception
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: android.content.pm.PackageManager$NameNotFoundException: No module info for package: com.android.wifi
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at android.app.ApplicationPackageManager.getModuleInfo(ApplicationPackageManager.java:1190)
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.getWifiStackVersion(WifiHealthMonitor.java:367)
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.extractCurrentSoftwareBuildInfo(WifiHealthMonitor.java:588)
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.postBootSwBuildCheck(WifiHealthMonitor.java:523)
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.postBootDetectionHandler(WifiHealthMonitor.java:514)
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.-$$Nest$mpostBootDetectionHandler(WifiHealthMonitor.java:0)
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor$2.onAlarm(WifiHealthMonitor.java:190)
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at android.app.AlarmManager$ListenerWrapper.run(AlarmManager.java:375)
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at android.os.Handler.handleCallback(Handler.java:958)
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at com.android.server.wifi.RunnerHandler.dispatchMessage(RunnerHandler.java:122)
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at android.os.Looper.loopOnce(Looper.java:205)
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at android.os.Looper.loop(Looper.java:294)
+09-26 05:29:38.807   532   792 E WifiHealthMonitor: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+09-26 05:29:38.879   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(49)
+09-26 05:29:38.964   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(16)
+09-26 05:29:39.126   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(17)
+09-26 05:29:39.535   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(22)
+09-26 05:29:39.575   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(16)
+09-26 05:29:39.618  2510  2537 D EGL_emulation: app_time_stats: avg=64.05ms min=43.92ms max=78.06ms count=14
+09-26 05:29:39.618  2510  2537 I godot   : PROBE_TICK sec=20 fps=13
+09-26 05:29:40.006   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(47)
+09-26 05:29:40.158   532   618 D ActivityManager: freezing 877 com.android.permissioncontroller
+09-26 05:29:40.345   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(17)
+09-26 05:29:40.504   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(15)
+09-26 05:29:40.617  2510  2537 I godot   : PROBE_TICK sec=21 fps=14
+09-26 05:29:40.619   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(9)
+09-26 05:29:40.684  2510  2537 D EGL_emulation: app_time_stats: avg=61.22ms min=16.90ms max=90.27ms count=15
+09-26 05:29:40.731   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(27)
+09-26 05:29:40.913   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(50)
+09-26 05:29:41.004   465  2585 D BufferPoolAccessor2.0: bufferpool2 0x796b8fba3318 : 2(1944000 size) total buffers - 1(972000 size) used buffers - 272/274 (recycle/alloc) - 4/273 (fetch/transfer)
+09-26 05:29:41.164   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(5)
+09-26 05:29:41.365   532   618 D ActivityManager: freezing 1101 com.android.settings
+09-26 05:29:41.653     0     0 W healthd : battery l=100 v=5000 t=25.0 h=2 st=2 c=900000 fc=3000000 cc=10 chg=a
+09-26 05:29:41.637   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(7)
+09-26 05:29:41.665  2510  2537 I godot   : PROBE_TICK sec=22 fps=14
+09-26 05:29:41.740  2510  2537 D EGL_emulation: app_time_stats: avg=64.21ms min=26.86ms max=83.51ms count=14
+09-26 05:29:41.845   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(60)
+09-26 05:29:42.364   872   872 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+09-26 05:29:42.542  3520  3520 W BpBinder: Linking to death on android.gui.ISurfaceComposer but there are no threads (yet?) listening to incoming transactions. See ProcessState::startThreadPool and ProcessState::setThreadPoolMaxThreadCount. Generally you should setup the binder threadpool before other initialization steps.
+09-26 05:29:42.542  3520  3520 W ProcessState: Extra binder thread started, but 0 threads requested. Do not use *startThreadPool when zero threads are requested.
+09-26 05:29:42.592  2510  2537 I godot   : PROBE_TICK sec=23 fps=13
+09-26 05:29:42.599   155   155 I hwservicemanager: getTransport: Cannot find entry android.hardware.graphics.mapper@4.0::IMapper/default in either framework or device VINTF manifest.
+09-26 05:29:42.599  3520  3527 I Gralloc4: mapper 4.x is not supported
+09-26 05:29:42.796     0     0 I servicemanager: Could not find android.hardware.graphics.allocator.IAllocator/default in the VINTF manifest.
+09-26 05:29:42.747  2510  2537 D EGL_emulation: app_time_stats: avg=68.57ms min=50.69ms max=100.12ms count=13
+09-26 05:29:43.273   860   860 I wpa_supplicant: wlan0: CTRL-EVENT-BEACON-LOSS 
+09-26 05:29:43.613   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(11)
+09-26 05:29:43.614  2510  2537 I godot   : PROBE_TICK sec=24 fps=13
+09-26 05:29:43.819  2510  2537 D EGL_emulation: app_time_stats: avg=61.41ms min=40.96ms max=80.93ms count=15
+09-26 05:29:43.931   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(21)
+09-26 05:29:44.023   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(4)
+09-26 05:29:44.639  2510  2537 I godot   : PROBE_TICK sec=25 fps=14
+09-26 05:29:44.880  2510  2537 D EGL_emulation: app_time_stats: avg=66.95ms min=48.33ms max=93.39ms count=14
+09-26 05:29:45.155   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(4)
+09-26 05:29:45.291   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(21)
+09-26 05:29:45.382   872   872 D StatusBarIconController: ignoring old pipeline callback because the new wifi icon is enabled
+09-26 05:29:45.620  2510  2537 I godot   : PROBE_TICK sec=26 fps=13
+09-26 05:29:45.890  2510  2537 D EGL_emulation: app_time_stats: avg=63.24ms min=48.51ms max=85.35ms count=14
+09-26 05:29:46.198   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(21)
+09-26 05:29:46.235   465  2585 D BufferPoolAccessor2.0: bufferpool2 0x796b8fba3318 : 2(1944000 size) total buffers - 1(972000 size) used buffers - 342/344 (recycle/alloc) - 4/344 (fetch/transfer)
+09-26 05:29:46.451   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(9)
+09-26 05:29:46.638  2510  2537 I godot   : PROBE_TICK sec=27 fps=14
+09-26 05:29:46.721   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(5)
+09-26 05:29:46.919  2510  2537 D EGL_emulation: app_time_stats: avg=58.98ms min=47.39ms max=71.51ms count=15
+09-26 05:29:47.186   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(57)
+09-26 05:29:47.498   872   872 D StatusBarIconController: ignoring old pipeline callbacks, because the new mobile icons are enabled
+09-26 05:29:47.502   872   954 D EGL_emulation: app_time_stats: avg=8073.05ms min=5.51ms max=31874.38ms count=4
+09-26 05:29:47.602  2510  2537 I godot   : PROBE_TICK sec=28 fps=14
+09-26 05:29:47.715   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(11)
+09-26 05:29:47.783   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(30)
+09-26 05:29:47.923  2510  2537 D EGL_emulation: app_time_stats: avg=74.12ms min=55.32ms max=91.35ms count=12
+09-26 05:29:47.941   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(6)
+09-26 05:29:48.531   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(1)
+09-26 05:29:48.632  2510  2537 I godot   : PROBE_TICK sec=29 fps=11
+09-26 05:29:48.797   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(29)
+09-26 05:29:48.851   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(25)
+09-26 05:29:48.969  2510  2537 D EGL_emulation: app_time_stats: avg=72.32ms min=57.61ms max=83.43ms count=12
+09-26 05:29:49.316   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(30)
+09-26 05:29:49.474   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(31)
+09-26 05:29:49.655  2510  2537 I godot   : PROBE_TICK sec=30 fps=13
+09-26 05:29:49.848  2575  2599 I MPEG4Writer: setStartTimestampUs: 48622176
+09-26 05:29:49.848  2575  2600 I MPEG4Writer: setStartTimestampUs: 48622176
+09-26 05:29:49.848  2575  2599 V MediaWriter: Track event err/info msg:101, trackId:2, type:1000,val:-1011
+09-26 05:29:49.848  2575  2599 W MPEG4Writer: 0-duration samples found: 1
+09-26 05:29:49.848  2575  2600 V MediaWriter: Track event err/info msg:101, trackId:3, type:1000,val:-1011
+09-26 05:29:49.848  2575  2600 W MPEG4Writer: 0-duration samples found: 1
+09-26 05:29:49.848  2575  2599 I MPEG4Writer: Received total/0-length (1/0) buffers and encoded 1 frames. - Metadata
+09-26 05:29:49.848  2575  2600 I MPEG4Writer: Received total/0-length (1/0) buffers and encoded 1 frames. - Metadata
+09-26 05:29:49.848  2575  2575 D MPEG4Writer: reset()
+09-26 05:29:49.849  2575  2575 D MPEG4Writer: Video track stopping. Stop source
+09-26 05:29:49.849  2575  2575 D MPEG4Writer: Video track source stopping
+09-26 05:29:49.849  2575  2575 D MPEG4Writer: Video track source stopped
+09-26 05:29:49.849  2575  2598 V MediaWriter: Track event err/info msg:101, trackId:1, type:1000,val:-1011
+09-26 05:29:49.849  2575  2598 I MPEG4Writer: Received total/0-length (390/0) buffers and encoded 390 frames. - Video
+09-26 05:29:49.849  2575  2575 D MPEG4Writer: Video track stopped. Status:0. Stop source
+09-26 05:29:49.849  2575  2575 D MPEG4Writer: Metadata track stopping. Stop source
+09-26 05:29:49.849  2575  2575 D MPEG4Writer: Metadata track source stopping
+09-26 05:29:49.849  2575  2575 D MPEG4Writer: Metadata track source stopped
+09-26 05:29:49.850  2575  2575 D MPEG4Writer: Metadata track stopped. Status:0. Stop source
+09-26 05:29:49.850  2575  2575 D MPEG4Writer: Metadata track stopping. Stop source
+09-26 05:29:49.850  2575  2575 D MPEG4Writer: Metadata track source stopping
+09-26 05:29:49.850  2575  2575 D MPEG4Writer: Metadata track source stopped
+09-26 05:29:49.850  2575  2575 D MPEG4Writer: Metadata track stopped. Status:0. Stop source
+09-26 05:29:49.850  2575  2575 D MPEG4Writer: Duration from tracks range is [0, 29813305] us
+09-26 05:29:49.850  2575  2596 D MPEG4Writer: 1 chunks are written in the last batch
+09-26 05:29:49.850  2575  2575 D MPEG4Writer: WriterThread stopped. Status:0
+09-26 05:29:49.850  2575  2575 I MPEG4Writer: Adjust the moov start time from 48622176 us -> 48622176 us
+09-26 05:29:49.850  2575  2575 I MPEG4Writer: The mp4 file will not be streamable.
+09-26 05:29:49.850  2575  2575 I MPEG4Writer: MOOV atom was written to the file
+09-26 05:29:49.850  2575  2575 D MPEG4Writer: release()
+09-26 05:29:49.850  2575  2575 D MPEG4Writer: ftruncate mPreAllocateFileEndOffset:1569079 mOffset:1567662 mMdatEndOffset:1560907 diff:1417
+09-26 05:29:49.862  2575  2575 D MPEG4Writer: final fsync() takes 11 ms, file size 1567662
+09-26 05:29:49.874  2575  2575 D MPEG4Writer: MP4WtrCtrlHlpLooper stopped
+09-26 05:29:49.874  2575  2575 D MPEG4Writer: Top 5 write durations(microseconds): #1:19 #2:30 #3:51 #4:5884 #5:146749
+09-26 05:29:49.883   402   495 D AudioFlinger: mixer(0x7dda8b626930) throttle end: throttle time(13)
+09-26 05:29:49.913   465  2587 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+09-26 05:29:49.913   465  2587 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+09-26 05:29:49.917  2575  3819 I hw-BpHwBinder: onLastStrongRef automatically unlinking death recipients
+09-26 05:29:49.917  2575  2575 D MediaCodec: flushMediametrics
+09-26 05:29:49.919  2575  2578 E BufferQueueProducer: [GraphicBufferSource](id:a0f00000000,api:1,p:415,c:2575) queueBuffer: BufferQueue has been abandoned
+09-26 05:29:49.919   415   415 E Surface : queueBuffer: error queuing buffer, -19
+09-26 05:29:49.920   415   415 E CompositionEngine: Error when queueing buffer for display [ScreenRecorder]: -19
+09-26 05:29:49.920  2575  2578 E BufferQueueProducer: [GraphicBufferSource](id:a0f00000000,api:1,p:415,c:2575) cancelBuffer: BufferQueue has been abandoned
+09-26 05:29:49.950  2575  2578 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+09-26 05:29:49.998   532  2999 I ActivityManager: Broadcasting: Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x400000 }
+09-26 05:29:49.999   532  2999 I ActivityManager: Enqueued broadcast Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x400000 }: 0
+09-26 05:29:49.999   532   562 D OomAdjuster: Not killing cached processes
+09-26 05:29:50.001  2510  2537 D EGL_emulation: app_time_stats: avg=66.80ms min=42.93ms max=83.15ms count=14
+09-26 05:29:50.009   532   551 I ActivityManager: Broadcast completed: result=0
+09-26 05:29:50.014  2575  2575 D ScreenRecord: success
+09-26 05:29:50.018  2575  2575 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+09-26 05:29:50.022  2575  2575 I BpBinder: onLastStrongRef automatically unlinking death recipients: 
+09-26 05:29:50.027   465  2588 D BufferPoolAccessor2.0: Destruction - bufferpool2 0x796b8fba3318 cached: 0/0M, 0/0% in use; allocs: 391, 99% recycled; transfers: 391, 99% unfetched
+09-26 05:29:50.034  1554  2025 I MediaProvider: Begin Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+09-26 05:29:50.148  1554  2025 I MediaProvider: End Intent { act=android.intent.action.MEDIA_SCANNER_SCAN_FILE dat=file:///... flg=0x1400010 cmp=com.android.providers.media.module/com.android.providers.media.MediaService }
+09-26 05:29:50.373     0     0 I logd    : logdr: UID=2000 GID=2000 PID=3828 n tail=0 logMask=99 pid=0 start=0ns deadline=0ns
