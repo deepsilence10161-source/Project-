@@ -158,7 +158,7 @@ jobs:
         with: { name: 'res-desktop-${{ matrix.mode }}', path: out/ }
 
   emulator:
-    name: Emu ${{ matrix.variant }} / ${{ matrix.gpu }}
+    name: Emu ${{ matrix.variant }} / ${{ matrix.gpu }} / r${{ matrix.rep }}
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 30
@@ -166,8 +166,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        variant: [compat, mobile, lowlim]
-        gpu: [swiftshader_indirect, swiftshader, swangle, lavapipe, software, host]
+        # v2: only the modes that rendered in v1, each repeated 3x to prove
+        # the result is reproducible and not a lucky run.
+        variant: [compat, lowlim]
+        gpu: [lavapipe, host]
+        rep: [1, 2, 3]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/download-artifact@v4
@@ -206,7 +209,7 @@ jobs:
           fi
       - uses: actions/upload-artifact@v4
         if: always()
-        with: { name: 'res-emu-${{ matrix.variant }}-${{ matrix.gpu }}', path: out/ }
+        with: { name: 'res-emu-${{ matrix.variant }}-${{ matrix.gpu }}-r${{ matrix.rep }}', path: out/ }
 
   report:
     name: Render Lab report
@@ -220,6 +223,7 @@ jobs:
       - name: Build report
         run: |
           python3 probe/ci/report.py results site
+          for d in results/res-emu-*; do cp "$d"/probe.mp4 "site/$(basename $d)/" 2>/dev/null || true; done
           for d in results/res-desktop-*; do cp "$d"/movie.mp4 "site/$(basename $d)/" 2>/dev/null || true; done
           ls site
       - uses: actions/upload-artifact@v4

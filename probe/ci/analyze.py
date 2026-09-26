@@ -27,12 +27,15 @@ res["probe_ready"] = (re.findall(r"PROBE_READY (.*)", log) or [""])[-1].strip()
 ticks = re.findall(r"PROBE_TICK sec=(\d+) fps=(\d+)", log)
 res["probe_ticks"] = len(ticks)
 res["fps_last"] = int(ticks[-1][1]) if ticks else None
+res["touch_events"] = len(re.findall(r"PROBE_TOUCH", log))
+res["drag_events"] = len(re.findall(r"PROBE_DRAG", log))
+res["video_bytes"] = os.path.getsize(os.path.join(out, "probe.mp4")) if os.path.exists(os.path.join(out, "probe.mp4")) else 0
 res["engine_api_line"] = (re.findall(r"((?:OpenGL|Vulkan) API[^\r\n]*)", log) or [""])[-1].strip()
 res["shader_link_errors"] = len(re.findall(r"Program linking failed", log))
 res["uniform_limit_errors"] = len(re.findall(r"GL_MAX_FRAGMENT_UNIFORM_VECTORS", log))
 res["crash"] = bool(re.search(r"FATAL EXCEPTION|Process: com\.probe\.render, PID|ERROR: System\.[A-Za-z]+Exception|Fatal signal", log))
 
-shots = sorted(glob.glob(os.path.join(out, "shot-*.png")), key=lambda p: int(re.findall(r"(\d+)s", p)[0]))
+shots = sorted(glob.glob(os.path.join(out, "shot-*.png")), key=lambda p: int(re.findall(r"shot-(\d+)s", p)[0]))
 res["screenshots"] = [os.path.basename(s) for s in shots]
 res["pixels"] = None
 if shots:

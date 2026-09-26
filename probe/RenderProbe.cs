@@ -47,6 +47,20 @@ public partial class RenderProbe : Node3D
         if (_quitAt > 0 && _sec >= _quitAt) GetTree().Quit();
     }
 
+    // Proves real touch input reaches the engine (adb input tap/swipe on the emulator).
+    public override void _Input(InputEvent e)
+    {
+        if (e is InputEventScreenTouch t && t.Pressed)
+        {
+            GD.Print($"PROBE_TOUCH x={t.Position.X:F0} y={t.Position.Y:F0}");
+            _label.Text = $"TOUCH {t.Position.X:F0},{t.Position.Y:F0}";
+        }
+        else if (e is InputEventScreenDrag d)
+        {
+            GD.Print($"PROBE_DRAG x={d.Position.X:F0} y={d.Position.Y:F0}");
+        }
+    }
+
     private async void SaveShot(string path)
     {
         await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
