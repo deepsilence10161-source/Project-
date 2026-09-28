@@ -12,7 +12,7 @@ using NeonDash.Core;
 /// </summary>
 public partial class PlayerView : Node2D
 {
-    private const float SpriteScale = 0.75f;     // 339 px texture -> ~254 px on screen
+    private const float SpriteScale = 0.85f;     // 339 px texture -> ~288 px on screen
     private const float FeetY = 48f;             // ground line, relative to the node origin
     private const float RunFrameSeconds = 0.13f; // at base speed; faster when running faster
 

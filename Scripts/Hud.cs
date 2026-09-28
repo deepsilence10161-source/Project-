@@ -22,7 +22,9 @@ public partial class Hud : CanvasLayer
     public Color CentreDrawColour => _centre.GetThemeColor("font_color") * _centre.Modulate;
 
     private TextureRect _portrait = null!;
+    private ColorRect _dim = null!;
     public bool PortraitLoaded { get; private set; }
+    public bool DimVisible => _dim.Visible;
 
     public override void _Ready()
     {
@@ -44,6 +46,21 @@ public partial class Hud : CanvasLayer
             CustomMinimumSize = new Vector2(340f, 506f),
             TextureFilter = CanvasItem.TextureFilterEnum.Linear,
         };
+        _portrait.MouseFilter = Control.MouseFilterEnum.Ignore;
+
+        // Dims the playfield behind title / game-over so the text always reads
+        // (a red "GAME OVER" over a pink obstacle was nearly invisible).
+        _dim = new ColorRect
+        {
+            Name = "Dim",
+            Color = new Color(0.02f, 0.02f, 0.07f, 0.62f),
+            MouseFilter = Control.MouseFilterEnum.Ignore,
+        };
+        _dim.SetAnchorsPreset(Control.LayoutPreset.FullRect);
+        var centre = GetNode<Control>("Centre");
+        AddChild(_dim);
+        MoveChild(_dim, centre.GetIndex());
+
         var box = GetNode<VBoxContainer>("Centre/Box");
         box.AddChild(_portrait);
         box.MoveChild(_portrait, 0);
@@ -77,6 +94,7 @@ public partial class Hud : CanvasLayer
         SetCentreColour(TitleColour);
         _sub.Visible = true;
         _portrait.Visible = true;
+        _dim.Visible = true;
     }
 
     public void ShowPlaying()
@@ -84,6 +102,7 @@ public partial class Hud : CanvasLayer
         _centre.Text = "";
         _sub.Text = "";
         _portrait.Visible = false;
+        _dim.Visible = false;
     }
 
     public void ShowGameOver(int final, int best, bool isNewBest)
@@ -91,6 +110,7 @@ public partial class Hud : CanvasLayer
         _centre.Text = "GAME OVER";
         SetCentreColour(GameOverColour);
         _portrait.Visible = true;
+        _dim.Visible = true;
         // Bug fix: this used to test `best >= final`, which is always true
         // (best already includes this run), so "NEW BEST" could never show.
         _sub.Text = isNewBest

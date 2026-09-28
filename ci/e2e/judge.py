@@ -142,6 +142,18 @@ except Exception as _e:  # noqa
 check("player_sprite_visible", "बीच वाली lane में लड़की सच में दिख रही है (pixels)",
       isinstance(sprite_px, float) and sprite_px > 15,
       f"player की जगह पर चमकीले pixels {sprite_px}%")
+menu_t = [t for t in ticks if t.get("state") == "Menu"]
+play_t = [t for t in ticks if t.get("state") == "Playing"]
+over_t = [t for t in ticks if t.get("state") == "GameOver"]
+check("title_clean", "Title पर game वाली लड़की छिपी, पीछे dim",
+      menu_t and all(t.get("player_visible") == "False" and t.get("dim") == "True" for t in menu_t),
+      [f"visible={t.get('player_visible')} dim={t.get('dim')}" for t in menu_t[:3]] or "menu tick नहीं")
+check("play_clear", "खेलते समय लड़की दिखे और dim हटे",
+      play_t and all(t.get("player_visible") == "True" and t.get("dim") == "False" for t in play_t),
+      [f"visible={t.get('player_visible')} dim={t.get('dim')}" for t in play_t[:3]] or "playing tick नहीं")
+check("gameover_dim", "Game Over पर पीछे dim (लिखावट साफ़)",
+      over_t and all(t.get("dim") == "True" for t in over_t),
+      [f"dim={t.get('dim')}" for t in over_t[:3]] or "game-over tick नहीं")
 rt = find(r"state from=GameOver to=Playing")
 check("retry", "Tap से दोबारा खेल शुरू हुआ", rt, rt[:1] or "नहीं मिला")
 check("no_crash", "कोई crash / C# exception नहीं", not crash_sig, crash_sig[:5] or "साफ़")

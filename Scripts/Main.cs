@@ -59,6 +59,7 @@ public partial class Main : Node2D
         _hud.SetHighScore(_score.HighScore);
         _hud.ShowTitle();
         _player.Apply(_lanes.RenderX, 0f, PixelsPerMetre, PlayerScreenY);
+        _player.Visible = false;   // title shows her portrait, not the in-game runner
 
         _state.StateChanged += (from, to) => TestProbe.Emit("state", $"from={from} to={to}");
         TestProbe.Emit("ready", $"best={_score.HighScore} viewport={GetViewportRect().Size.X:F0}x{GetViewportRect().Size.Y:F0}");
@@ -139,6 +140,7 @@ public partial class Main : Node2D
 
         _state.Start();
         _player.Reset();
+        _player.Visible = true;
         _hud.ShowPlaying();
     }
 
@@ -157,7 +159,7 @@ public partial class Main : Node2D
             TestProbe.Emit("tick",
                 $"state={_state.Current} score={_score.Score} lane={_lanes.CurrentLane} " +
                 $"obstacles={_obstacles.Count} fps={Engine.GetFramesPerSecond():F0} " +
-                $"hudbest={_hud.ShownHighScore} runswaps={_player.RunSwaps}");
+                $"hudbest={_hud.ShownHighScore} runswaps={_player.RunSwaps} player_visible={_player.Visible} dim={_hud.DimVisible}");
         }
 
         if (!_state.IsPlaying) return;
