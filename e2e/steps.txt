@@ -1,0 +1,25 @@
+[22:02:01] install build/NeonDash-debug.apk
+[22:02:02] launch
+[22:02:05]   saw '^ND_EVT ready' (x1) after 2s
+[22:02:08] screen 768x1280
+[22:02:08]   screenshot 01-title (24736 bytes)
+[22:02:09] tap to start
+[22:02:09]   saw 'state from=Menu to=Playing' (x1) after 0s
+[22:02:11]   screenshot 02-playing (13317 bytes)
+[22:02:11] swipe left
+[22:02:11]   saw 'lane dir=Left' (x1) after 0s
+[22:02:12]   screenshot 03-after-left (13923 bytes)
+[22:02:12] swipe right x2
+[22:02:13]   saw 'lane dir=Right' (x1) after 0s
+[22:02:14]   screenshot 04-after-right (13470 bytes)
+[22:02:14] swipe up (jump)
+[22:02:14]   saw '^ND_EVT jump' (x1) after 0s
+[22:02:14]   screenshot 05-jump (13895 bytes)
+[22:02:14] no input: wait for the player to hit an obstacle
+[22:02:20]   saw '^ND_EVT crash' (x1) after 5s
+[22:02:22]   screenshot 06-game-over (33269 bytes)
+[22:02:22] tap to retry
+[22:02:22]   saw 'state from=GameOver to=Playing' (x1) after 0s
+[22:02:26]   screenshot 07-retry-running (14695 bytes)
+[22:02:29] video 1620148 bytes
+[22:02:29] events captured: 26

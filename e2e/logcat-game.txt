@@ -1,0 +1,87 @@
+09-28 22:02:02.122   874   874 I SafetyLabelChangedBroadcastReceiver: received broadcast packageName: com.neondash.game, current user: UserHandle{0}, packageChangeEvent: NEW_INSTALL, intent user: UserHandle{0}
+09-28 22:02:02.150  1099  1387 D ImsResolver: maybeAddedImsService, packageName: com.neondash.game
+09-28 22:02:02.159  1099  1099 D CarrierSvcBindHelper: onPackageModified: com.neondash.game
+09-28 22:02:02.170  1099  1387 D ImsResolver: maybeAddedImsService, packageName: com.neondash.game
+09-28 22:02:02.198   532   956 I ActivityTaskManager: START u0 {flg=0x10000000 cmp=com.neondash.game/com.godot.game.GodotAppLauncher} with LAUNCH_SINGLE_INSTANCE_PER_TASK from uid 2000 (BAL_ALLOW_PERMISSION) result code=0
+09-28 22:02:02.215   873   914 V WindowManagerShell: Transition requested: android.os.BinderProxy@1ed919f TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=8 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=com.neondash.game/com.godot.game.GodotAppLauncher } baseActivity=ComponentInfo{com.neondash.game/com.godot.game.GodotApp} topActivity=ComponentInfo{com.neondash.game/com.godot.game.GodotApp} origActivity=ComponentInfo{com.neondash.game/com.godot.game.GodotAppLauncher} realActivity=ComponentInfo{com.neondash.game/com.godot.game.GodotApp} numActivities=1 lastActiveTime=45649 supportsMultiWindow=true resizeMode=2 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{android.window.IWindowContainerToken$Stub$Proxy@47fa2ec} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=null topActivityInfo=ActivityInfo{c8476b5 com.godot.game.GodotAppLauncher} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+09-28 22:02:02.228   532   948 D CoreBackPreview: Window{c848749 u0 Splash Screen com.neondash.game}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@e6f8d14, mPriority=0, mIsAnimationCallback=false}
+09-28 22:02:02.232   873   965 E OpenGLRenderer: Unable to match the desired swap behavior.
+09-28 22:02:02.243   532   564 I ActivityManager: Start proc 2448:com.neondash.game/u0a141 for next-top-activity {com.neondash.game/com.godot.game.GodotAppLauncher}
+09-28 22:02:02.289   532   549 V WindowManager: Sent Transition #7 createdAt=09-28 22:02:02.186 via request=TransitionRequestInfo { type = OPEN, triggerTask = TaskInfo{userId=0 taskId=8 displayId=0 isRunning=true baseIntent=Intent { flg=0x10000000 cmp=com.neondash.game/com.godot.game.GodotAppLauncher } baseActivity=ComponentInfo{com.neondash.game/com.godot.game.GodotApp} topActivity=ComponentInfo{com.neondash.game/com.godot.game.GodotApp} origActivity=ComponentInfo{com.neondash.game/com.godot.game.GodotAppLauncher} realActivity=ComponentInfo{com.neondash.game/com.godot.game.GodotApp} numActivities=1 lastActiveTime=45649 supportsMultiWindow=true resizeMode=2 isResizeable=true minWidth=-1 minHeight=-1 defaultMinSize=220 token=WCT{RemoteToken{7372509 Task{60cd1ab #8 type=standard A=10141:com.neondash.game}}} topActivityType=1 pictureInPictureParams=null shouldDockBigOverlays=false launchIntoPipHostTaskId=-1 lastParentTaskIdBeforePip=-1 displayCutoutSafeInsets=null topActivityInfo=ActivityInfo{db9b30e com.godot.game.GodotAppLauncher} launchCookies=[] positionInParent=Point(0, 0) parentTaskId=-1 isFocused=false isVisible=false isVisibleRequested=false isSleeping=false topActivityInSizeCompat=false topActivityEligibleForLetterboxEducation= false topActivityLetterboxed= false isFromDoubleTap= false topActivityLetterboxVerticalPosition= -1 topActivityLetterboxHorizontalPosition= -1 topActivityLetterboxWidth=-1 topActivityLetterboxHeight=-1 locusId=null displayAreaFeatureId=1 cameraCompatControlState=hidden}, remoteTransition = null, displayChange = null }
+09-28 22:02:02.289   532   549 V WindowManager:     info={id=7 t=OPEN f=0x0 trk=0 r=[0@Point(0, 0)] c=[{WCT{RemoteToken{7372509 Task{60cd1ab #8 type=standard A=10141:com.neondash.game}}} m=OPEN f=NONE leash=Surface(name=Task=8)/@0xe4a3ad3 sb=Rect(0, 0 - 768, 1280) eb=Rect(0, 0 - 768, 1280) d=0},{WCT{RemoteToken{773b12f Task{be8c62 #1 type=home}}} m=TO_BACK f=SHOW_WALLPAPER leash=Surface(name=Task=1)/@0x494ed48 sb=Rect(0, 0 - 768, 1280) eb=Rect(0, 0 - 768, 1280) d=0}]}
+09-28 22:02:02.299  2448  2448 I m.neondash.game: Late-enabling -Xcheck:jni
+09-28 22:02:02.328  2448  2448 I m.neondash.game: Using CollectorTypeCC GC.
+09-28 22:02:02.334  2448  2448 W m.neondash.game: Unexpected CPU variant for x86: x86_64.
+09-28 22:02:02.334  2448  2448 W m.neondash.game: Known variants: atom, sandybridge, silvermont, goldmont, goldmont-plus, tremont, kabylake, default
+09-28 22:02:02.425  2448  2448 W ziparchive: Unable to open '/data/app/~~wgfSKglYprZzLZ_azotOeQ==/com.neondash.game-Nx0aMGiiR_M0XaOAWFU_GQ==/base.dm': No such file or directory
+09-28 22:02:02.425  2448  2448 W ziparchive: Unable to open '/data/app/~~wgfSKglYprZzLZ_azotOeQ==/com.neondash.game-Nx0aMGiiR_M0XaOAWFU_GQ==/base.dm': No such file or directory
+09-28 22:02:02.497  2448  2448 D nativeloader: Configuring clns-6 for other apk /data/app/~~wgfSKglYprZzLZ_azotOeQ==/com.neondash.game-Nx0aMGiiR_M0XaOAWFU_GQ==/base.apk. target_sdk_version=36, uses_libraries=, library_path=/data/app/~~wgfSKglYprZzLZ_azotOeQ==/com.neondash.game-Nx0aMGiiR_M0XaOAWFU_GQ==/lib/x86_64:/data/app/~~wgfSKglYprZzLZ_azotOeQ==/com.neondash.game-Nx0aMGiiR_M0XaOAWFU_GQ==/base.apk!/lib/x86_64, permitted_path=/data:/mnt/expand:/data/user/0/com.neondash.game
+09-28 22:02:02.503  2448  2448 V GraphicsEnvironment: ANGLE GameManagerService for com.neondash.game: false
+09-28 22:02:02.504  2448  2448 V GraphicsEnvironment: com.neondash.game is not listed in per-application setting
+09-28 22:02:02.558  2448  2448 D GodotActivity: Launch intent Intent { flg=0x10000000 cmp=com.neondash.game/com.godot.game.GodotAppLauncher } with parameters []
+09-28 22:02:02.720   532   952 D CoreBackPreview: Window{2439aa3 u0 com.neondash.game/com.godot.game.GodotAppLauncher}: Setting back callback OnBackInvokedCallbackInfo{mCallback=android.window.IOnBackInvokedCallback$Stub$Proxy@dc29159, mPriority=0, mIsAnimationCallback=false}
+09-28 22:02:02.756   873   965 E OpenGLRenderer: Unable to match the desired swap behavior.
+09-28 22:02:02.832  2448  2467 E OpenGLRenderer: Unable to match the desired swap behavior.
+09-28 22:02:02.834  2448  2481 I godot   : Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+09-28 22:02:02.892   532   549 W ziparchive: Unable to open '/data/app/~~wgfSKglYprZzLZ_azotOeQ==/com.neondash.game-Nx0aMGiiR_M0XaOAWFU_GQ==/base.dm': No such file or directory
+09-28 22:02:02.894   532   549 I ActivityTaskManager: Displayed com.neondash.game/com.godot.game.GodotAppLauncher for user 0: +713ms
+09-28 22:02:02.904   532   956 I ImeTracker: com.neondash.game:f48e853f: onRequestHide at ORIGIN_SERVER_HIDE_INPUT reason HIDE_UNSPECIFIED_WINDOW
+09-28 22:02:02.904   532   956 I ImeTracker: com.neondash.game:f48e853f: onCancelled at PHASE_SERVER_SHOULD_HIDE
+09-28 22:02:02.927   532  1797 W InputManager-JNI: Input channel object 'c848749 Splash Screen com.neondash.game (client)' was disposed without first being removed with the input manager!
+09-28 22:02:03.599  2448  2481 I godot   : OpenGL API OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.17841 git hash: 5fa2e61da947)) - Compatibility - Using Device: Google (Google Inc. (Mesa)) - Android Emulator OpenGL ES Translator (ANGLE (Mesa, Vulkan 1.4.318 (llvmpipe (LLVM 21.0.0 256 bits) (0x00000000)), llvmpipe-25.2.4))
+09-28 22:02:03.601  2448  2481 D m.neondash.game: PlayerBase::PlayerBase()
+09-28 22:02:03.601  2448  2481 D m.neondash.game: TrackPlayerBase::TrackPlayerBase()
+09-28 22:02:03.610  2448  2481 I godot   : 
+09-28 22:02:03.821  2448  2484 E SurfaceSyncGroup: Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(wmsSync-VRI[GodotAppLauncher]#1) as ready
+09-28 22:02:03.822  2448  2484 E SurfaceSyncGroup: Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(VRI[GodotAppLauncher]#2) as ready
+09-28 22:02:03.822  2448  2484 E SurfaceSyncGroup: Failed to receive transaction ready in 1000ms. Marking SurfaceSyncGroup(SurfaceView[com.neondash.game/com.godot.game.GodotAppLauncher]#0) as ready
+09-28 22:02:04.074  2448  2481 E godot   : WARNING: 2D MSAA is not yet supported for GLES3.
+09-28 22:02:04.077  2448  2481 E godot   :    at: render_target_set_msaa (drivers/gles3/storage/texture_storage.cpp:3210)
+09-28 22:02:05.062  2448  2481 I godot   : ND_EVT ready best=0 viewport=768x1280
+09-28 22:02:05.202   532  2002 E TaskPersister: File error accessing recents directory (directory doesn't exist?).
+09-28 22:02:07.339  2448  2481 I godot   : ND_EVT tick state=Menu score=0 lane=1 obstacles=0 fps=53 hudbest=0
+09-28 22:02:08.915   477  2533 E C2SoftAvcEnc: Unable to set air params = 0x1ad
+09-28 22:02:09.327  2448  2481 I godot   : ND_EVT tick state=Menu score=0 lane=1 obstacles=0 fps=46 hudbest=0
+09-28 22:02:09.750  2448  2481 I godot   : ND_EVT state from=Menu to=Playing
+09-28 22:02:11.224  2448  2481 I godot   : ND_EVT lane dir=Left to=0
+09-28 22:02:11.327  2448  2481 I godot   : ND_EVT settled lane=0 px=84 vw=768
+09-28 22:02:11.373  2448  2481 I godot   : ND_EVT tick state=Playing score=13 lane=0 obstacles=4 fps=28 hudbest=0
+09-28 22:02:12.357  2448  2481 I godot   : ND_EVT lane dir=Right to=1
+09-28 22:02:12.497  2448  2481 I godot   : ND_EVT settled lane=1 px=384 vw=768
+09-28 22:02:13.020  2448  2481 I godot   : ND_EVT lane dir=Right to=2
+09-28 22:02:13.137  2448  2481 I godot   : ND_EVT settled lane=2 px=684 vw=768
+09-28 22:02:13.400  2448  2481 I godot   : ND_EVT tick state=Playing score=30 lane=2 obstacles=4 fps=26 hudbest=0
+09-28 22:02:14.083  2448  2481 I godot   : ND_EVT jump
+09-28 22:02:15.391  2448  2481 I godot   : ND_EVT tick state=Playing score=47 lane=2 obstacles=3 fps=24 hudbest=0
+09-28 22:02:17.435  2448  2481 I godot   : ND_EVT tick state=Playing score=64 lane=2 obstacles=3 fps=30 hudbest=0
+09-28 22:02:19.259  2448  2481 I godot   : ND_EVT state from=Playing to=GameOver
+09-28 22:02:19.263  2448  2481 I godot   : ND_EVT crash score=81 best=81 newbest=True lane=2 text_rgb=1.00,0.25,0.35 text_lum=0.42
+09-28 22:02:19.440  2448  2481 I godot   : ND_EVT tick state=GameOver score=81 lane=2 obstacles=3 fps=29 hudbest=81
+09-28 22:02:21.478  2448  2481 I godot   : ND_EVT tick state=GameOver score=81 lane=2 obstacles=3 fps=27 hudbest=81
+09-28 22:02:22.165  2448  2481 I godot   : ND_EVT state from=GameOver to=Playing
+09-28 22:02:23.491  2448  2481 I godot   : ND_EVT tick state=Playing score=10 lane=1 obstacles=2 fps=23 hudbest=81
+09-28 22:02:25.478  2448  2481 I godot   : ND_EVT tick state=Playing score=27 lane=1 obstacles=3 fps=29 hudbest=81
+09-28 22:02:25.545   532   795 E WifiHealthMonitor:  Hit PackageManager exception
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: android.content.pm.PackageManager$NameNotFoundException: No module info for package: com.android.wifi
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at android.app.ApplicationPackageManager.getModuleInfo(ApplicationPackageManager.java:1190)
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.getWifiStackVersion(WifiHealthMonitor.java:367)
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.extractCurrentSoftwareBuildInfo(WifiHealthMonitor.java:588)
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.postBootSwBuildCheck(WifiHealthMonitor.java:523)
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.postBootDetectionHandler(WifiHealthMonitor.java:514)
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor.-$$Nest$mpostBootDetectionHandler(WifiHealthMonitor.java:0)
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at com.android.server.wifi.WifiHealthMonitor$2.onAlarm(WifiHealthMonitor.java:190)
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at android.app.AlarmManager$ListenerWrapper.run(AlarmManager.java:375)
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at android.os.Handler.handleCallback(Handler.java:958)
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at android.os.Handler.dispatchMessage(Handler.java:99)
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at com.android.server.wifi.RunnerHandler.dispatchMessage(RunnerHandler.java:122)
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at android.os.Looper.loopOnce(Looper.java:205)
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at android.os.Looper.loop(Looper.java:294)
+09-28 22:02:25.545   532   795 E WifiHealthMonitor: 	at android.os.HandlerThread.run(HandlerThread.java:67)
+09-28 22:02:26.652  2521  2542 E BufferQueueProducer: [GraphicBufferSource](id:9d900000000,api:1,p:411,c:2521) queueBuffer: BufferQueue has been abandoned
+09-28 22:02:26.652   411   411 E Surface : queueBuffer: error queuing buffer, -19
+09-28 22:02:26.652   411   411 E CompositionEngine: Error when queueing buffer for display [ScreenRecorder]: -19
+09-28 22:02:26.652  2521  2542 E BufferQueueProducer: [GraphicBufferSource](id:9d900000000,api:1,p:411,c:2521) cancelBuffer: BufferQueue has been abandoned
+09-28 22:02:27.501  2448  2481 I godot   : ND_EVT tick state=Playing score=44 lane=1 obstacles=4 fps=24 hudbest=81
+09-28 22:02:28.764  2448  2481 I godot   : ND_EVT state from=Playing to=GameOver
+09-28 22:02:28.764  2448  2481 I godot   : ND_EVT crash score=55 best=81 newbest=False lane=1 text_rgb=1.00,0.25,0.35 text_lum=0.42
+09-28 22:02:29.505  2448  2481 I godot   : ND_EVT tick state=GameOver score=55 lane=1 obstacles=4 fps=53 hudbest=81

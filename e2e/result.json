@@ -1,0 +1,184 @@
+{
+  "verdict": "PASS",
+  "passed": 19,
+  "total": 19,
+  "checks": [
+    {
+      "key": "install",
+      "label": "APK install हुआ",
+      "ok": true,
+      "evidence": "adb install rc=0"
+    },
+    {
+      "key": "ready",
+      "label": "Game खुला (ready event)",
+      "ok": true,
+      "evidence": [
+        "ND_EVT ready best=0 viewport=768x1280"
+      ]
+    },
+    {
+      "key": "title_visible",
+      "label": "Title screen दिख रहा है (काला नहीं)",
+      "ok": true,
+      "evidence": "bright pixels 3.06%"
+    },
+    {
+      "key": "start",
+      "label": "Tap से game शुरू हुआ",
+      "ok": true,
+      "evidence": [
+        "ND_EVT state from=Menu to=Playing"
+      ]
+    },
+    {
+      "key": "screen_changes",
+      "label": "शुरू होने पर screen बदली",
+      "ok": true,
+      "evidence": "title↔playing अंतर = 2.99"
+    },
+    {
+      "key": "swipe_left",
+      "label": "बाएँ swipe से lane बदली",
+      "ok": true,
+      "evidence": [
+        "ND_EVT lane dir=Left to=0"
+      ]
+    },
+    {
+      "key": "swipe_right",
+      "label": "दाएँ swipe से lane बदली",
+      "ok": true,
+      "evidence": [
+        "ND_EVT lane dir=Right to=1",
+        "ND_EVT lane dir=Right to=2"
+      ]
+    },
+    {
+      "key": "jump",
+      "label": "ऊपर swipe से कूदा",
+      "ok": true,
+      "evidence": [
+        "ND_EVT jump"
+      ]
+    },
+    {
+      "key": "score_grows",
+      "label": "दौड़ते हुए score बढ़ा",
+      "ok": true,
+      "evidence": "scores [13, 30, 47, 64, 10, 27, 44]"
+    },
+    {
+      "key": "crash_event",
+      "label": "रुकावट से टकराकर game over हुआ",
+      "ok": true,
+      "evidence": [
+        "score=81 best=81 newbest=True",
+        "score=55 best=81 newbest=False"
+      ]
+    },
+    {
+      "key": "new_best",
+      "label": "पहली बार पर 'NEW BEST' (bug fix)",
+      "ok": true,
+      "evidence": "पहला crash newbest=True"
+    },
+    {
+      "key": "game_over_state",
+      "label": "Game Over state आया",
+      "ok": true,
+      "evidence": [
+        "ND_EVT state from=Playing to=GameOver"
+      ]
+    },
+    {
+      "key": "game_over_screen",
+      "label": "Game Over पर screen बदली",
+      "ok": true,
+      "evidence": "jump↔game-over अंतर = 7.84"
+    },
+    {
+      "key": "player_on_screen",
+      "label": "हर lane में player पूरा screen के अंदर दिखा",
+      "ok": true,
+      "evidence": [
+        "lane=0 x=84/768",
+        "lane=1 x=384/768",
+        "lane=2 x=684/768"
+      ]
+    },
+    {
+      "key": "hud_best",
+      "label": "नया best बनते ही ऊपर BEST बदला (bug fix)",
+      "ok": true,
+      "evidence": "best=81, उसके बाद HUD में: ['81', '81', '81', '81', '81']"
+    },
+    {
+      "key": "gameover_readable",
+      "label": "GAME OVER साफ़ पढ़ने लायक रंग में (bug fix)",
+      "ok": true,
+      "evidence": "text rgb=1.00,0.25,0.35, चमक=0.42 (कम से कम 0.30)"
+    },
+    {
+      "key": "retry",
+      "label": "Tap से दोबारा खेल शुरू हुआ",
+      "ok": true,
+      "evidence": [
+        "ND_EVT state from=GameOver to=Playing"
+      ]
+    },
+    {
+      "key": "no_crash",
+      "label": "कोई crash / C# exception नहीं",
+      "ok": true,
+      "evidence": "साफ़"
+    },
+    {
+      "key": "alive",
+      "label": "अंत में game चालू था",
+      "ok": true,
+      "evidence": "pidof → alive"
+    }
+  ],
+  "fps": {
+    "min": 23,
+    "max": 30,
+    "avg": 26.3
+  },
+  "events": 26,
+  "screen": "768x1280",
+  "emulator": "Pkg.Revision=37.1.11",
+  "recoveries": [],
+  "shots": {
+    "01-title": {
+      "present": true,
+      "bright_pct": 3.06
+    },
+    "02-playing": {
+      "present": true,
+      "bright_pct": 1.52
+    },
+    "03-after-left": {
+      "present": true,
+      "bright_pct": 1.51
+    },
+    "04-after-right": {
+      "present": true,
+      "bright_pct": 2.23
+    },
+    "05-jump": {
+      "present": true,
+      "bright_pct": 1.46
+    },
+    "06-game-over": {
+      "present": true,
+      "bright_pct": 5.9
+    },
+    "07-retry-running": {
+      "present": true,
+      "bright_pct": 1.5
+    }
+  },
+  "video_bytes": 1620148,
+  "renderer_noise": 0
+}
