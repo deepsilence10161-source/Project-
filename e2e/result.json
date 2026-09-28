@@ -1,7 +1,7 @@
 {
   "verdict": "PASS",
-  "passed": 19,
-  "total": 19,
+  "passed": 27,
+  "total": 27,
   "checks": [
     {
       "key": "install",
@@ -21,7 +21,7 @@
       "key": "title_visible",
       "label": "Title screen दिख रहा है (काला नहीं)",
       "ok": true,
-      "evidence": "bright pixels 3.06%"
+      "evidence": "bright pixels 11.39%"
     },
     {
       "key": "start",
@@ -35,7 +35,7 @@
       "key": "screen_changes",
       "label": "शुरू होने पर screen बदली",
       "ok": true,
-      "evidence": "title↔playing अंतर = 2.99"
+      "evidence": "title↔playing अंतर = 22.41"
     },
     {
       "key": "swipe_left",
@@ -66,7 +66,7 @@
       "key": "score_grows",
       "label": "दौड़ते हुए score बढ़ा",
       "ok": true,
-      "evidence": "scores [13, 30, 47, 64, 10, 27, 44]"
+      "evidence": "scores [11, 28, 45, 62, 80, 8, 25, 42]"
     },
     {
       "key": "crash_event",
@@ -95,7 +95,7 @@
       "key": "game_over_screen",
       "label": "Game Over पर screen बदली",
       "ok": true,
-      "evidence": "jump↔game-over अंतर = 7.84"
+      "evidence": "jump↔game-over अंतर = 23.94"
     },
     {
       "key": "player_on_screen",
@@ -120,6 +120,71 @@
       "evidence": "text rgb=1.00,0.25,0.35, चमक=0.42 (कम से कम 0.30)"
     },
     {
+      "key": "art_loaded",
+      "label": "लड़की की सारी तस्वीरें load हुईं (3 फ़्रेम + portrait)",
+      "ok": true,
+      "evidence": [
+        {
+          "player_frames": "3",
+          "portrait": "True"
+        }
+      ]
+    },
+    {
+      "key": "run_animation",
+      "label": "दौड़ने की animation चली (फ़्रेम बदलते रहे)",
+      "ok": true,
+      "evidence": "frame swaps [11, 26, 34, 49, 64, 72, 87, 102]"
+    },
+    {
+      "key": "jump_pose",
+      "label": "कूदते समय jump वाला pose दिखा",
+      "ok": true,
+      "evidence": [
+        "ND_EVT pose name=jump"
+      ]
+    },
+    {
+      "key": "title_portrait",
+      "label": "Title screen पर लड़की की तस्वीर दिखी",
+      "ok": true,
+      "evidence": "title bright pixels 11.39% (portrait के साथ > 5%)"
+    },
+    {
+      "key": "player_sprite_visible",
+      "label": "बीच वाली lane में लड़की सच में दिख रही है (pixels)",
+      "ok": true,
+      "evidence": "player की जगह पर चमकीले pixels 26.4%"
+    },
+    {
+      "key": "title_clean",
+      "label": "Title पर game वाली लड़की छिपी, पीछे dim",
+      "ok": true,
+      "evidence": [
+        "visible=False dim=True",
+        "visible=False dim=True"
+      ]
+    },
+    {
+      "key": "play_clear",
+      "label": "खेलते समय लड़की दिखे और dim हटे",
+      "ok": true,
+      "evidence": [
+        "visible=True dim=False",
+        "visible=True dim=False",
+        "visible=True dim=False"
+      ]
+    },
+    {
+      "key": "gameover_dim",
+      "label": "Game Over पर पीछे dim (लिखावट साफ़)",
+      "ok": true,
+      "evidence": [
+        "dim=True",
+        "dim=True"
+      ]
+    },
+    {
       "key": "retry",
       "label": "Tap से दोबारा खेल शुरू हुआ",
       "ok": true,
@@ -141,44 +206,44 @@
     }
   ],
   "fps": {
-    "min": 23,
-    "max": 30,
-    "avg": 26.3
+    "min": 25,
+    "max": 33,
+    "avg": 29.1
   },
-  "events": 26,
+  "events": 30,
   "screen": "768x1280",
   "emulator": "Pkg.Revision=37.1.11",
   "recoveries": [],
   "shots": {
     "01-title": {
       "present": true,
-      "bright_pct": 3.06
+      "bright_pct": 11.39
     },
     "02-playing": {
       "present": true,
-      "bright_pct": 1.52
+      "bright_pct": 1.63
     },
     "03-after-left": {
       "present": true,
-      "bright_pct": 1.51
+      "bright_pct": 1.55
     },
     "04-after-right": {
       "present": true,
-      "bright_pct": 2.23
+      "bright_pct": 5.05
     },
     "05-jump": {
       "present": true,
-      "bright_pct": 1.46
+      "bright_pct": 1.57
     },
     "06-game-over": {
       "present": true,
-      "bright_pct": 5.9
+      "bright_pct": 14.8
     },
     "07-retry-running": {
       "present": true,
-      "bright_pct": 1.5
+      "bright_pct": 1.6
     }
   },
-  "video_bytes": 1620148,
+  "video_bytes": 2341746,
   "renderer_noise": 0
 }

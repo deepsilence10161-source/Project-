@@ -1,26 +1,30 @@
 ND_EVT ready best=0 viewport=768x1280
-ND_EVT tick state=Menu score=0 lane=1 obstacles=0 fps=53 hudbest=0
-ND_EVT tick state=Menu score=0 lane=1 obstacles=0 fps=46 hudbest=0
+ND_EVT art player_frames=3 portrait=True
+ND_EVT tick state=Menu score=0 lane=1 obstacles=0 fps=42 hudbest=0 runswaps=0 player_visible=False dim=True
+ND_EVT tick state=Menu score=0 lane=1 obstacles=0 fps=35 hudbest=0 runswaps=0 player_visible=False dim=True
 ND_EVT state from=Menu to=Playing
+ND_EVT tick state=Playing score=11 lane=1 obstacles=3 fps=28 hudbest=0 runswaps=11 player_visible=True dim=False
 ND_EVT lane dir=Left to=0
 ND_EVT settled lane=0 px=84 vw=768
-ND_EVT tick state=Playing score=13 lane=0 obstacles=4 fps=28 hudbest=0
 ND_EVT lane dir=Right to=1
 ND_EVT settled lane=1 px=384 vw=768
 ND_EVT lane dir=Right to=2
 ND_EVT settled lane=2 px=684 vw=768
-ND_EVT tick state=Playing score=30 lane=2 obstacles=4 fps=26 hudbest=0
+ND_EVT tick state=Playing score=28 lane=2 obstacles=4 fps=30 hudbest=0 runswaps=26 player_visible=True dim=False
 ND_EVT jump
-ND_EVT tick state=Playing score=47 lane=2 obstacles=3 fps=24 hudbest=0
-ND_EVT tick state=Playing score=64 lane=2 obstacles=3 fps=30 hudbest=0
+ND_EVT pose name=jump
+ND_EVT tick state=Playing score=45 lane=2 obstacles=3 fps=25 hudbest=0 runswaps=34 player_visible=True dim=False
+ND_EVT tick state=Playing score=62 lane=2 obstacles=2 fps=32 hudbest=0 runswaps=49 player_visible=True dim=False
+ND_EVT tick state=Playing score=80 lane=2 obstacles=3 fps=31 hudbest=0 runswaps=64 player_visible=True dim=False
 ND_EVT state from=Playing to=GameOver
+ND_EVT pose name=crash
 ND_EVT crash score=81 best=81 newbest=True lane=2 text_rgb=1.00,0.25,0.35 text_lum=0.42
-ND_EVT tick state=GameOver score=81 lane=2 obstacles=3 fps=29 hudbest=81
-ND_EVT tick state=GameOver score=81 lane=2 obstacles=3 fps=27 hudbest=81
+ND_EVT tick state=GameOver score=81 lane=2 obstacles=3 fps=22 hudbest=81 runswaps=64 player_visible=True dim=True
 ND_EVT state from=GameOver to=Playing
-ND_EVT tick state=Playing score=10 lane=1 obstacles=2 fps=23 hudbest=81
-ND_EVT tick state=Playing score=27 lane=1 obstacles=3 fps=29 hudbest=81
-ND_EVT tick state=Playing score=44 lane=1 obstacles=4 fps=24 hudbest=81
+ND_EVT tick state=Playing score=8 lane=1 obstacles=2 fps=25 hudbest=81 runswaps=72 player_visible=True dim=False
+ND_EVT tick state=Playing score=25 lane=1 obstacles=3 fps=33 hudbest=81 runswaps=87 player_visible=True dim=False
+ND_EVT tick state=Playing score=42 lane=1 obstacles=4 fps=29 hudbest=81 runswaps=102 player_visible=True dim=False
 ND_EVT state from=Playing to=GameOver
+ND_EVT pose name=crash
 ND_EVT crash score=55 best=81 newbest=False lane=1 text_rgb=1.00,0.25,0.35 text_lum=0.42
-ND_EVT tick state=GameOver score=55 lane=1 obstacles=4 fps=53 hudbest=81
+ND_EVT tick state=GameOver score=55 lane=1 obstacles=4 fps=59 hudbest=81 runswaps=114 player_visible=True dim=True

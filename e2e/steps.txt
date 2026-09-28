@@ -1,25 +1,25 @@
-[22:02:01] install build/NeonDash-debug.apk
-[22:02:02] launch
-[22:02:05]   saw '^ND_EVT ready' (x1) after 2s
-[22:02:08] screen 768x1280
-[22:02:08]   screenshot 01-title (24736 bytes)
-[22:02:09] tap to start
-[22:02:09]   saw 'state from=Menu to=Playing' (x1) after 0s
-[22:02:11]   screenshot 02-playing (13317 bytes)
-[22:02:11] swipe left
-[22:02:11]   saw 'lane dir=Left' (x1) after 0s
-[22:02:12]   screenshot 03-after-left (13923 bytes)
-[22:02:12] swipe right x2
-[22:02:13]   saw 'lane dir=Right' (x1) after 0s
-[22:02:14]   screenshot 04-after-right (13470 bytes)
-[22:02:14] swipe up (jump)
-[22:02:14]   saw '^ND_EVT jump' (x1) after 0s
-[22:02:14]   screenshot 05-jump (13895 bytes)
-[22:02:14] no input: wait for the player to hit an obstacle
-[22:02:20]   saw '^ND_EVT crash' (x1) after 5s
-[22:02:22]   screenshot 06-game-over (33269 bytes)
-[22:02:22] tap to retry
-[22:02:22]   saw 'state from=GameOver to=Playing' (x1) after 0s
-[22:02:26]   screenshot 07-retry-running (14695 bytes)
-[22:02:29] video 1620148 bytes
-[22:02:29] events captured: 26
+[23:28:28] install build/NeonDash-debug.apk
+[23:28:29] launch
+[23:28:32]   saw '^ND_EVT ready' (x1) after 2s
+[23:28:35] screen 768x1280
+[23:28:35]   screenshot 01-title (286106 bytes)
+[23:28:36] tap to start
+[23:28:36]   saw 'state from=Menu to=Playing' (x1) after 0s
+[23:28:38]   screenshot 02-playing (56502 bytes)
+[23:28:38] swipe left
+[23:28:38]   saw 'lane dir=Left' (x1) after 0s
+[23:28:39]   screenshot 03-after-left (56422 bytes)
+[23:28:39] swipe right x2
+[23:28:40]   saw 'lane dir=Right' (x1) after 0s
+[23:28:41]   screenshot 04-after-right (56864 bytes)
+[23:28:41] swipe up (jump)
+[23:28:41]   saw '^ND_EVT jump' (x1) after 0s
+[23:28:41]   screenshot 05-jump (57596 bytes)
+[23:28:41] no input: wait for the player to hit an obstacle
+[23:28:47]   saw '^ND_EVT crash' (x1) after 5s
+[23:28:49]   screenshot 06-game-over (300291 bytes)
+[23:28:49] tap to retry
+[23:28:49]   saw 'state from=GameOver to=Playing' (x1) after 0s
+[23:28:53]   screenshot 07-retry-running (57619 bytes)
+[23:28:56] video 2341746 bytes
+[23:28:57] events captured: 30
