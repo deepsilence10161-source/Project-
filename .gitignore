@@ -41,3 +41,5 @@ secrets.properties
 
 # Maestro generates screenshots next to the flows
 .maestro/**/*.png
+__pycache__/
+*.pyc

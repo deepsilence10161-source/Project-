@@ -114,6 +114,34 @@ check("hud_best", "नया best बनते ही ऊपर BEST बदल�
 lum = float(crashes[0].get("text_lum", 0)) if crashes else 0.0
 check("gameover_readable", "GAME OVER साफ़ पढ़ने लायक रंग में (bug fix)", lum >= 0.30,
       f"text rgb={crashes[0].get('text_rgb') if crashes else None}, चमक={lum} (कम से कम 0.30)")
+art = [kv(e) for e in find(r"^ND_EVT art")]
+check("art_loaded", "लड़की की सारी तस्वीरें load हुईं (3 फ़्रेम + portrait)",
+      art and art[0].get("player_frames") == "3" and art[0].get("portrait") == "True",
+      art[:1] or "art event नहीं मिला")
+swaps = [int(t["runswaps"]) for t in ticks if t.get("state") == "Playing" and t.get("runswaps", "").isdigit()]
+check("run_animation", "दौड़ने की animation चली (फ़्रेम बदलते रहे)", swaps and max(swaps) >= 6,
+      f"frame swaps {swaps[:8]}")
+jp = find(r"pose name=jump")
+check("jump_pose", "कूदते समय jump वाला pose दिखा", jp, jp[:1] or "नहीं मिला")
+check("title_portrait", "Title screen पर लड़की की तस्वीर दिखी", title.get("bright_pct", 0) > 5.0,
+      f"title bright pixels {title.get('bright_pct')}% (portrait के साथ > 5%)")
+sprite_px = None
+try:
+    from PIL import Image as _I
+    _p = os.path.join(out, "02-playing.png")
+    if os.path.exists(_p):
+        im = _I.open(_p).convert("RGB")
+        w, h = im.size
+        cx = w // 2
+        y0, y1 = int(h * 830 / 1280), int(h * 1040 / 1280)   # where she stands (lane 1)
+        region = im.crop((cx - 60, y0, cx + 60, y1))
+        px = list(region.getdata())
+        sprite_px = round(100 * sum(1 for r_, g_, b_ in px if max(r_, g_, b_) > 90) / len(px), 1)
+except Exception as _e:  # noqa
+    sprite_px = f"error {_e}"
+check("player_sprite_visible", "बीच वाली lane में लड़की सच में दिख रही है (pixels)",
+      isinstance(sprite_px, float) and sprite_px > 15,
+      f"player की जगह पर चमकीले pixels {sprite_px}%")
 rt = find(r"state from=GameOver to=Playing")
 check("retry", "Tap से दोबारा खेल शुरू हुआ", rt, rt[:1] or "नहीं मिला")
 check("no_crash", "कोई crash / C# exception नहीं", not crash_sig, crash_sig[:5] or "साफ़")

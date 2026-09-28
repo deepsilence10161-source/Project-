@@ -15,27 +15,6 @@ script = ExtResource("2_grid")
 position = Vector2(0, 1010)
 script = ExtResource("3_player")
 
-[node name="Shadow" type="ColorRect" parent="World/Player"]
-offset_left = -54.0
-offset_top = -9.0
-offset_right = 54.0
-offset_bottom = 9.0
-color = Color(1, 1, 1, 0.35)
-
-[node name="Glow" type="ColorRect" parent="World/Player"]
-offset_left = -48.0
-offset_top = -48.0
-offset_right = 48.0
-offset_bottom = 48.0
-color = Color(0, 0.94, 1, 0.35)
-
-[node name="Body" type="ColorRect" parent="World/Player"]
-offset_left = -38.0
-offset_top = -46.0
-offset_right = 38.0
-offset_bottom = 46.0
-color = Color(1, 1, 1, 1)
-
 [node name="Hud" type="CanvasLayer" parent="."]
 script = ExtResource("4_hud")
 

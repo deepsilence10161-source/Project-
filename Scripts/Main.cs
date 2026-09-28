@@ -58,9 +58,11 @@ public partial class Main : Node2D
         _score.LoadHighScore(LoadSavedHighScore());
         _hud.SetHighScore(_score.HighScore);
         _hud.ShowTitle();
+        _player.Apply(_lanes.RenderX, 0f, PixelsPerMetre, PlayerScreenY);
 
         _state.StateChanged += (from, to) => TestProbe.Emit("state", $"from={from} to={to}");
         TestProbe.Emit("ready", $"best={_score.HighScore} viewport={GetViewportRect().Size.X:F0}x{GetViewportRect().Size.Y:F0}");
+        TestProbe.Emit("art", $"player_frames={_player.FramesLoaded} portrait={_hud.PortraitLoaded}");
     }
 
     private void CentreWorld()
@@ -155,7 +157,7 @@ public partial class Main : Node2D
             TestProbe.Emit("tick",
                 $"state={_state.Current} score={_score.Score} lane={_lanes.CurrentLane} " +
                 $"obstacles={_obstacles.Count} fps={Engine.GetFramesPerSecond():F0} " +
-                $"hudbest={_hud.ShownHighScore}");
+                $"hudbest={_hud.ShownHighScore} runswaps={_player.RunSwaps}");
         }
 
         if (!_state.IsPlaying) return;
@@ -208,6 +210,7 @@ public partial class Main : Node2D
         }
 
         _player.Apply(_lanes.RenderX, height, PixelsPerMetre, PlayerScreenY);
+        _player.Animate(dt, 1f + _speed.NormalisedProgress);
         _hud.SetScore(_score.Score, _speed.NormalisedProgress);
 
         // Where the player really is on screen once a lane change finishes.
