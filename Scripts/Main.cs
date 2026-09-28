@@ -40,6 +40,7 @@ public partial class Main : Node2D
 
     private Vector2 _touchStart;
     private bool _tracking;
+    private float _tickTimer;
 
     public override void _Ready()
     {
@@ -50,6 +51,9 @@ public partial class Main : Node2D
         _score.LoadHighScore(LoadSavedHighScore());
         _hud.SetHighScore(_score.HighScore);
         _hud.ShowTitle();
+
+        _state.StateChanged += (from, to) => TestProbe.Emit("state", $"from={from} to={to}");
+        TestProbe.Emit("ready", $"best={_score.HighScore} viewport={GetViewportRect().Size.X:F0}x{GetViewportRect().Size.Y:F0}");
     }
 
     private int LoadSavedHighScore()
@@ -90,9 +94,15 @@ public partial class Main : Node2D
             if (delta.Length() < SwipeThresholdPx) return;
 
             if (Mathf.Abs(delta.X) > Mathf.Abs(delta.Y))
-                _lanes.TryMove(delta.X < 0 ? LaneDirection.Left : LaneDirection.Right);
-            else if (delta.Y < 0)
-                _jump.Jump();
+            {
+                var dir = delta.X < 0 ? LaneDirection.Left : LaneDirection.Right;
+                if (_lanes.TryMove(dir))
+                    TestProbe.Emit("lane", $"dir={dir} to={_lanes.TargetLane}");
+            }
+            else if (delta.Y < 0 && _jump.Jump())
+            {
+                TestProbe.Emit("jump");
+            }
 
             _touchStart = drag.Position;   // allow chained swipes
         }
@@ -125,6 +135,15 @@ public partial class Main : Node2D
         // Background scrolls even on the title screen, so the menu feels alive.
         var scrollSpeed = _state.IsPlaying ? _speed.CurrentSpeed : 2f;
         _grid.AdvanceGrid(scrollSpeed * dt * 100f);
+
+        _tickTimer += dt;
+        if (_tickTimer >= 2f)
+        {
+            _tickTimer = 0f;
+            TestProbe.Emit("tick",
+                $"state={_state.Current} score={_score.Score} lane={_lanes.CurrentLane} " +
+                $"obstacles={_obstacles.Count} fps={Engine.GetFramesPerSecond():F0}");
+        }
 
         if (!_state.IsPlaying) return;
 
@@ -195,11 +214,14 @@ public partial class Main : Node2D
 
     private void Crash()
     {
+        var previousBest = _score.HighScore;
         var final = _score.EndRun();
+        var isNewBest = final > previousBest;
         _state.End();
         _player.PlayCrash();
-        _hud.ShowGameOver(final, _score.HighScore);
+        _hud.ShowGameOver(final, _score.HighScore, isNewBest);
         SaveHighScore(_score.HighScore);
+        TestProbe.Emit("crash", $"score={final} best={_score.HighScore} newbest={isNewBest} lane={_lanes.CurrentLane}");
     }
 
     private void ClearObstacles()

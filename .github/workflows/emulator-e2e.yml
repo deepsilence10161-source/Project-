@@ -1,34 +1,35 @@
 name: Emulator E2E
 
-# Boots a real Android emulator on GitHub's runner, installs the APK,
-# drives it with Maestro touch input and captures screenshots.
-# The screenshots are published to GitHub Pages so they can be
-# reviewed from a phone browser.
+# Boots an Android emulator on GitHub's runner, installs the debug APK and
+# PLAYS the game with real touch input: start, swipe left/right, jump, crash
+# into an obstacle, retry.
 #
-# HONEST SCOPE: Godot renders the whole game into a single native canvas
-# and publishes no accessibility tree, so Maestro can see nothing inside
-# the game. This workflow therefore proves: the APK installs, launches,
-# stays alive under touch input, and shows what it looks like. It cannot
-# assert on in-game score, lane position or collision.
+# Godot draws into one native surface, so UI-automation tools (Maestro,
+# Appium) cannot see inside the game. Instead the debug build reports its own
+# events to logcat ("ND_EVT ...", Scripts/TestProbe.cs); ci/e2e/judge.py
+# asserts on those events + screenshots. The job is red unless every check
+# passes. Report: https://deepsilence10161-source.github.io/Project-/e2e/
+#
+# Emulator setup = the one proven in Render Lab v3 (12/12 runs):
+#   API 34 AOSP 'default' x86_64, Nexus 4, 4 cores, 4 GB, -gpu lavapipe.
 
 on:
   push:
-    branches: [main]
+    branches: [main, 'phase-*']
   workflow_dispatch:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
-  group: emulator-e2e
+  group: emulator-e2e-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   e2e:
-    name: Maestro on Android emulator
+    name: Play the game on an Android emulator
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     env:
       GODOT_VERSION: '4.7.2'
       ANDROID_API_LEVEL: '34'
@@ -143,129 +144,79 @@ jobs:
           unzip -o -q t.tpz 'templates/android_debug.apk' 'templates/android_release.apk' 'templates/version.txt'
           mv templates/* . && rmdir templates && rm t.tpz
 
+      # The shipped preset is arm64 only (phones). The x86_64 emulator needs an
+      # x86_64 slice too, so the TEST APK enables it here, in CI only.
       - name: Import and build
         run: |
+          sed -i 's/^architectures\/x86_64=false/architectures\/x86_64=true/' export_presets.cfg
+          grep -n '^architectures/' export_presets.cfg
           godot --headless --path . --import
           dotnet build NeonDash.csproj -c Debug --nologo
           mkdir -p build
           godot --headless --path . --export-debug "Android" build/NeonDash-debug.apk
 
-      # ---------- run on a real emulator ----------
+      # ---------- play it on an emulator ----------
       - name: Enable KVM
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
 
-      - name: Run Maestro smoke flow
+      - name: Play the game (emulator)
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: ${{ env.ANDROID_API_LEVEL }}
-          target: google_apis
+          target: default
           arch: x86_64
-          profile: pixel_7_pro
+          profile: Nexus 4
+          cores: 4
+          ram-size: 4096M
           force-avd-creation: false
-          emulator-options: -no-snapshot -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -camera-front none
+          emulator-options: -no-snapshot -no-window -gpu lavapipe -noaudio -no-boot-anim -camera-back none -camera-front none
           disable-animations: true
-          # One script FILE, not an inline block. android-emulator-runner feeds
-          # an inline `script:` to the shell one line at a time, so variables
-          # set on one line are empty on the next - the old inline version
-          # literally ran `adb install -r ""`.
-          script: |
-            bash .maestro/emulator-smoke.sh
+          script: bash ci/e2e/run.sh
 
-      - name: Collect results
+      - name: Judge
         if: always()
         run: |
-          mkdir -p report/screenshots
-          cp -r screenshots/* report/screenshots/ 2>/dev/null || true
-          [ -f maestro-report.xml ] && cp maestro-report.xml report/ || true
-          [ -f logcat.txt ] && cp logcat.txt report/ || true
-          {
-            echo "app state  : $(cat .app-state 2>/dev/null || echo unknown)"
-            echo "crash scan : $(cat .crash-state 2>/dev/null || echo unknown)"
-            echo "install rc : $(cat .install-rc 2>/dev/null || echo unknown)"
-            echo "maestro rc : $(cat .maestro-rc 2>/dev/null || echo unknown)"
-            echo "renderer   : $(cat .renderer-errors 2>/dev/null || echo 0) software-GL shader errors (emulator-only, not a game defect)"
-          } > report/status.txt
-          cat report/status.txt
+          mkdir -p out
+          python3 -m pip install -q pillow
+          python3 ci/e2e/judge.py out
 
-      # Honest gate: the report is always published above, but a crashed or
-      # dead app must still turn the workflow red. Maestro cannot see inside
-      # Godot's single native canvas, so liveness (pidof) + a logcat crash
-      # scan are the real assertions at this layer.
-      - name: Assert the game survived
+      - name: Build report
         if: always()
-        shell: bash
-        run: |
-          set -uo pipefail
-          APP_STATE=$(cat .app-state 2>/dev/null || echo unknown)
-          CRASH_STATE=$(cat .crash-state 2>/dev/null || echo unknown)
-          MAESTRO_RC=$(cat .maestro-rc 2>/dev/null || echo unknown)
-          INSTALL_RC=$(cat .install-rc 2>/dev/null || echo unknown)
-          RENDERER_ERRORS=$(cat .renderer-errors 2>/dev/null || echo 0)
-          echo "install rc : $INSTALL_RC"
-          echo "renderer   : $RENDERER_ERRORS software-GL shader errors (emulator-only)"
-          echo "maestro rc : $MAESTRO_RC"
-          echo "app state  : $APP_STATE"
-          echo "crash scan : $CRASH_STATE"
-          bad=0
-          [ "$INSTALL_RC" = "0" ]    || { echo "::error::APK did not install"; bad=1; }
-          [ "$APP_STATE" = "alive" ] || { echo "::error::game process is not alive ($APP_STATE)"; bad=1; }
-          [ "$CRASH_STATE" = "clean" ] || { echo "::error::crash signature in logcat ($CRASH_STATE)"; bad=1; }
-          [ "$MAESTRO_RC" = "0" ]   || { echo "::error::Maestro flow failed (rc=$MAESTRO_RC)"; bad=1; }
-          if [ "$bad" -ne 0 ]; then
-            echo "::error::emulator smoke test FAILED"
-            exit 1
-          fi
-          echo "emulator smoke test PASSED"
+        run: python3 ci/e2e/report.py out site "${{ github.run_number }}" "${{ github.sha }}"
 
       - name: Upload artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: emulator-e2e-results
-          path: report/
+          path: |
+            out/
+            site/
+          retention-days: 14
           if-no-files-found: warn
 
-      # ---------- publish to GitHub Pages ----------
-      - name: Build report index
-        if: always()
-        run: |
-          cat > report/index.html <<'HTML'
-          <!doctype html><html><head><meta charset="utf-8">
-          <meta name="viewport" content="width=device-width,initial-scale=1">
-          <title>Neon Dash - E2E report</title>
-          <style>
-            body{background:#0a0a1f;color:#e8e8ff;font-family:system-ui,sans-serif;margin:0;padding:20px}
-            h1{color:#00f0ff;font-size:22px}
-            h2{color:#00f0ff;font-size:16px;margin-top:24px}
-            .g{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
-            figure{margin:0;background:#14142b;border-radius:10px;overflow:hidden}
-            img{width:100%;display:block}
-            figcaption{padding:8px 10px;font-size:13px;color:#9a9ac8}
-            a{color:#00f0ff}
-            pre{background:#14142b;padding:12px;border-radius:8px;overflow-x:auto;font-size:12px}
-          </style></head><body>
-          <h1>Neon Dash - emulator E2E screenshots</h1>
-          <p>Run: ${{ github.run_number }} &middot; <a href="../">repo</a></p>
-          <h2>Status</h2>
-          <pre>$(cat report/status.txt 2>/dev/null)</pre>
-          <h2>Screenshots</h2>
-          <div class="g">
-          HTML
-          for f in report/screenshots/*.png; do
-            [ -e "$f" ] || continue
-            n=$(basename "$f")
-            echo "<figure><img src=\"screenshots/$n\" loading=\"lazy\"><figcaption>$n</figcaption></figure>" >> report/index.html
-          done
-          echo '</div></body></html>' >> report/index.html
-
-      - name: Deploy to GitHub Pages
-        if: always()
+      - name: Publish report (gh-pages/e2e)
+        if: always() && github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./report
+          publish_dir: ./site
           publish_branch: gh-pages
           keep_files: true
+
+      # The honest gate: red unless judge.py passed every single check.
+      - name: Verdict
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import json, sys
+          r = json.load(open("out/result.json"))
+          for c in r["checks"]:
+              if not c["ok"]:
+                  print(f"::error::{c['key']}: {c['evidence']}")
+          print(f"{r['verdict']} {r['passed']}/{r['total']}")
+          sys.exit(0 if r["verdict"] == "PASS" else 1)
+          PY

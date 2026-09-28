@@ -41,23 +41,27 @@ The short version of what was verified along the way:
 └────────────────────────────────────────────────────────────────┘
                               ↓
 ┌─ Layer 3 ── Emulator E2E (GitHub Actions, KVM) ────────────────┐
-│  reactivecircus/android-emulator-runner + Maestro             │
-│  Installs the APK, swipes/taps it, screenshots every step.    │
-│  Report published to GitHub Pages.                            │
+│  API 34 AOSP x86_64 · Nexus 4 · -gpu lavapipe (proven setup)  │
+│  PLAYS the game via adb: start, swipe, jump, crash, retry.    │
+│  The debug build logs its own events (ND_EVT ...) and         │
+│  ci/e2e/judge.py asserts 16 checks + screenshots + video.     │
+│  Report: GitHub Pages /e2e/                                   │
 └────────────────────────────────────────────────────────────────┘
                               ↓
 ┌─ Layer 4 ── Real device (optional) ────────────────────────────┐
-│  Firebase Test Lab / BrowserStack / LambdaTest                │
+│  Install the release APK on a phone and play it.              │
 └────────────────────────────────────────────────────────────────┘
 ```
 
-### The one thing that cannot be automated here
+### How the emulator test sees inside the game
 
-In-game UI (the neon buttons, the HUD) cannot be driven by Maestro or Appium
-because Godot renders into a single native surface. That is why **Layer 1**
-carries the real functional weight: it runs the *actual game rules* — lane
-clamping, jump arcs, collision, score, difficulty ramp, spawn fairness —
-headlessly, with no device at all.
+Maestro and Appium cannot see inside a Godot game: it renders into a single
+native surface. So the game reports on itself instead. `Scripts/TestProbe.cs`
+prints one line per event in **debug builds only** (`ND_EVT state from=Menu
+to=Playing`, `ND_EVT lane dir=Left to=0`, `ND_EVT crash score=... newbest=...`,
+plus a 2-second heartbeat with score and FPS). `ci/e2e/run.sh` sends real
+touch input with `adb` and waits for the matching event; `ci/e2e/judge.py`
+turns the evidence into a pass/fail verdict. Release builds print nothing.
 
 ---
 
@@ -93,7 +97,7 @@ godot --headless --path . --export-debug "Android" build/NeonDash-debug.apk
 |---|---|
 | `unit-tests.yml` | Runs the 92 pure-logic tests on every push |
 | `build-apk.yml` | Builds + signs + verifies the APK |
-| `emulator-e2e.yml` | Boots an emulator, drives the game with Maestro, publishes screenshots to Pages |
+| `emulator-e2e.yml` | Boots an emulator, plays the game with adb touch input, asserts 16 checks from game events + screenshots, publishes report + video to Pages `/e2e/` |
 
 ## Notes
 

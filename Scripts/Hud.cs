@@ -43,12 +43,14 @@ public partial class Hud : CanvasLayer
         _sub.Text = "";
     }
 
-    public void ShowGameOver(int final, int best)
+    public void ShowGameOver(int final, int best, bool isNewBest)
     {
         _centre.Text = "GAME OVER";
         _centre.Modulate = new Color(1f, 0.25f, 0.35f);
-        _sub.Text = best >= final
-            ? $"SCORE {final}   ·   TAP TO RETRY"
-            : $"NEW BEST {final}!   ·   TAP TO RETRY";
+        // Bug fix: this used to test `best >= final`, which is always true
+        // (best already includes this run), so "NEW BEST" could never show.
+        _sub.Text = isNewBest
+            ? $"NEW BEST {final}!   ·   TAP TO RETRY"
+            : $"SCORE {final}  ·  BEST {best}   ·   TAP TO RETRY";
     }
 }
