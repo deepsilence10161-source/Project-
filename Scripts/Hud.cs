@@ -12,6 +12,15 @@ public partial class Hud : CanvasLayer
     private Label _sub = null!;
     private ProgressBar _speedBar = null!;
 
+    private static readonly Color TitleColour = new(0f, 0.94f, 1f);
+    private static readonly Color GameOverColour = new(1f, 0.25f, 0.35f);
+
+    /// <summary>Best score currently shown in the HUD (read by the E2E probe).</summary>
+    public int ShownHighScore { get; private set; }
+
+    /// <summary>Colour the centre label is actually drawn in: font colour x modulate.</summary>
+    public Color CentreDrawColour => _centre.GetThemeColor("font_color") * _centre.Modulate;
+
     public override void _Ready()
     {
         _score = GetNode<Label>("Top/Score");
@@ -27,13 +36,26 @@ public partial class Hud : CanvasLayer
         _speedBar.Value = normalisedSpeed * 100f;
     }
 
-    public void SetHighScore(int value) => _high.Text = $"BEST {value:D6}";
+    public void SetHighScore(int value)
+    {
+        ShownHighScore = value;
+        _high.Text = $"BEST {value:D6}";
+    }
+
+    // Bug fix: these used Modulate, which MULTIPLIES the label's cyan font
+    // colour. Red x cyan = (0, 0.24, 0.35): a dark blue, barely readable
+    // "GAME OVER". Setting the font colour itself draws the intended colour.
+    private void SetCentreColour(Color c)
+    {
+        _centre.Modulate = Colors.White;
+        _centre.AddThemeColorOverride("font_color", c);
+    }
 
     public void ShowTitle()
     {
         _centre.Text = "NEON DASH";
         _sub.Text = "TAP TO START";
-        _centre.Modulate = new Color(0, 0.94f, 1f);
+        SetCentreColour(TitleColour);
         _sub.Visible = true;
     }
 
@@ -46,7 +68,7 @@ public partial class Hud : CanvasLayer
     public void ShowGameOver(int final, int best, bool isNewBest)
     {
         _centre.Text = "GAME OVER";
-        _centre.Modulate = new Color(1f, 0.25f, 0.35f);
+        SetCentreColour(GameOverColour);
         // Bug fix: this used to test `best >= final`, which is always true
         // (best already includes this run), so "NEW BEST" could never show.
         _sub.Text = isNewBest

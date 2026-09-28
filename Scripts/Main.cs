@@ -41,6 +41,7 @@ public partial class Main : Node2D
     private Vector2 _touchStart;
     private bool _tracking;
     private float _tickTimer;
+    private bool _laneWasMoving;
 
     public override void _Ready()
     {
@@ -48,12 +49,23 @@ public partial class Main : Node2D
         _hud = GetNode<Hud>("Hud");
         _grid = GetNode<ScrollingGrid>("World");
 
+        // Bug fix: World sat at x = 0, so the middle lane (x = 0) was drawn on
+        // the left screen edge and the left lane (-300 px) fully off-screen.
+        // Centre it, and keep it centred if the window size changes.
+        CentreWorld();
+        GetViewport().SizeChanged += CentreWorld;
+
         _score.LoadHighScore(LoadSavedHighScore());
         _hud.SetHighScore(_score.HighScore);
         _hud.ShowTitle();
 
         _state.StateChanged += (from, to) => TestProbe.Emit("state", $"from={from} to={to}");
         TestProbe.Emit("ready", $"best={_score.HighScore} viewport={GetViewportRect().Size.X:F0}x{GetViewportRect().Size.Y:F0}");
+    }
+
+    private void CentreWorld()
+    {
+        _grid.Position = new Vector2(GetViewportRect().Size.X * 0.5f, 0f);
     }
 
     private int LoadSavedHighScore()
@@ -142,7 +154,8 @@ public partial class Main : Node2D
             _tickTimer = 0f;
             TestProbe.Emit("tick",
                 $"state={_state.Current} score={_score.Score} lane={_lanes.CurrentLane} " +
-                $"obstacles={_obstacles.Count} fps={Engine.GetFramesPerSecond():F0}");
+                $"obstacles={_obstacles.Count} fps={Engine.GetFramesPerSecond():F0} " +
+                $"hudbest={_hud.ShownHighScore}");
         }
 
         if (!_state.IsPlaying) return;
@@ -196,6 +209,12 @@ public partial class Main : Node2D
 
         _player.Apply(_lanes.RenderX, height, PixelsPerMetre, PlayerScreenY);
         _hud.SetScore(_score.Score, _speed.NormalisedProgress);
+
+        // Where the player really is on screen once a lane change finishes.
+        if (_laneWasMoving && _lanes.IsSettled)
+            TestProbe.Emit("settled",
+                $"lane={_lanes.CurrentLane} px={_player.GlobalPosition.X:F0} vw={GetViewportRect().Size.X:F0}");
+        _laneWasMoving = !_lanes.IsSettled;
     }
 
     private void SpawnObstacle(SpawnSlot slot)
@@ -219,9 +238,15 @@ public partial class Main : Node2D
         var isNewBest = final > previousBest;
         _state.End();
         _player.PlayCrash();
+        _hud.SetScore(final, _speed.NormalisedProgress);
         _hud.ShowGameOver(final, _score.HighScore, isNewBest);
+        _hud.SetHighScore(_score.HighScore);   // bug fix: BEST stayed stale after a new record
         SaveHighScore(_score.HighScore);
-        TestProbe.Emit("crash", $"score={final} best={_score.HighScore} newbest={isNewBest} lane={_lanes.CurrentLane}");
+        var c = _hud.CentreDrawColour;
+        var luminance = (0.2126f * c.R) + (0.7152f * c.G) + (0.0722f * c.B);
+        TestProbe.Emit("crash",
+            $"score={final} best={_score.HighScore} newbest={isNewBest} lane={_lanes.CurrentLane} " +
+            $"text_rgb={c.R:F2},{c.G:F2},{c.B:F2} text_lum={luminance:F2}");
     }
 
     private void ClearObstacles()

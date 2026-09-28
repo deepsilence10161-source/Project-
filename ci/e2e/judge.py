@@ -93,6 +93,27 @@ go = find(r"state from=Playing to=GameOver")
 check("game_over_state", "Game Over state आया", go, go[:1] or "नहीं मिला")
 check("game_over_screen", "Game Over पर screen बदली", d_play_over is not None and d_play_over > 0.5,
       f"jump↔game-over अंतर = {d_play_over}")
+settled = [kv(e) for e in find(r"^ND_EVT settled")]
+def on_screen(d):
+    try:
+        px, vw = float(d["px"]), float(d["vw"])
+    except (KeyError, ValueError):
+        return False
+    return 48 <= px <= vw - 48          # the player's glow is 96 px wide
+lanes_seen = sorted({d.get("lane") for d in settled})
+check("player_on_screen", "हर lane में player पूरा screen के अंदर दिखा",
+      {"0", "2"} <= set(lanes_seen) and settled and all(on_screen(d) for d in settled),
+      [f"lane={d.get('lane')} x={d.get('px')}/{d.get('vw')}" for d in settled[:6]] or "settled event नहीं मिला")
+first_crash_idx = next((i for i, e in enumerate(events) if e.startswith("ND_EVT crash")), None)
+after = [kv(e) for e in events[first_crash_idx + 1:]] if first_crash_idx is not None else []
+after_ticks = [t for t in after if "hudbest" in t]
+best0 = int(crashes[0]["best"]) if crashes and crashes[0].get("best", "").isdigit() else None
+check("hud_best", "नया best बनते ही ऊपर BEST बदला (bug fix)",
+      best0 is not None and after_ticks and all(int(t["hudbest"]) >= best0 for t in after_ticks),
+      f"best={best0}, उसके बाद HUD में: {[t.get('hudbest') for t in after_ticks[:5]]}")
+lum = float(crashes[0].get("text_lum", 0)) if crashes else 0.0
+check("gameover_readable", "GAME OVER साफ़ पढ़ने लायक रंग में (bug fix)", lum >= 0.30,
+      f"text rgb={crashes[0].get('text_rgb') if crashes else None}, चमक={lum} (कम से कम 0.30)")
 rt = find(r"state from=GameOver to=Playing")
 check("retry", "Tap से दोबारा खेल शुरू हुआ", rt, rt[:1] or "नहीं मिला")
 check("no_crash", "कोई crash / C# exception नहीं", not crash_sig, crash_sig[:5] or "साफ़")
