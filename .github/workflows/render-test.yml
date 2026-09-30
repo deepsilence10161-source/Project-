@@ -1,0 +1,35 @@
+name: Anime render speed test
+on:
+  workflow_dispatch:
+  push:
+    branches: [anime]
+    paths: ["scenes/**", "tools/**", ".github/workflows/render-test.yml"]
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        res: ["720x1280", "1080x1920"]
+    steps:
+      - uses: actions/checkout@v4
+      - run: nproc; free -m
+      - run: bash tools/setup_blender.sh
+      - name: Get model
+        run: curl -sL -o $HOME/B.vrm https://raw.githubusercontent.com/hirokazuniimoto/virtual-avatar-sdk/main/assets/avatars/AvatarSample_B.vrm
+      - name: Render 48 frames
+        run: |
+          X=${{ matrix.res }}; export RES_X=${X%x*} RES_Y=${X#*x} VRM=$HOME/B.vrm OUT=$PWD/seq FRAMES=48 SAMPLES=16
+          S=$(date +%s); $BLENDER -b --python scenes/test_talk.py > render.log 2>&1 || (tail -40 render.log; exit 1)
+          E=$(date +%s); echo "RES=$X SECONDS_TOTAL=$((E-S)) FRAMES=48 PER_FRAME=$(python3 -c "print(round(($E-$S)/48,2))") CPUS=$(nproc)" | tee timing.txt
+      - name: Encode
+        run: |
+          FF=$(python3 -c "import imageio_ffmpeg as f; print(f.get_ffmpeg_exe())")
+          $FF -y -loglevel error -framerate 24 -i seq/f_%04d.png -c:v libx264 -pix_fmt yuv420p test_${{ matrix.res }}.mp4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: render-${{ matrix.res }}
+          path: |
+            test_${{ matrix.res }}.mp4
+            timing.txt
+          retention-days: 7
